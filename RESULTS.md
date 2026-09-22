@@ -12,6 +12,10 @@
 | Conan clean image | `clean_image_tests.txt` | 2 passed | Environment sanity |
 | Conan initialized task | `task_initialized_tests.txt` | 1 failed, 1 passed | Target failure reproduced |
 | Conan structured replay | `after_replay_tests.txt` | 2 passed | Matches `resolved=true` |
+| Moto endpoint replay | `aggregate_summary.json` | 5/5 endpoint gates pass | `PRoot_ENDPOINT_REPLAY_PASS=true` |
+| Moto intermediate states | same | 52 states; 44 valid `(F,R)` states | Every state attempted and preserved |
+| Moto transitions | same | 34 neutral, 3 positive, 1 negative, 9 invalid-adjacent | Non-monotone path structure exists |
+| Tool outcomes | per-task summaries | 48 attempted; 47 successful mutations | One failed editor attempt correctly creates no state |
 
 ## First replay conclusion
 
@@ -21,10 +25,35 @@ messages and editor actions modify Conan. Replaying the two explicit mutation
 calls—not the top-level patch—restores the endpoint test. This qualifies the
 structured replay path and independently confirms one declared outcome.
 
+## Moto intermediate audit v0.1
+
+| Trajectory | Declared | Curve summary | Endpoint |
+|---|---:|---|---:|
+| `pr_5043` | resolved | `(1,0)` repeated, then `(0,0)` | agrees |
+| `pr_6509` | resolved | `(1,0) -> (0,0) -> invalid x8 -> (0,0)` | agrees |
+| `pr_6557` | unresolved | `(2,0)` throughout 12 successful mutations | agrees |
+| `pr_7144` | unresolved | `(4,0) -> (4,12) -> (4,1)` | agrees |
+| `pr_7946` | unresolved | `(2,0)` throughout 6 successful mutations | agrees |
+
+Here `F` is the number of nonpassing FAIL_TO_PASS cases and `R` is the number
+of nonpassing PASS_TO_PASS cases. `pr_7144` is the first direct negative
+transition: an edit to `moto/acm/models.py` introduces 12 regressions; the next
+edit reduces them to one but never resolves the target failures. In `pr_6509`,
+an edit to `moto/iotdata/responses.py` first reaches `(0,0)`. The following edit
+to `moto/iotdata/__init__.py` imports a symbol unavailable from `moto.core`,
+causing collection errors for eight states; a later edit restores collection and
+the trajectory ends at `(0,0)`. This is a trajectory-induced invalid region, not
+a missing replay action or test-induced workspace mutation.
+
+The compact canonical artifact is
+[`runs/moto_intermediate_v01/aggregate_summary.json`](runs/moto_intermediate_v01/aggregate_summary.json).
+Per-state XML and console logs are retained locally but omitted from the public
+review path; the five per-task `summary.json` files preserve every curve.
+
 ## What these results do not show
 
-The current counts do not establish that a useful certificate intermediate
-exists. They also do not compare value predictors, demonstrate sample
-efficiency, validate additive value decomposition, or authorize online RL. The
-next scientific unit is a balanced exact-bound replay subset with pre/post-edit
-observations and a frozen intermediate-state definition.
+The five-task, one-repository slice does not estimate population prevalence and
+does not yet establish that a certificate representation predicts these states.
+It does establish that terminal outcomes discard real, decision-relevant path
+structure worth auditing. There is still no value-predictor comparison, sample-
+efficiency result, additive-decomposition validation, or online-RL result.

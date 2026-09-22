@@ -2,8 +2,8 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: trajectory-audit qualification passed; learning Gate 0 not run
-- Current artifact: frozen 40-rollout SWE-smith panel, task bindings, patch-integrity audit, and one exact container replay
+- Lifecycle status: Moto intermediate audit complete; learning Gate 0 not run
+- Current artifact: frozen 40-rollout panel plus five-task exact Moto edit-level replay
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-22
 
@@ -31,11 +31,13 @@
 
 ## Claim Boundary
 
-The project currently has no real-agent learning result. One exact-bound resolved
-SWE-smith rollout has been replayed under a no-root PRoot runtime: the official
-task mutation changes its endpoint tests from `2 passed` to `1 failed, 1 passed`,
-and replay of two explicit editor mutations restores `2 passed`. This qualifies
-the engineering path but is not a population result or standard-Docker validation.
+The project currently has no real-agent learning result. The five exact Moto
+rollouts now pass endpoint replay self-consistency under the PRoot execution
+substrate. Across 52 states, one unresolved rollout has a genuine regression
+excursion `(4,0) -> (4,12) -> (4,1)`, while one resolved rollout reaches `(0,0)`,
+passes through a trajectory-induced uncollectable region, and recovers to
+`(0,0)`. This is first evidence that terminal labels hide useful path structure,
+but it is a single-repository slice and not a prevalence estimate.
 The copied finite-world
 artifacts establish algebraic correctness, counterexamples, and certificate
 coverage in a 64-state generated setting. They do not establish critic gain,
@@ -57,6 +59,8 @@ not a claim about arbitrary repositories or general software engineering agents.
 - Task-binding manifest: `runs/selection_v01/task_bindings_manifest.json`
 - Patch-integrity audit: `runs/patch_alignment_v01/patch_alignment_summary.json`
 - Replay qualification: `runs/qualification_v01/QUALIFICATION_SUMMARY.md`
+- Moto protocol: `MOTO_INTERMEDIATE_PROTOCOL_v01.md`
+- Moto aggregate: `runs/moto_intermediate_v01/aggregate_summary.json`
 - Structured replay: `python scripts/replay_structured_edits.py --help`
 - Full experiment command: NOT_IMPLEMENTED
 - Results: engineering qualification only; no learning result
@@ -70,8 +74,12 @@ not a claim about arbitrary repositories or general software engineering agents.
   with a non-create editor mutation has any edited-path overlap with its top-level
   `patch`; 7 are disjoint and the remainder have empty patches. This is an
   integrity finding, not yet a semantic correctness estimate.
-- Qualification evidence: one exact Conan rollout reproduces the task failure and
-  resolves it by fail-closed structured-tool replay, matching `resolved=true`.
+- Qualification evidence: one exact Conan rollout and all five exact Moto
+  rollouts reproduce their initialized target failures and agree with declared
+  endpoints under fail-closed replay.
+- Exploratory scientific evidence: the Moto slice contains one negative valid
+  transition and one recoverable invalid region; terminal success alone hides
+  both. This motivates, but does not establish, certificate predictive value.
 - Negative results: in the 64-state prior benchmark, exact suffix caching was faster
   and more informative than the abstract paired certificate.
 - Unsupported claims: certificate-supervised critic improvement, fixed-decomposition
@@ -87,9 +95,9 @@ not a claim about arbitrary repositories or general software engineering agents.
 
 ## Next Action
 
-Do not use the trajectory dataset's top-level `patch` as replay input. Qualify a
-balanced exact-bound subset by reconstructing explicit editor mutations, starting
-with the mixed-outcome Moto image (two resolved and three unresolved selected
-rollouts). Preserve every pre/post edit test observation needed to ask whether a
-simple intermediate state exists. Cross-validate any decision-changing replay on
-standard Docker before the learning gate. Do not implement PPO before this gate.
+Do not use the trajectory dataset's top-level `patch` as replay input. Extend the
+same frozen edit-level audit to a small repository-diverse exact-bound slice and
+separate valid `(F,R)` transitions from invalid collection regions. In parallel,
+define the cheapest certificate-derived feature that can be computed on these
+frozen states and tested without training a critic. Do not implement PPO before
+this gate.

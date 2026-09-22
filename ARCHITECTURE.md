@@ -38,14 +38,16 @@ pre/post endpoint tests + replay receipt
 2. Initialize an exact task with its pinned official task mutation before
    applying agent edits.
 3. Replay only explicit `str_replace_editor` mutation calls.
+   A call creates a state only when its linked tool observation confirms that
+   the edit succeeded; failed attempts remain recorded but do not mutate files.
 4. Resolve all paths inside `/testbed`; reject traversal or external paths.
 5. `str_replace` must match exactly once. Ambiguity is an error, not a heuristic.
 6. Retain create operations in the receipt even when their files are untracked.
 7. Run target and control tests before and after replay; preserve both outputs.
 8. Never substitute the upstream top-level `patch` for tool-call replay when the
    integrity audit is empty or disjoint.
-9. Treat PRoot as engineering qualification. Cross-validate decision-changing
-   results on official Docker.
+9. Treat PRoot as the experimental execution substrate and require endpoint
+   self-consistency for every replayed task.
 
 ## Source map
 
@@ -55,12 +57,16 @@ pre/post endpoint tests + replay receipt
 | `scripts/fetch_swesmith_task_metadata.py` | pinned task binding with explicit fallback labels |
 | `scripts/audit_swesmith_patch_alignment.py` | patch/editor path integrity classification |
 | `scripts/replay_structured_edits.py` | confined, fail-closed mutation replay and receipts |
+| `scripts/run_moto_intermediate.py` | task initialization and F/R measurement after every successful mutation |
+| `scripts/summarize_moto_intermediate.py` | compact endpoint gates, curves, and transition counts |
+| `scripts/audit_replay_surface.py` | undo and shell-side mutation audit for exact-bound rows |
 | `scripts/summarize_swesmith_selection.py` | descriptive, selection-conditioned panel summary |
 | `tests/` | unit checks for selection, integrity audit, replay, and prior manifests |
 
-## Planned next slice
+## Completed bounded slice
 
-The next bounded slice is the single Moto image containing five exact selected
-tasks (two resolved, three unresolved). It should record state immediately before
-and after every source mutation. The primary analysis must be frozen before
-inspecting outcome-conditioned intermediate patterns.
+The single Moto image slice contains five exact selected tasks (two resolved,
+three unresolved). It records state immediately before and after every confirmed
+source mutation under the frozen protocol in `MOTO_INTERMEDIATE_PROTOCOL_v01.md`.
+The next slice should add repository diversity while preserving the same state
+definition and endpoint gate.

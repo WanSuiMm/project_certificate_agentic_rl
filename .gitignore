@@ -17,3 +17,6 @@ __pycache__/
 # benchmark rows contain third-party issue text and machine-specific paths.
 runs/selection_v01/selected_trajectories.jsonl
 runs/selection_v01/task_bindings.jsonl
+
+# Keep compact replay summaries public; retain per-state XML/text locally.
+runs/moto_intermediate_v01/getmoto__*/state_*/

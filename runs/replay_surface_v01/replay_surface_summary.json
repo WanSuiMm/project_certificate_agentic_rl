@@ -1,0 +1,15 @@
+{
+  "exact_trajectory_count": 25,
+  "scope": "heuristic exposure audit only; not full shell replay",
+  "shell_call_count": 176,
+  "suspicious_pattern_counts": {
+    "filesystem_command": 2,
+    "shell_redirect": 2
+  },
+  "suspicious_shell_mutation_call_count": 4,
+  "task_bindings_sha256": "76f1013a19d352607f8217f0766c469d8e68de66eb20406daa2930d530236017",
+  "trajectories_with_suspicious_shell_mutation": 3,
+  "trajectories_with_undo_edit": 0,
+  "trajectory_selection_sha256": "b6a9f76f067ae71234e9221f7365e055a3905650ad276e1ecf8c5b9f30ddc8cb",
+  "undo_edit_call_count": 0
+}

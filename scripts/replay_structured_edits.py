@@ -18,6 +18,70 @@ def messages(row: dict[str, Any]) -> list[dict[str, Any]]:
     return value
 
 
+def content_text(content: Any) -> str:
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "\n".join(
+            item.get("text", "") if isinstance(item, dict) else str(item)
+            for item in content
+        )
+    return str(content or "")
+
+
+def mutation_events(row: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return attempted editor mutations with their observed tool outcome.
+
+    A tool call is a filesystem transition only when the linked tool observation
+    confirms success. Failed replacement attempts remain in the receipt but are
+    not replayed as states.
+    """
+    decoded = messages(row)
+    responses: dict[str, str] = {}
+    for message in decoded:
+        if message.get("role") != "tool":
+            continue
+        response_text = content_text(message.get("content"))
+        for call_id in message.get("tool_call_ids") or []:
+            responses[call_id] = response_text
+
+    events: list[dict[str, Any]] = []
+    for message_index, message in enumerate(decoded):
+        for call in message.get("tool_calls") or []:
+            function = call.get("function") or {}
+            if function.get("name") != "str_replace_editor":
+                continue
+            raw = function.get("arguments") or "{}"
+            arguments = json.loads(raw) if isinstance(raw, str) else raw
+            command = arguments.get("command")
+            if command not in {"create", "insert", "str_replace"}:
+                continue
+            call_id = call.get("id")
+            response = responses.get(call_id, "")
+            succeeded = (
+                "File created successfully at:" in response
+                if command == "create"
+                else " has been edited." in response
+            )
+            events.append(
+                {
+                    "message_index": message_index,
+                    "tool_call_id": call_id,
+                    "arguments": arguments,
+                    "succeeded": succeeded,
+                    "tool_response_first_line": next(
+                        (
+                            line
+                            for line in response.splitlines()
+                            if line and line != "OBSERVATION:"
+                        ),
+                        "",
+                    )[:500],
+                }
+            )
+    return events
+
+
 def select_row(path: Path, traj_id: str) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         matches = [json.loads(line) for line in handle if line.strip() and traj_id in line]
@@ -92,26 +156,19 @@ def main() -> None:
 
     row = select_row(args.trajectories, args.traj_id)
     applied: list[dict[str, Any]] = []
-    for message_index, message in enumerate(messages(row)):
-        for call in message.get("tool_calls") or []:
-            function = call.get("function") or {}
-            if function.get("name") != "str_replace_editor":
-                continue
-            raw_arguments = function.get("arguments") or "{}"
-            arguments = (
-                json.loads(raw_arguments)
-                if isinstance(raw_arguments, str)
-                else raw_arguments
+    events = mutation_events(row)
+    for event in events:
+        if not event["succeeded"]:
+            continue
+        result = apply_call(args.root, event["arguments"])
+        if result is not None:
+            result.update(
+                {
+                    "message_index": event["message_index"],
+                    "tool_call_id": event["tool_call_id"],
+                }
             )
-            result = apply_call(args.root, arguments)
-            if result is not None:
-                result.update(
-                    {
-                        "message_index": message_index,
-                        "tool_call_id": call.get("id"),
-                    }
-                )
-                applied.append(result)
+            applied.append(result)
 
     receipt = {
         "traj_id": args.traj_id,
@@ -119,6 +176,17 @@ def main() -> None:
         "declared_resolved": bool(row["resolved"]),
         "top_level_patch_sha256": hashlib.sha256(row["patch"].encode()).hexdigest(),
         "applied_edit_count": len(applied),
+        "attempted_edit_count": len(events),
+        "unsuccessful_edit_attempts": [
+            {
+                "message_index": event["message_index"],
+                "tool_call_id": event["tool_call_id"],
+                "command": event["arguments"].get("command"),
+                "tool_response_first_line": event["tool_response_first_line"],
+            }
+            for event in events
+            if not event["succeeded"]
+        ],
         "applied_edits": applied,
     }
     args.receipt.parent.mkdir(parents=True, exist_ok=True)

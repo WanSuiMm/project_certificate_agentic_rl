@@ -1,0 +1,105 @@
+{
+  "protocol": "moto_intermediate_v01",
+  "traj_id": "getmoto__moto.694ce1f4.pr_7144.mz3vj24e",
+  "instance_id": "getmoto__moto.694ce1f4.pr_7144",
+  "declared_resolved": false,
+  "observed_resolved": false,
+  "endpoint_agrees": true,
+  "initialization": {
+    "patch_sha256": "1e434ed0bd9d2e4c24224fab1b754fa92cc5a9a4a51695e913c104e2b35f4053",
+    "git_apply_check_returncode": 0,
+    "git_apply_returncode": 0
+  },
+  "state_count": 8,
+  "mutation_count": 7,
+  "attempted_mutation_count": 7,
+  "unsuccessful_mutation_attempts": [],
+  "all_states_valid": true,
+  "curve": [
+    {
+      "state_index": 0,
+      "F": 4,
+      "R": 0,
+      "valid": true
+    },
+    {
+      "state_index": 1,
+      "F": 4,
+      "R": 0,
+      "valid": true
+    },
+    {
+      "state_index": 2,
+      "F": 4,
+      "R": 0,
+      "valid": true
+    },
+    {
+      "state_index": 3,
+      "F": 4,
+      "R": 0,
+      "valid": true
+    },
+    {
+      "state_index": 4,
+      "F": 4,
+      "R": 12,
+      "valid": true
+    },
+    {
+      "state_index": 5,
+      "F": 4,
+      "R": 1,
+      "valid": true
+    },
+    {
+      "state_index": 6,
+      "F": 4,
+      "R": 1,
+      "valid": true
+    },
+    {
+      "state_index": 7,
+      "F": 4,
+      "R": 1,
+      "valid": true
+    }
+  ],
+  "transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "neutral"
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "label": "neutral"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "label": "neutral"
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "label": "negative"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "label": "positive"
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "label": "neutral"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "label": "neutral"
+    }
+  ]
+}
