@@ -1,0 +1,25 @@
+{
+  "traj_id": "conan-io__conan.86f29e13.pr_17531.mz3vj24e",
+  "instance_id": "conan-io__conan.86f29e13.pr_17531",
+  "declared_resolved": true,
+  "top_level_patch_sha256": "e7a5298bd378abcc1193bd78cb9c9b19f7a9bdc52164ab13fcd9d4b3ff94846d",
+  "applied_edit_count": 2,
+  "applied_edits": [
+    {
+      "command": "create",
+      "tool_path": "/testbed/reproduce.py",
+      "sha256_before": null,
+      "sha256_after": "2b49d0d712f5f9879c15a22660dc4d092c6cbb77ca53fae83b283e7b16f2af77",
+      "message_index": 10,
+      "tool_call_id": "toolu_015fmtAKbj9ouYgCu4t3pj4k"
+    },
+    {
+      "command": "str_replace",
+      "tool_path": "/testbed/conan/tools/files/files.py",
+      "sha256_before": "025addde8cedf452af4a1ab6f037711724ff3e8a7947a0a30f58419c076245ef",
+      "sha256_after": "fe4461367c57310c237125b4d87702bf44a31ab91ae5e7711573bca44fde7c01",
+      "message_index": 14,
+      "tool_call_id": "toolu_01DdutHnymTzb1jzKeJse9uC"
+    }
+  ]
+}

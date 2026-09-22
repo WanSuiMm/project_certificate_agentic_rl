@@ -1,0 +1,57 @@
+{
+  "dataset": "SWE-bench/SWE-smith-trajectories",
+  "dataset_revision": "08e109b4a59eaeebf80e4675cd125d42e7ac99a4",
+  "edit_boundary_definition": {
+    "claim": "explicit structured editor calls only; not all filesystem mutations",
+    "commands": [
+      "create",
+      "insert",
+      "str_replace"
+    ],
+    "tool": "str_replace_editor"
+  },
+  "max_per_repository": 5,
+  "max_scanned": 10000,
+  "min_repositories": 8,
+  "min_structured_edits": 2,
+  "protocol": "swe_smith_frozen_trajectory_audit_v01",
+  "seed": 20260921,
+  "selected_trajectories_sha256": "b6a9f76f067ae71234e9221f7365e055a3905650ad276e1ecf8c5b9f30ddc8cb",
+  "shuffle_buffer": 4096,
+  "split": "tool",
+  "summary": {
+    "repositories": {
+      "Project-MONAI__MONAI": 2,
+      "adrienverge__yamllint": 1,
+      "cloudpipe__cloudpickle": 1,
+      "conan-io__conan": 1,
+      "dask__dask": 4,
+      "dbader__schedule": 1,
+      "facebookresearch__hydra": 2,
+      "getmoto__moto": 5,
+      "iterative__dvc": 2,
+      "jawah__charset_normalizer": 1,
+      "marshmallow-code__apispec": 1,
+      "pandas-dev__pandas": 2,
+      "pydantic__pydantic": 1,
+      "pydicom__pydicom": 1,
+      "python-hyper__h11": 1,
+      "python__mypy": 2,
+      "pyutils__line_profiler": 1,
+      "rustedpy__result": 2,
+      "scrapy__scrapy": 1,
+      "spulec__freezegun": 1,
+      "sqlfluff__sqlfluff": 1,
+      "tox-dev__pipdeptree": 3,
+      "un33k__python-slugify": 1,
+      "weaveworks__grafanalib": 2
+    },
+    "repository_count": 24,
+    "resolved": 20,
+    "scanned_rows": 197,
+    "selected_rows": 40,
+    "structured_edit_count": 200,
+    "unresolved": 20
+  },
+  "target_per_outcome": 20
+}

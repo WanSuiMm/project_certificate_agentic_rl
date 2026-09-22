@@ -1,0 +1,78 @@
+{
+  "scope": "Exact algebra and expected-gradient checks; no trained RL agent.",
+  "random_tree_audit": {
+    "trials": 500,
+    "seed": 20260921,
+    "depths": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "gamma_counts": {
+      "0.7": 175,
+      "0.93": 168,
+      "1.0": 157
+    },
+    "enumerated_trajectories": 7164,
+    "transition_occurrences": 30192,
+    "maxima": {
+      "path_return_identity_error": 6.661338147750939e-16,
+      "monte_carlo_expected_gradient_error": 1.5265566588595902e-16,
+      "exact_td_identity_error": 4.440892098500626e-16,
+      "matched_approximate_gae_error": 6.661338147750939e-16,
+      "finite_difference_gradient_error": 5.461048280253067e-12,
+      "residual_gradient_bound_excess": 0.0
+    },
+    "assertions_passed": true
+  },
+  "counterexamples": {
+    "noncausal_redistribution": {
+      "true_objective": 0.5,
+      "true_logit_gradient": 0.25,
+      "noncausal_reward_to_go_gradient": 0.0,
+      "total_reward_preserved_on_every_trajectory": true
+    },
+    "action_dependent_baseline": {
+      "true_gradient": 0.25,
+      "naive_subtraction": 0.0,
+      "required_expectation_correction": 0.25,
+      "corrected_gradient": 0.25
+    },
+    "necessary_detour": {
+      "semantic_effect_refactor": -0.19999999999999996,
+      "semantic_effect_cosmetic": 0.4,
+      "true_advantage_refactor": 0.5,
+      "true_advantage_cosmetic": -0.5,
+      "exact_policy_gradient": 0.25,
+      "direction_only_policy_gradient": -0.5,
+      "continuation_correction_refactor": 0.7,
+      "continuation_correction_cosmetic": -0.9
+    },
+    "reward_cycling": {
+      "true_differences": [
+        0.30000000000000004,
+        0.3,
+        -0.6000000000000001
+      ],
+      "true_cycle_sum": -5.551115123125783e-17,
+      "sign_reward_cycle_sum": 1,
+      "valid_certificate_intervals": [
+        [
+          0.2,
+          0.6
+        ],
+        [
+          0.2,
+          0.4
+        ],
+        [
+          -0.7,
+          -0.5
+        ]
+      ],
+      "independently_chosen_midpoint_cycle_sum": 0.10000000000000009,
+      "single_valued_potential_cycle_sum": 0.0
+    }
+  }
+}

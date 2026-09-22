@@ -1,0 +1,12 @@
+{
+  "dataset": "SWE-bench/SWE-smith-trajectories",
+  "revision": "08e109b4a59eaeebf80e4675cd125d42e7ac99a4",
+  "split": "tool",
+  "stream_row_1_based": 12484,
+  "traj_id": "conan-io__conan.86f29e13.pr_17531.mz3vj24e",
+  "instance_id": "conan-io__conan.86f29e13.pr_17531",
+  "declared_resolved": true,
+  "top_level_patch_sha256": "e7a5298bd378abcc1193bd78cb9c9b19f7a9bdc52164ab13fcd9d4b3ff94846d",
+  "top_level_patch_first_path": "moto/secretsmanager/models.py",
+  "verification": "exact traj_id row streamed from the pinned upstream revision"
+}

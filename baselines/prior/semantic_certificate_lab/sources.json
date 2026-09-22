@@ -1,0 +1,7 @@
+[
+  {"id":"R1","title":"A Logic for the Imprecision of Abstract Interpretations","doi":"10.1145/3776707","url":"https://iris.univr.it/retrieve/e7c2209b-1383-4f4e-8655-1f5a9ca3631a/POPL26Logic-Imprecision.pdf","scope":"Abstract-interpreter imprecision; not arbitrary program-to-task correctness."},
+  {"id":"R2","title":"Quantitative Separation Logic — A Logic for Reasoning about Probabilistic Pointer Programs","doi":"10.1145/3290347","url":"https://arxiv.org/abs/1802.10467","scope":"Quantitative predicates and weakest-preexpectation reasoning."},
+  {"id":"R3","title":"Relational Cost Analysis","doi":"10.1145/3009837.3009858","url":"https://www.cs.cmu.edu/~janh/assets/pdf/CicekBGGH16.pdf","scope":"Relational differences of execution cost; relevant shared-structure reasoning, not the identical application objective."},
+  {"id":"R4","title":"Learning Algorithms for Verification of Markov Decision Processes","url":"https://arxiv.org/abs/2403.09184","scope":"Sound reachability bounds and guided verification; no novelty claim for interval verification."},
+  {"id":"R5","title":"Policy Invariance under Reward Transformations: Theory and Application to Reward Shaping","url":"https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf","scope":"Potential-based shaping and the conditions needed for policy invariance."}
+]

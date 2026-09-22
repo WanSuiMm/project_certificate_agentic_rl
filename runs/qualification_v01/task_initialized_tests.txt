@@ -1,0 +1,19 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_____________________________ test_replace_in_file _____________________________
+
+    def test_replace_in_file():
+        conanfile = ConanFileMock({})
+        tmp = temp_folder()
+        file_path = os.path.join(tmp, "file.txt")
+    
+        # By default utf-8 is used
+        save(conanfile, file_path, "你很重，伙計")
+>       assert replace_in_file(conanfile, file_path, "重", "0")
+E       AssertionError: assert None
+E        +  where None = replace_in_file(, '/tmp/tmpz13dbpj2conans/path with spaces/file.txt', '重', '0')
+
+test/unittests/tools/files/test_file_read_and_write.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED test/unittests/tools/files/test_file_read_and_write.py::test_replace_in_file
+1 failed, 1 passed in 0.24s

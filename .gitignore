@@ -1,0 +1,19 @@
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+
+# Never commit runtime images, caches, credentials, or launch receipts.
+*.tar
+*.tar.gz
+*.pid
+*.log
+.env
+.env.*
+
+# Frozen locally, omitted from the public review repo because these large raw
+# benchmark rows contain third-party issue text and machine-specific paths.
+runs/selection_v01/selected_trajectories.jsonl
+runs/selection_v01/task_bindings.jsonl

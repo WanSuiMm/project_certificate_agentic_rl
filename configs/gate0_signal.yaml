@@ -1,0 +1,36 @@
+protocol_version: gate0_signal_v01
+status: frozen_before_implementation
+online_rl_enabled: false
+
+actor:
+  model_path: null
+  tokenizer_path: null
+  frozen: true
+  paid_api_allowed: false
+  model_download_allowed: false
+
+runtime:
+  isolated: true
+  network: false
+  max_turns: 64
+  terminal_reward_only: true
+  private_evaluator_visible_to_actor: false
+  certificate_visible_to_actor: false
+
+signal_bank:
+  min_train_tasks: 8
+  min_semantic_templates: 3
+  min_informative_pairs: 32
+  min_certified_improvements: 10
+  min_certified_regressions: 10
+
+critic:
+  methods: [RETURN_ONLY, TEST_FEATURE, CERT_FEATURE, CERT_DECOMP]
+  seeds: [11, 23, 47]
+  encoder: frozen_shared
+  selection_split: dev_only
+  primary_metric: task_group_macro_brier
+
+stop_before:
+  lora_critic: true
+  online_ppo: true

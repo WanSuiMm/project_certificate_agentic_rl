@@ -1,0 +1,28 @@
+{
+  "classification_counts": {
+    "aligned_non_create_path": 4,
+    "disjoint_nonempty_patch": 16,
+    "empty_patch": 11,
+    "no_non_create_editor_mutation": 9
+  },
+  "classification_counts_by_resolved": {
+    "false": {
+      "aligned_non_create_path": 3,
+      "disjoint_nonempty_patch": 9,
+      "empty_patch": 3,
+      "no_non_create_editor_mutation": 5
+    },
+    "true": {
+      "aligned_non_create_path": 1,
+      "disjoint_nonempty_patch": 7,
+      "empty_patch": 8,
+      "no_non_create_editor_mutation": 4
+    }
+  },
+  "interpretation": "Path alignment is a necessary integrity check, not proof that patch content is semantically correct. Disjoint or empty patches must not be replayed.",
+  "resolved_non_create_path_alignment_rate": 0.07692307692307693,
+  "resolved_with_non_create_editor_mutation": 13,
+  "resolved_with_non_create_path_overlap": 1,
+  "selection_sha256": "b6a9f76f067ae71234e9221f7365e055a3905650ad276e1ecf8c5b9f30ddc8cb",
+  "trajectory_count": 40
+}

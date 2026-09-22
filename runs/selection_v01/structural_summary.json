@@ -1,0 +1,75 @@
+{
+  "all": {
+    "action_count": {
+      "max": 51,
+      "mean": 16.075,
+      "median": 12.5,
+      "min": 8,
+      "n": 40
+    },
+    "structured_edit_count": {
+      "max": 23,
+      "mean": 5.0,
+      "median": 3.0,
+      "min": 2,
+      "n": 40
+    },
+    "structured_edit_fraction": {
+      "max": 0.5609756097560976,
+      "mean": 0.28312457724786183,
+      "median": 0.25,
+      "min": 0.15384615384615385,
+      "n": 40
+    }
+  },
+  "model_counts": {
+    "claude-3-5-sonnet-20241022": 40
+  },
+  "repository_count": 24,
+  "resolved": {
+    "action_count": {
+      "max": 50,
+      "mean": 13.6,
+      "median": 10.5,
+      "min": 8,
+      "n": 20
+    },
+    "structured_edit_count": {
+      "max": 18,
+      "mean": 3.65,
+      "median": 2.0,
+      "min": 2,
+      "n": 20
+    },
+    "structured_edit_fraction": {
+      "max": 0.4,
+      "mean": 0.2517203074703075,
+      "median": 0.2361111111111111,
+      "min": 0.16666666666666666,
+      "n": 20
+    }
+  },
+  "unresolved": {
+    "action_count": {
+      "max": 51,
+      "mean": 18.55,
+      "median": 16.0,
+      "min": 8,
+      "n": 20
+    },
+    "structured_edit_count": {
+      "max": 23,
+      "mean": 6.35,
+      "median": 5.5,
+      "min": 2,
+      "n": 20
+    },
+    "structured_edit_fraction": {
+      "max": 0.5609756097560976,
+      "mean": 0.31452884702541617,
+      "median": 0.29411764705882354,
+      "min": 0.15384615384615385,
+      "n": 20
+    }
+  }
+}

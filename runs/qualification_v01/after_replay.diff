@@ -1,0 +1,29 @@
+diff --git a/conan/tools/files/files.py b/conan/tools/files/files.py
+index 66a2a43..fa72ca0 100644
+--- a/conan/tools/files/files.py
++++ b/conan/tools/files/files.py
+@@ -392,6 +392,7 @@ def untargz(filename, destination=".", pattern=None, strip_root=False, extract_f
+                 # This will avoid a first whole file read resulting in a performant improvement around 25%
+                 tarredgzippedFile.extract(member, path=destination)
+ 
++
+ def check_sha1(conanfile, file_path, signature):
+     """
+     Check that the specified ``sha1`` of the ``file_path`` matches with signature.
+@@ -440,7 +441,8 @@ def replace_in_file(conanfile, file_path, search, replace, strict=True, encoding
+            string is not found, so nothing is actually replaced.
+     :param encoding: (Optional, Defaulted to utf-8): Specifies the input and output files text
+            encoding.
+-    :return: ``True`` if the pattern was found, ``False`` otherwise if `strict` is ``False``.
++    :return: Returns True if the pattern was found and replaced, False if the pattern was not found
++           (only in non-strict mode).
+     """
+     output = conanfile.output
+     content = load(conanfile, file_path, encoding=encoding)
+@@ -539,4 +541,4 @@ def move_folder_contents(conanfile, src_folder, dst_folder):
+     try:
+         os.rmdir(src_folder)
+     except OSError:
+-        pass
++        pass
+\ No newline at end of file
