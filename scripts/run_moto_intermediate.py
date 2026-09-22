@@ -7,12 +7,22 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import time
 from typing import Any
 import xml.etree.ElementTree as ET
 
+from audit_replay_surface import audit_trajectory
 from replay_structured_edits import apply_call, mutation_events, select_row
+
+
+ALLOWED_SHELL_MUTATIONS = {
+    "cd /testbed && rm -rf .dvc && dvc init && dvc config core.analytics false && dvc config core.autostage true && python test_config.py",
+    "echo 'SELECT :\"column\" FROM :table WHERE bla = :'\\''my_name'\\''' > /testbed/test.sql",
+    "echo 'SELECT :\"column\" FROM :table WHERE bla = :'\\''my_name'\\''' $'\\n' > /testbed/test.sql",
+    "rm /testbed/reproduce_error.py",
+}
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -88,6 +98,32 @@ def workspace_snapshot(root: Path) -> dict[str, Any]:
         )
     payload = json.dumps(entries, sort_keys=True, separators=(",", ":")).encode()
     return {"entries": entries, "workspace_sha256": sha256_bytes(payload)}
+
+
+def preserve_program_state(root: Path, state_dir: Path, snapshot: dict[str, Any]) -> None:
+    diff = git(root, "diff", "--binary", "--full-index", "HEAD", "--")
+    if diff.returncode != 0:
+        raise RuntimeError(diff.stderr)
+    (state_dir / "workspace.patch").write_text(diff.stdout, encoding="utf-8")
+    untracked: list[dict[str, Any]] = []
+    for entry in snapshot["entries"]:
+        if entry["status"] != "??" or entry["kind"] != "file":
+            continue
+        source = root / entry["path"]
+        size = source.stat().st_size
+        record = {"path": entry["path"], "sha256": entry["sha256"], "size": size}
+        if size <= 2_000_000:
+            target = state_dir / "untracked_files" / entry["path"]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+            record["preserved"] = True
+        else:
+            record["preserved"] = False
+        untracked.append(record)
+    (state_dir / "untracked_manifest.json").write_text(
+        json.dumps(untracked, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
 
 def parse_junit(path: Path, requested: int) -> dict[str, Any]:
@@ -196,6 +232,7 @@ def evaluate_state(
     state_dir = output_dir / f"state_{state_index:03d}"
     state_dir.mkdir(parents=True, exist_ok=False)
     before_tests = workspace_snapshot(root)
+    preserve_program_state(root, state_dir, before_tests)
     f2p = run_test_group(
         root=root,
         pytest_path=pytest_path,
@@ -237,6 +274,61 @@ def mutation_calls(row: dict[str, Any]) -> list[dict[str, Any]]:
     return [event for event in mutation_events(row) if event["succeeded"]]
 
 
+def replay_events(row: dict[str, Any]) -> list[dict[str, Any]]:
+    events = [
+        {**event, "event_kind": "editor"}
+        for event in mutation_events(row)
+        if event["succeeded"]
+    ]
+    for shell in audit_trajectory(row)["suspicious_shell_mutations"]:
+        command = shell["command"]
+        if command not in ALLOWED_SHELL_MUTATIONS:
+            raise RuntimeError(f"unreviewed shell mutation: {command}")
+        events.append(
+            {
+                "event_kind": "shell",
+                "message_index": shell["message_index"],
+                "tool_call_id": shell["tool_call_id"],
+                "command": command,
+            }
+        )
+    return sorted(events, key=lambda event: event["message_index"])
+
+
+def apply_replay_event(root: Path, event: dict[str, Any], timeout_seconds: int) -> dict[str, Any]:
+    if event["event_kind"] == "editor":
+        receipt = apply_call(root, event["arguments"])
+        if receipt is None:
+            raise RuntimeError(f"mutation unexpectedly ignored: {event}")
+    else:
+        before = workspace_snapshot(root)
+        completed = subprocess.run(
+            ["bash", "-lc", event["command"]],
+            cwd=root,
+            text=True,
+            capture_output=True,
+            timeout=timeout_seconds,
+        )
+        after = workspace_snapshot(root)
+        receipt = {
+            "command": "reviewed_shell_mutation",
+            "shell_command": event["command"],
+            "returncode": completed.returncode,
+            "stdout_tail": completed.stdout[-4000:],
+            "stderr_tail": completed.stderr[-4000:],
+            "workspace_sha256_before": before["workspace_sha256"],
+            "workspace_sha256_after": after["workspace_sha256"],
+        }
+    receipt.update(
+        {
+            "message_index": event["message_index"],
+            "tool_call_id": event["tool_call_id"],
+            "event_kind": event["event_kind"],
+        }
+    )
+    return receipt
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--trajectories", required=True, type=Path)
@@ -271,17 +363,9 @@ def main() -> None:
     )
 
     events = mutation_events(row)
-    successful_calls = [event for event in events if event["succeeded"]]
+    successful_calls = replay_events(row)
     for index, call in enumerate(successful_calls, start=1):
-        receipt = apply_call(args.root, call["arguments"])
-        if receipt is None:
-            raise RuntimeError(f"mutation unexpectedly ignored: {call}")
-        receipt.update(
-            {
-                "message_index": call["message_index"],
-                "tool_call_id": call["tool_call_id"],
-            }
-        )
+        receipt = apply_replay_event(args.root, call, args.timeout_seconds)
         states.append(
             evaluate_state(
                 state_index=index,
@@ -317,6 +401,12 @@ def main() -> None:
         "initialization": initialization,
         "state_count": len(states),
         "mutation_count": len(states) - 1,
+        "editor_mutation_count": sum(
+            event["event_kind"] == "editor" for event in successful_calls
+        ),
+        "shell_mutation_count": sum(
+            event["event_kind"] == "shell" for event in successful_calls
+        ),
         "attempted_mutation_count": len(events),
         "unsuccessful_mutation_attempts": [
             {
