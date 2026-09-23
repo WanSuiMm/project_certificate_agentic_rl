@@ -20,7 +20,8 @@ critic training or online RL.
 Separate exploratory RL code: [`ORACLE_PROXY_GRPO_SURVIVAL_v01.md`](ORACLE_PROXY_GRPO_SURVIVAL_v01.md)
 defines the frozen three-arm comparison; [`FUNCTION_SWE_RUNTIME.md`](FUNCTION_SWE_RUNTIME.md)
 maps its code, task format, and unfulfilled isolation/task prerequisites. It has
-not produced a training result.
+not produced a training result. A Modal Sandbox scoring adapter is implemented
+and mock-tested, but awaits a live two-score smoke and frozen task manifest.
 
 The two large raw JSONL files are frozen locally but intentionally omitted from
 the public review repository because they contain third-party issue text and

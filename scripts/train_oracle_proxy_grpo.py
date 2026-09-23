@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Three-arm, three-edit Function-SWE GRPO survival training.
 
-Requires a frozen 48/16 task manifest and a separately attested isolated
-worker command. This script is not a task curator or a sandbox implementation.
+Requires a frozen 48/16 task manifest and an attested isolated scorer (Modal
+Sandbox or external command). This script is not a task curator.
 """
 
 from __future__ import annotations
@@ -182,7 +182,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
-    parser.add_argument("--executor-command-json", required=True,
+    parser.add_argument("--executor", choices=("command", "modal"), default="command")
+    parser.add_argument("--executor-command-json",
                         help="JSON array of a separately isolated scorer command")
     parser.add_argument("--isolation-receipt", required=True, type=Path,
                         help="JSON receipt from a successful isolation smoke")
@@ -208,9 +209,25 @@ def main() -> None:
     receipt = json.loads(args.isolation_receipt.read_text(encoding="utf-8"))
     if receipt.get("isolated_code_execution") is not True or receipt.get("smoke_passed") is not True:
         raise RuntimeError("no passing isolated executor receipt")
-    command = json.loads(args.executor_command_json)
-    if not isinstance(command, list) or not command or not all(isinstance(x, str) for x in command):
-        raise ValueError("executor command must be a JSON string array")
+    if args.executor == "modal":
+        if receipt.get("executor") != "modal_sandbox_v01":
+            raise RuntimeError("isolation receipt does not match Modal executor")
+        if args.executor_command_json is not None:
+            raise ValueError("do not pass a command with the Modal executor")
+        script_dir = Path(__file__).resolve().parent
+        for key, filename in (
+            ("function_swe_sha256", "function_swe.py"),
+            ("worker_sha256", "function_swe_worker.py"),
+            ("modal_executor_sha256", "modal_function_swe_executor.py"),
+        ):
+            if receipt.get(key) != file_sha256(script_dir / filename):
+                raise RuntimeError(f"Modal isolation smoke is stale: {filename}")
+    else:
+        if args.executor_command_json is None:
+            raise ValueError("command executor requires --executor-command-json")
+        command = json.loads(args.executor_command_json)
+        if not isinstance(command, list) or not command or not all(isinstance(x, str) for x in command):
+            raise ValueError("executor command must be a JSON string array")
     _, tasks = load_manifest(args.manifest)
     train = {task["task_id"]: task for task in tasks if task["split"] == "train"}
     heldout = [task for task in tasks if task["split"] == "heldout"]
@@ -227,6 +244,11 @@ def main() -> None:
         free_bytes, _ = torch.cuda.mem_get_info(device)
         if not args.smoke_updates and free_bytes < 24 * 1024**3:
             raise RuntimeError("formal run requires at least 24 GiB free VRAM")
+    if args.executor == "modal":
+        from modal_function_swe_executor import ModalSandboxExecutor
+        executor = ModalSandboxExecutor()
+    else:
+        executor = CommandExecutor(command)
     args.output_dir.mkdir(parents=True, exist_ok=False)
     from peft import LoraConfig, get_peft_model
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -252,13 +274,13 @@ def main() -> None:
     ))
     optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad),
                                   lr=config["learning_rate"])
-    executor = CommandExecutor(command)
     code_commit = subprocess.run(["git", "rev-parse", "HEAD"], text=True, capture_output=True,
                                  check=False).stdout.strip()
     metadata = {
         "event": "setup", "arm": args.arm, "formal": not bool(args.smoke_updates),
         "config_sha256": file_sha256(args.config), "manifest_sha256": file_sha256(args.manifest),
         "isolation_receipt_sha256": file_sha256(args.isolation_receipt),
+        "executor": args.executor,
         "code_commit": code_commit, "model": config["model"],
         "model_revision": config["model_revision"], "device": str(device),
         "torch_version": torch.__version__,

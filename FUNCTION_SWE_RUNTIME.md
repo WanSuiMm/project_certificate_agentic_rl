@@ -1,7 +1,7 @@
 # Function-SWE RL runtime
 
-Status: code and trusted-fixture smoke only. No 64-task manifest, isolated
-executor, GPU training, or held-out result exists yet.
+Status: code and trusted-fixture mock smoke only. No 64-task manifest, real
+Modal smoke, GPU training, or held-out result exists yet.
 
 `scripts/freeze_function_task.py` accepts one JSON spec with `task_id`, `issue`,
 `target_function`, `buggy_source`, `reference_source`, `provenance`, nonempty
@@ -30,13 +30,30 @@ restrictions. A JSON isolation receipt with `isolated_code_execution: true` and
 `smoke_passed: true` is a preflight record, not proof of isolation by itself.
 Worker faults abort training; they are never treated as zero reward.
 
+The Modal adapter in `scripts/modal_function_swe_executor.py` creates a fresh
+Sandbox for **each score call**, with outbound network blocked, no mounted
+secrets/volumes, a 45-second lifetime, and CPU/memory limits. This isolates
+consecutive candidate evaluations, but may be costly at full scale; measure
+latency and cost on a bounded smoke before committing to 100 updates. Configure
+Modal authentication on the training host outside the repository; never pass
+its token to the scorer Sandbox or save it in a receipt. After installing
+`requirements-rl.txt`, run the two-score live smoke:
+
+```text
+python scripts/smoke_modal_function_swe.py --receipt NEW_RECEIPT_PATH
+```
+
+It writes a receipt only after both a buggy and repaired trusted toy function
+score correctly in real Modal Sandboxes. The trainer checks the receipt against
+the current scorer and adapter source hashes. A passing receipt is necessary,
+but task qualification and a one-update GPU smoke are still separate gates.
+
 Once those prerequisites exist, the command shape for each arm is:
 
 ```text
-python scripts/train_oracle_proxy_grpo.py --arm semantic \
+python scripts/train_oracle_proxy_grpo.py --arm semantic --executor modal \
   --config configs/oracle_proxy_grpo_survival_v01.json \
   --manifest MANIFEST_PATH --output-dir NEW_RUN_DIR \
-  --executor-command-json '["ISOLATED_SCORER_COMMAND", "ARG"]' \
   --isolation-receipt RECEIPT_PATH --device cuda:0
 ```
 
@@ -48,5 +65,5 @@ start independently from the same pinned base model. The trainer records setup
 hashes, task schedule, rollouts, training metrics and deterministic held-out
 pass@1 at updates 0/20/40/60/80/100. Held-out execution omits proxy scoring.
 The endpoint here is Function-SWE pure-function test solving; it is **not** an
-official full-repository SWE-smith solve. No AutoDL or Modal deployment wrapper
-has been implemented or validated.
+official full-repository SWE-smith solve. The Modal adapter is implemented but
+has not been live-validated; no AutoDL deployment wrapper exists.
