@@ -2,7 +2,7 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 offline replay batch complete; 18/25 strict endpoint gates pass; learning Gate 0 not run
+- Lifecycle status: exact-25 offline replay complete; oracle-proxy GRPO survival protocol frozen, not launched
 - Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-23
@@ -69,6 +69,8 @@ not a claim about arbitrary repositories or general software engineering agents.
 - Exact-25 result and next gate: `EXACT25_RESULTS_AND_NEXT_v01.md`
 - Exact-25 aggregate: `runs/exact25_intermediate_v01/aggregate_summary.json`
 - Exact-25 aggregate generator: `python scripts/summarize_exact25_intermediate.py --run-dir RUN_DIR --expected-tasks 25`
+- New exploratory RL protocol: `ORACLE_PROXY_GRPO_SURVIVAL_v01.md`
+- Frozen RL config: `configs/oracle_proxy_grpo_survival_v01.json`
 - Structured replay: `python scripts/replay_structured_edits.py --help`
 - Full experiment command: NOT_IMPLEMENTED
 - Results: engineering qualification only; no learning result
@@ -106,10 +108,9 @@ not a claim about arbitrary repositories or general software engineering agents.
 
 ## Next Action
 
-Do not use the trajectory dataset's top-level `patch` as replay input. Repair
-empty test-group semantics and diagnosed image dependencies in a new replay
-version, preserving v0.1. Then freeze repository-diverse pre-action checkpoints
-for matched-budget live-agent continuation evaluation and test a certificate
-feature against return-only and public-test baselines. Stop before online RL
-unless the preregistered held-out prediction gate passes. See
-`EXACT25_RESULTS_AND_NEXT_v01.md`.
+The user has requested a distinct oracle-proxy GRPO survival experiment, using
+only terminal `Y`, `Y+0.5p_T`, and `Y+0.5q(P_T)` rewards. Its protocol is frozen
+in `ORACLE_PROXY_GRPO_SURVIVAL_v01.md`. Prepare a qualified 48/16 task manifest,
+isolated executor, and matched one-update smoke before dispatch; do not label
+preparation as a launched run. The original certificate/value-prediction Gate 0
+remains unpassed and separate from this exploratory RL screen.
