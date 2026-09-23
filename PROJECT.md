@@ -2,10 +2,10 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 offline replay complete; q-first 20/8 slice frozen; real-task RL stopped after one zero-gradient semantic update; no valid test-versus-semantic result
+- Lifecycle status: exact-25 replay complete; q-first 20/8 slice frozen; later fixed-data Test/Semantic LoRA arms completed 20 updates each with no held-out ranking separation; eight-step capture stopped partially ungraded
 - Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
-- Last verified: 2026-09-23
+- Last verified: 2026-09-24
 
 ## Research Contract
 
@@ -31,8 +31,10 @@
 
 ## Claim Boundary
 
-The project has a live-agent continuation in progress, but no completed
-continuation or learning result. The five exact Moto
+The later source-only eight-step continuation was stopped at 54 complete
+P1–P8 trajectories (of 448 planned), without P2–P8 tests or `q` values.
+Fixed-data LoRA optimization completed but did not improve the held-out
+candidate-ranking check; there is no demonstrated learning benefit. The five exact Moto
 rollouts now pass endpoint replay self-consistency under the PRoot execution
 substrate. Across 52 states, one unresolved rollout has a genuine regression
 excursion `(4,0) -> (4,12) -> (4,1)`, while one resolved rollout reaches `(0,0)`,

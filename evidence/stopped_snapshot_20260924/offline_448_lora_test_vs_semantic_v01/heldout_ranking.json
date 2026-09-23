@@ -1,0 +1,69 @@
+{
+  "kind": "fixed_heldout_completion_ranking_not_solve_rate",
+  "heldout_tasks": 8,
+  "heldout_candidates": 128,
+  "new_rollouts": 0,
+  "new_score_calls": 0,
+  "policies": {
+    "base": {
+      "terminal": {
+        "informative_tasks": 3,
+        "task_macro_concordance": 0.6581196581196581,
+        "descriptive_pair_concordance": 0.7419354838709677,
+        "comparable_pairs": 93
+      },
+      "test": {
+        "informative_tasks": 8,
+        "task_macro_concordance": 0.691926319778787,
+        "descriptive_pair_concordance": 0.6926605504587156,
+        "comparable_pairs": 436
+      },
+      "semantic": {
+        "informative_tasks": 8,
+        "task_macro_concordance": 0.8018244089925715,
+        "descriptive_pair_concordance": 0.7709251101321586,
+        "comparable_pairs": 454
+      }
+    },
+    "test": {
+      "terminal": {
+        "informative_tasks": 3,
+        "task_macro_concordance": 0.6581196581196581,
+        "descriptive_pair_concordance": 0.7419354838709677,
+        "comparable_pairs": 93
+      },
+      "test": {
+        "informative_tasks": 8,
+        "task_macro_concordance": 0.6887211915736589,
+        "descriptive_pair_concordance": 0.6903669724770642,
+        "comparable_pairs": 436
+      },
+      "semantic": {
+        "informative_tasks": 8,
+        "task_macro_concordance": 0.8018244089925715,
+        "descriptive_pair_concordance": 0.7709251101321586,
+        "comparable_pairs": 454
+      }
+    },
+    "semantic": {
+      "terminal": {
+        "informative_tasks": 3,
+        "task_macro_concordance": 0.6581196581196581,
+        "descriptive_pair_concordance": 0.7419354838709677,
+        "comparable_pairs": 93
+      },
+      "test": {
+        "informative_tasks": 8,
+        "task_macro_concordance": 0.6887211915736589,
+        "descriptive_pair_concordance": 0.6903669724770642,
+        "comparable_pairs": 436
+      },
+      "semantic": {
+        "informative_tasks": 8,
+        "task_macro_concordance": 0.8018244089925715,
+        "descriptive_pair_concordance": 0.7709251101321586,
+        "comparable_pairs": 454
+      }
+    }
+  }
+}

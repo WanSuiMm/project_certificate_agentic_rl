@@ -66,6 +66,10 @@ def run(request: dict) -> dict:
     if injection.returncode:
         raise RuntimeError("official_bug_injection_failed")
     buggy_source = target.read_text(encoding="utf-8")
+    if request["mode"] == "source_only":
+        return {"status": "source_only", "instance_id": task["instance_id"],
+                "target_path": path, "buggy_source": buggy_source,
+                "buggy_source_sha256": hashlib.sha256(buggy_source.encode()).hexdigest()}
     if request["mode"] == "init":
         buggy_test = tests(task["FAIL_TO_PASS"])
         return {"status": "initialized", "instance_id": task["instance_id"],

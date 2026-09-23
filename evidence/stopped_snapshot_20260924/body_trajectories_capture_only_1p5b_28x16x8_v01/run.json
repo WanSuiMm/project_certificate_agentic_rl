@@ -1,0 +1,12 @@
+{
+  "kind": "eight_step_capture_only_no_online_tests_or_q",
+  "status": "running",
+  "tasks": 28,
+  "trajectories_per_task": 16,
+  "steps": 8,
+  "census_sha256": "e6969d4fda0808e77e7bfb7f84ca447de9be66b4e407f76c36dbbb628af9214c",
+  "selection_sha256": "7b8c94a6f81d48be6ac2c710d2edd992712a80318a8ce523e868e3bdf1846080",
+  "config_sha256": "3ee187bfacb0a4304dbac8bd41b4151eea893d42987c3c4b22f9d2fc34cdb6f3",
+  "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+  "started_utc": "2026-09-23T16:57:04.797779+00:00"
+}

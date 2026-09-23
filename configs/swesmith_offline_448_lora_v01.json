@@ -1,0 +1,17 @@
+{
+  "protocol": "swesmith_offline_448_lora_v01",
+  "seed": 0,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+  "adapter": {"type": "lora", "rank": 16},
+  "context_tokens": 8192,
+  "learning_rate": 0.00001,
+  "clip_epsilon": 0.2,
+  "reference_kl_beta": 0.04,
+  "max_grad_norm": 1.0,
+  "group_size": 16,
+  "train_tasks": 20,
+  "heldout_tasks": 8,
+  "updates_per_arm": 20,
+  "ppo_epochs": 1
+}
