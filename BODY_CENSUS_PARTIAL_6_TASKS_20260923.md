@@ -32,8 +32,10 @@ oracle. The former 1/4 structural-validity diagnosis was a body-indentation
 assembler bug: all four frozen outputs parsed after the minimal fix; this
 snapshot uses the fixed assembler.
 
-The follow-on observational run will continue these same frozen first edits
-to eight sequential edits per trajectory. It will save each target-file state
+The follow-on observational run continues these same frozen first edits
+to eight sequential edits per trajectory. It saves each target-file state
 and public-test feedback without online `q`; only after every trajectory
-reaches `P8` will the separate grader measure `q(P0)`, `q(P4)`, and `q(P8)`.
+reaches `P8` will the separate grader measure `q` at every `P0`–`P8` state.
 Neither that run nor any long-horizon RL comparison has a result yet.
+For the later reward snapshot, see
+[`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md).

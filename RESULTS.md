@@ -28,6 +28,7 @@
 | Restricted-agent one-update smoke | same | terminal q scorer failed before optimizer update | No GRPO update or scientific result |
 | Two-arm survival attempt | `runs/swesmith_survival_status_v01/summary.json` | 20/8 frozen; first semantic update: 8/8 invalid edits, tied rewards, gradient 0 | Stopped; no valid test-vs-semantic result or heldout evaluation |
 | One-edit body census, fixed partial snapshot | [`BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md) | 6/28 tasks complete; 81/96 structural-valid, 79/96 executable; `q` varies on 6/6 versus public tests on 2/6; `q` splits 197/408 same-test pairs | Descriptive information evidence only; no eight-step or RL result |
+| One-edit reward census, later fixed partial snapshot | [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md) | 26/28 tasks complete; 328/416 executable, 43 solved; semantic reward varies on 25/26 tasks versus test reward on 11/26; 14/26 have test tied but semantic varying | Extra reward resolution only; no trained-policy result |
 
 ## First replay conclusion
 

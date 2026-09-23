@@ -43,14 +43,14 @@ before critic scaling or online RL.
   8/8 edits were invalid, within-group rewards tied, and gradient was zero.
   Stopped without an effective parameter update, test-arm update, or heldout
   result; see `runs/swesmith_survival_status_v01/summary.json`.
-- `BODY_CENSUS_28X16`: running; a frozen six-task snapshot shows 79/96
-  executable candidates, task-level `q` variance on 6/6 versus public-test
-  variance on 2/6, and 197/408 within-task public-test ties split by `q`.
-  See `BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`. This is observational
-  information, not long-horizon credit or RL improvement.
-- `EIGHT_STEP_TRAJECTORIES`: dependent continuation queued, not complete.
+- `BODY_CENSUS_28X16`: running; a fixed 26-task snapshot has 328/416
+  executable candidates. Among executable candidates, semantic reward varies
+  on 25/26 tasks versus test reward on 11/26; 14/26 have tied test reward but
+  varying semantic reward. See `BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`.
+  This is observational information, not long-horizon credit or RL improvement.
+- `EIGHT_STEP_TRAJECTORIES`: streaming continuation running, not complete.
   It reuses each census P1, saves P0 through P8, and uses only public-test
-  feedback online. `q(P0)`, `q(P4)`, and `q(P8)` are measured offline after
+  feedback online. `q` at every `P0`–`P8` state is measured offline after
   all trajectories finish. The policy never sees q.
 
 ## Variants and evidence strata
@@ -126,6 +126,8 @@ statistics are selection-conditioned and are not population estimates.
   `freeze_swesmith_agentic_candidates.select`
 - Public task index: `summarize_swesmith_agentic_candidates.summarize`
 - One-edit census: `sample_swesmith_body_28x16.main` and `information_metrics`
+- Reward snapshot: `summarize_swesmith_reward_census.summarize`; provisional
+  task-level signal, not LoRA training or held-out improvement.
 - Body assembly and saved state: `swesmith_agent_edit.replace_callable_body`,
   `swesmith_agent_edit.current_callable_body`
 - Public-only sequential rollout: `continue_swesmith_body_trajectories.main`

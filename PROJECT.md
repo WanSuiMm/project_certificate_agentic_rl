@@ -143,9 +143,9 @@ parser artifact, not evidence that the model lacks valid-action support. All
 four then returned terminal `Y`, public-test fraction `p_T`, and reference
 agreement `q` from the isolated scorer. On 2026-09-23, a single 1.5B base-policy
 28×16 census was dispatched to measure valid action rate, task-level variation
-in `p_T` and `q`, and whether `q` breaks public-test ties. The first six
+in `p_T` and `q`, and whether `q` breaks public-test ties. The first 26
 complete tasks are reported provisionally in
-`BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`; the 28-task aggregate remains
+`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`; the 28-task aggregate remains
 pending. A streaming continuation has been dispatched: each complete 16-sample
 P1 task block is immediately continued to eight sequential edits, without
 waiting for the entire census. The policy sees only public-test feedback.

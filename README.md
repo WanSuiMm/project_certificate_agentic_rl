@@ -8,7 +8,7 @@ tasks, a stopped q-first screen, and an offline 5090 model smoke.
 The later two-arm survival attempt stopped after one semantic update with
 zero gradient; no valid RL comparison or held-out result exists.
 A separate body-only one-edit census is now running on the frozen 28 tasks.
-Its [six-task provisional snapshot](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md)
+Its [26-task provisional reward snapshot](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md)
 shows extra reference-proxy discrimination but is not an RL result. The same
 first edits stream into public-feedback-only continuation to eight steps as
 each task's 16 P1 samples become ready. After completion, offline `q` grading
@@ -16,8 +16,8 @@ covers every state P0–P8; no multi-step result exists yet.
 
 ## Start here
 
-1. [`BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md):
-   newest provisional information result and exact non-claim boundary.
+1. [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md):
+   newest provisional reward-information result and exact non-claim boundary.
 2. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
    real-task pivot, qualification protocol, engineering failure, and open gates.
 3. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): compact task definition, claim boundary,
