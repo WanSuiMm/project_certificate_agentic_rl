@@ -1,9 +1,10 @@
-# GPT handoff: body-action census and queued eight-step observation
+# GPT handoff: body-action census and streaming eight-step observation
 
-- Review base: `e812e33dca965f8e0d9793f4e431575f6372b314`
-- Evidence head: `ed791962a784d07efa989aca301b1bef43002946`
-- This handoff is metadata-only. Review the evidence-head delta; historical
-  exact-25 replay claims and the stopped GRPO outcome are unchanged.
+- Review base: `472010b4770ea485a5b286aac31912d63a43da99`
+- Evidence head: `33bbac919963021ff12b98f408f55725935e498a`
+- This handoff is metadata-only. Review the evidence-head delta for the
+  streaming/full-state protocol; historical exact-25 replay claims, the
+  provisional six-task statistics, and stopped GRPO outcome are unchanged.
 
 ## Read first
 
@@ -31,14 +32,16 @@ fraction. These dependent pairs demonstrate additional discrimination, not
 long-horizon credit or policy improvement. Some unresolved candidates have
 q=1 on the finite observation bank.
 
-A dependent observational run has been dispatched but has no result yet. It
-reconstructs each frozen P1 exactly, continues it with seven further model
-edits using only public-test feedback, and saves full target-file source/body
-and score after each step. Only after all 448 trajectories reach P8 does a
-separate worker measure q at shared P0 and each P4/P8. No q is passed to the
+A streaming observational run has been dispatched but has no result yet. As
+soon as a task's 16 P1 samples are complete, it reconstructs each P1 exactly,
+continues with seven further model edits using only public-test feedback,
+and saves full target-file source/body and score after every step. After all
+448 trajectories reach P8, a separate worker measures q at every P0–P8 state
+(3612 observations before per-task source-hash deduplication). No q is passed to the
 online policy; no RL update is part of this run. Local unit tests: 50 passed;
 one frozen-task reconstruction was 16/16 hash-exact; one public-only P2 and
-one q-only isolated scoring call completed.
+one q-only isolated scoring call completed. Streaming dispatch is verified;
+the first saved P0–P4 states were hash-valid and contained no q.
 
 ## Reviewer questions
 
@@ -46,5 +49,5 @@ one q-only isolated scoring call completed.
    feedback, and fail closed on any P1 reconstruction mismatch?
 2. Are the 6-task tie statistics presented strictly as within-task descriptive
    evidence rather than independent-sample inference or an RL result?
-3. When P0/P4/P8 observations complete, what task-level statistic best tests
-   whether q changes while public feedback and terminal success remain flat?
+3. When full P0–P8 observations complete, how often does q change before
+   public feedback, and does early q predict later outcomes within public-test ties?
