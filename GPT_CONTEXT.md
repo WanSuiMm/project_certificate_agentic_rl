@@ -37,8 +37,12 @@ before critic scaling or online RL.
 - `RESTRICTED_AGENT_RL_SMOKE`: failed in terminal q scoring before any optimizer
   update; no completed GRPO update or formal three-arm result. This is a
   function/method replacement agent, not a full SWE-agent workflow.
-- `AGENTIC_RL_ROLLOUT_OR_UPDATE`: no completed update. The Function-SWE trainer
+- `AGENTIC_RL_ROLLOUT_OR_UPDATE`: no effective update. The Function-SWE trainer
   is a separate surrogate and cannot train on the real-task slice.
+- `TWO_ARM_SURVIVAL_ATTEMPT`: one semantic optimizer step was executed, but
+  8/8 edits were invalid, within-group rewards tied, and gradient was zero.
+  Stopped without an effective parameter update, test-arm update, or heldout
+  result; see `runs/swesmith_survival_status_v01/summary.json`.
 
 ## Variants and evidence strata
 

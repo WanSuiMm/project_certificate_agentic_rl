@@ -31,13 +31,20 @@ def _node(source: str, path: list[str]) -> ast.FunctionDef:
 
 def replace_callable(source: str, path: list[str], completion: str) -> str:
     replacement = completion.strip()
-    if replacement.startswith("```") and replacement.endswith("```"):
-        replacement = "\n".join(replacement.splitlines()[1:-1]).strip()
+    if replacement.startswith("```"):
+        replacement = "\n".join(replacement.splitlines()[1:]).strip()
+        if replacement.endswith("```"):
+            replacement = replacement[:-3].strip()
     try:
         tree = ast.parse(replacement)
-        if len(tree.body) != 1 or not isinstance(tree.body[0], ast.FunctionDef):
-            raise InvalidEdit("output must be exactly one synchronous def")
-        candidate = tree.body[0]
+        candidates = [node for node in tree.body
+                      if isinstance(node, ast.FunctionDef) and node.name == path[-1]]
+        if len(candidates) != 1:
+            raise InvalidEdit("output must contain exactly one target synchronous def")
+        candidate = candidates[0]
+        replacement_lines = replacement.splitlines()
+        candidate_first = min([candidate.lineno, *(n.lineno for n in candidate.decorator_list)])
+        replacement = "\n".join(replacement_lines[candidate_first - 1:candidate.end_lineno])
         original = _node(source, path)
         if candidate.name != path[-1] or ast.dump(candidate.args) != ast.dump(original.args):
             raise InvalidEdit("function name or signature changed")

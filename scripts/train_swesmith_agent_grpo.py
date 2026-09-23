@@ -60,8 +60,21 @@ def agent_prompt(item: dict, source: str, feedback: str) -> str:
     )
 
 
+def initialize_item(item: dict, executor) -> None:
+    if "buggy_source" in item:
+        return
+    initialized = executor.call(item["task"], mode="init")
+    if not initialized["gold_self_consistent"]:
+        raise RuntimeError(f"gold self-consistency failed: {item['task']['instance_id']}")
+    item["buggy_source"] = initialized["buggy_source"]
+    item["buggy_source_sha256"] = initialized["buggy_source_sha256"]
+    if len(agent_prompt(item, item["buggy_source"], "No edits yet.")) > 28_000:
+        raise RuntimeError(f"prompt text too long: {item['task']['instance_id']}")
+
+
 def episode(item: dict, model, tokenizer, executor, *, config: dict,
             device: torch.device, sample: bool, proxy: bool) -> Episode:
+    initialize_item(item, executor)
     source = item["buggy_source"]
     feedback = "No edits yet."
     actions = []
@@ -78,11 +91,12 @@ def episode(item: dict, model, tokenizer, executor, *, config: dict,
             feedback = f"Edit rejected: {str(exc)[:200]}. No code changed."
             continue
         source = proposal
-        public = executor.call(item["task"], mode="score", source=source,
-                               buggy_source_sha256=item["buggy_source_sha256"],
-                               include_proxy=False)
-        feedback = (f"Official public tests: {public['public']['passed']}/"
-                    f"{public['public']['total']} passed; exitcode={public['public']['exitcode']}.")
+        if config["max_edits"] > 1:
+            public = executor.call(item["task"], mode="score", source=source,
+                                   buggy_source_sha256=item["buggy_source_sha256"],
+                                   include_proxy=False)
+            feedback = (f"Official public tests: {public['public']['passed']}/"
+                        f"{public['public']['total']} passed; exitcode={public['public']['exitcode']}.")
     final = executor.call(item["task"], mode="score", source=source,
                           buggy_source_sha256=item["buggy_source_sha256"],
                           q_bank=item["q_bank"] if proxy else None, include_proxy=proxy)
@@ -112,8 +126,9 @@ def main() -> None:
     selected = json.loads(args.selection.read_text(encoding="utf-8"))
     if selected["status"] != "q_first_frozen" or selected["count"] != len(selected["ids"]):
         raise ValueError("selection not frozen")
-    if not args.smoke_updates and selected["count"] not in (40, 52, 64):
-        raise ValueError("formal experiment requires 32+8, 40+12, or 48+16 tasks")
+    if not args.smoke_updates and (selected["count"] != 28 or selected["train_count"] != 20
+                                   or selected["heldout_count"] != 8):
+        raise ValueError("survival experiment requires frozen 20+8 tasks")
     if args.output_dir.exists():
         raise FileExistsError(args.output_dir)
     device = torch.device(args.device)
@@ -125,14 +140,6 @@ def main() -> None:
         torch.cuda.manual_seed_all(config["seed"])
     executor = SWESmithModalExecutor()
     items = load_selected(args.tasks, args.q_results, selected["ids"])
-    for item in items:
-        initialized = executor.call(item["task"], mode="init")
-        if not initialized["gold_self_consistent"]:
-            raise RuntimeError(f"gold self-consistency failed: {item['task']['instance_id']}")
-        item["buggy_source"] = initialized["buggy_source"]
-        item["buggy_source_sha256"] = initialized["buggy_source_sha256"]
-        if len(agent_prompt(item, item["buggy_source"], "No edits yet.")) > 28_000:
-            raise RuntimeError(f"prompt text too long: {item['task']['instance_id']}")
     from peft import LoraConfig, get_peft_model
     from huggingface_hub import snapshot_download
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -167,11 +174,11 @@ def main() -> None:
         chosen = [train[(update * config["tasks_per_update"] + index) % len(train)]
                   for index in range(config["tasks_per_update"])]
         episodes = [episode(item, model, tokenizer, executor, config=config, device=device,
-                            sample=True, proxy=True)
+                            sample=True, proxy=args.arm == "semantic")
                     for item in chosen for _ in range(config["group_size"])]
         rewards = torch.tensor([terminal_reward(args.arm, solved=ep.score["solved"],
                                                public_pass_fraction=ep.score["p_T"],
-                                               reference_agreement=ep.score["q"])
+                                               reference_agreement=ep.score.get("q"))
                                 for ep in episodes], device=device)
         advantages = group_advantages(rewards, group_size=config["group_size"])
         actions = [action for ep in episodes for action in ep.actions]

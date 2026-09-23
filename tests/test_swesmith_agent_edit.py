@@ -21,3 +21,13 @@ class AgentEditTest(unittest.TestCase):
         self.assertEqual(replace_callable("def f(x):\n    return x\n", ["f"],
                                           "def f(x):\n    return x + 1"),
                          "def f(x):\n    return x + 1\n")
+
+    def test_complete_function_after_unclosed_fence(self):
+        self.assertEqual(replace_callable("def f(x):\n    return x\n", ["f"],
+                                          "```python\ndef f(x):\n    return x + 1"),
+                         "def f(x):\n    return x + 1\n")
+
+    def test_ignores_non_function_preamble(self):
+        self.assertEqual(replace_callable("def f(x):\n    return x\n", ["f"],
+                                          "```python\nimport os\ndef f(x):\n    return x + 1\n```"),
+                         "def f(x):\n    return x + 1\n")

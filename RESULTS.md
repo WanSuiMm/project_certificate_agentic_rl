@@ -26,6 +26,7 @@
 | First four q-valid gold checks | same | 4/4 self-consistent, one repository | Engineering qualification only |
 | Pinned model GPU smoke | same | 16-token generation; 2.887 GiB peak allocated | Model loading works, not training |
 | Restricted-agent one-update smoke | same | terminal q scorer failed before optimizer update | No GRPO update or scientific result |
+| Two-arm survival attempt | `runs/swesmith_survival_status_v01/summary.json` | 20/8 frozen; first semantic update: 8/8 invalid edits, tied rewards, gradient 0 | Stopped; no valid test-vs-semantic result or heldout evaluation |
 
 ## First replay conclusion
 

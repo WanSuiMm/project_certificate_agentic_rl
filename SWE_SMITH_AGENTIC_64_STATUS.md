@@ -2,8 +2,12 @@
 
 Date: 2026-09-23. This is a new, user-directed pivot to real repository tasks,
 not an amendment that makes the earlier Function-SWE result into agentic RL.
-No formal policy rollout or RL update has completed. A restricted one-update
-engineering smoke failed in the terminal q scorer before an optimizer update.
+No effective RL parameter update or held-out comparison has completed. An
+early restricted engineering smoke failed in the terminal q scorer before an
+optimizer update.
+Later one-edit runs reached an optimizer step but had zero gradients; no
+effective RL update or held-out comparison exists. See
+`runs/swesmith_survival_status_v01/summary.json` for the later attempt.
 
 ## Official task source and 64-task candidate slice
 
@@ -92,5 +96,6 @@ restricted function/method-edit agent on real repositories, **not** a full
 SWE-agent shell/editor workflow. It failed in the terminal q scorer with
 `worker_error/SkipTask/callable_import_or_execution_failed` before any optimizer
 update. This is an engineering failure, not a policy outcome. Formal arms still
-require a completed one-update smoke and at least 40 q- and gold-qualified
-tasks frozen before policy outcomes.
+require a completed nonzero-gradient one-update smoke. The later exploratory
+20/8 slice was frozen without full gold qualification and stopped after its
+first zero-gradient semantic update; it is not a completed policy comparison.

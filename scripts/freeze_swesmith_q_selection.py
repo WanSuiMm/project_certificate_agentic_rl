@@ -17,9 +17,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tasks", required=True, type=Path)
     parser.add_argument("--q-results", required=True, type=Path)
-    parser.add_argument("--gold-results", required=True, type=Path)
+    parser.add_argument("--gold-results", type=Path)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--smoke", action="store_true", help="four-task engineering smoke only")
+    parser.add_argument("--smoke", action="store_true", help="one-task engineering smoke only")
+    parser.add_argument("--smoke-task-id", help="q-valid gold-checked task for the one-task smoke")
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -28,15 +29,28 @@ def main() -> None:
     q = {row["instance_id"]: row for line in args.q_results.read_text(encoding="utf-8").splitlines()
          if (row := json.loads(line)) and row["status"] == "q_valid"
          and row["instance_id"] in tasks}
-    gold = {row["instance_id"] for line in args.gold_results.read_text(encoding="utf-8").splitlines()
-            if (row := json.loads(line)) and row["status"] == "gold_valid"}
-    q = {task_id: row for task_id, row in q.items() if task_id in gold}
-    count = 4 if args.smoke else next((n for n in (64, 52, 40) if len(q) >= n), 0)
-    if count == 0 or len(q) < count:
-        raise RuntimeError(f"insufficient q-valid tasks: {len(q)} (need 40 formal or 4 smoke)")
+    if args.smoke and args.gold_results:
+        gold = {row["instance_id"] for line in args.gold_results.read_text(encoding="utf-8").splitlines()
+                if (row := json.loads(line)) and row["status"] == "gold_valid"}
+        q = {task_id: row for task_id, row in q.items() if task_id in gold}
+    count = 1 if args.smoke else 28
+    if len(q) < count:
+        raise RuntimeError(f"insufficient q-valid tasks: {len(q)} (need {count})")
     rank = lambda task_id: hashlib.sha256(f"{SEED}\0{task_id}".encode()).hexdigest()
-    ids = sorted(q, key=rank)[:count]
-    train_count = {64: 48, 52: 40, 40: 32, 4: 3}[count]
+    ranked = sorted(q, key=rank)
+    if args.smoke:
+        if args.smoke_task_id and args.smoke_task_id not in q:
+            raise RuntimeError("requested smoke task is not q-valid and gold-checked")
+        ids = [args.smoke_task_id] if args.smoke_task_id else ranked[:1]
+    else:
+        first_by_image = {}
+        for task_id in ranked:
+            first_by_image.setdefault(tasks[task_id]["image_name"], task_id)
+        if len(first_by_image) < 3:
+            raise RuntimeError("need at least three images for the 20/8 split")
+        anchor = list(first_by_image.values())
+        ids = (anchor + [task_id for task_id in ranked if task_id not in anchor])[:count]
+    train_count = 1 if args.smoke else 20
     splits = {task_id: "train" if i < train_count else "heldout" for i, task_id in enumerate(ids)}
     manifest = {"status": "q_first_frozen", "scope": "engineering_smoke" if args.smoke else "formal_survival",
                 "count": count, "seed": SEED, "ids": ids, "splits": splits,
@@ -46,7 +60,8 @@ def main() -> None:
                 "bank_sha256": {task_id: q[task_id]["bank_sha256"] for task_id in ids},
                 "tasks_sha256": hashlib.sha256(args.tasks.read_bytes()).hexdigest(),
                 "q_results_sha256": hashlib.sha256(args.q_results.read_bytes()).hexdigest(),
-                "gold_results_sha256": hashlib.sha256(args.gold_results.read_bytes()).hexdigest(),
+                "gold_results_sha256": hashlib.sha256(args.gold_results.read_bytes()).hexdigest()
+                if args.gold_results else None,
                 "selection_does_not_use": ["policy_rollout", "terminal_solve_outcome", "F2P/P2P_inputs"]}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

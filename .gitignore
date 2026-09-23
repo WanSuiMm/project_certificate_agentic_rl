@@ -28,3 +28,4 @@ runs/swesmith_agentic_64_candidates_v01/tasks.jsonl
 runs/swesmith_qfirst_pool_v01/tasks.jsonl
 runs/swesmith_qfirst_pool_v02/tasks.jsonl
 runs/swesmith_rl_smoke_dispatch_v01/
+runs/swesmith_survival_dispatch_v01/

@@ -4,9 +4,9 @@ This project asks whether program-semantic certificates expose a useful
 intermediate state for predicting terminal success on real coding-agent
 trajectories. The original frozen SWE-smith trajectory audit is complete.
 A separate real-task agentic-RL preparation branch has 64 original candidate
-tasks, an active q-first qualification screen, and an offline 5090 model smoke.
-Its first restricted-agent RL engineering smoke failed before an optimizer
-update; no formal three-arm policy experiment has launched.
+tasks, a stopped q-first screen, and an offline 5090 model smoke.
+The later two-arm survival attempt stopped after one semantic update with
+zero gradient; no valid RL comparison or held-out result exists.
 
 ## Start here
 
@@ -72,6 +72,10 @@ selector/binder scripts regenerate them.
   on RTX 5090. The restricted-agent one-update GRPO smoke failed in terminal
   q scoring before an optimizer update. See
   [`summary.json`](runs/swesmith_online_status_v01/summary.json).
+- Survival attempt: 28 tasks frozen as 20 train / 8 heldout across three images.
+  The first semantic update had 8/8 invalid edits, tied rewards and zero
+  gradient; the run was stopped. No test-arm update or heldout evaluation was
+  completed. See [`survival summary`](runs/swesmith_survival_status_v01/summary.json).
 
 ## Reproduce compact checks
 

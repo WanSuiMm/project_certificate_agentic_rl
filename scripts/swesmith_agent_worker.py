@@ -12,7 +12,7 @@ from pathlib import Path
 import subprocess
 import sys
 
-from swesmith_q_qualifier_worker import ROOT, TESTBED_PYTHON, patch_location, run_observer
+from swesmith_q_qualifier_worker import ROOT, TESTBED_PYTHON, SkipTask, patch_location, run_observer
 
 
 PYTEST_DRIVER = r'''
@@ -81,16 +81,25 @@ def run(request: dict) -> dict:
         raise ValueError("candidate_source_too_large")
     target.write_text(candidate, encoding="utf-8")
     public = tests(selectors)
-    if not public["valid"]:
+    if not public["valid"] and public.get("reason") == "pytest_driver_failure":
         return {"status": "invalid_test_observation", "public": public}
     result = {"status": "scored", "instance_id": task["instance_id"],
-              "public": public, "p_T": public["pass_fraction"],
-              "solved": public["exitcode"] == 0 and public["passed"] == public["total"]}
+              "public": public, "p_T": public.get("pass_fraction", 0.0) if public["valid"] else 0.0,
+              "solved": bool(public["valid"] and public["exitcode"] == 0
+                             and public["passed"] == public["total"])}
     if request.get("include_proxy", False):
         bank = request["q_bank"]
-        observed = run_observer({key: bank[key] for key in ("module", "callable", "params", "cases")})
         reference = bank["reference"]
-        if len(observed) != len(reference) or len(reference) != 256:
+        if len(reference) != 256:
+            raise RuntimeError("q_bank_observation_count_mismatch")
+        try:
+            observed = run_observer({key: bank[key] for key in ("module", "callable", "params", "cases")})
+        except SkipTask as exc:
+            if str(exc) not in {"callable_import_or_execution_failed", "observer_stdout_not_json"}:
+                raise
+            observed = []
+            result["q_invalid_candidate"] = str(exc)
+        if observed and len(observed) != 256:
             raise RuntimeError("q_bank_observation_count_mismatch")
         result["q"] = sum(a == b for a, b in zip(observed, reference)) / 256
     return result

@@ -1,0 +1,42 @@
+{
+  "status": "stopped_no_effective_rl_update",
+  "dataset_revision": "77cab9055d42ab4a5c25c89a8f937096db13558e",
+  "q_first_screen": {
+    "checked_at_stop": 636,
+    "q_valid": 29,
+    "images": 3,
+    "interpretation": "qualification only, not policy performance"
+  },
+  "frozen_selection": {
+    "count": 28,
+    "train": 20,
+    "heldout": 8,
+    "image_counts": [17, 10, 1],
+    "manifest_sha256": "7b8c94a6f81d48be6ac2c710d2edd992712a80318a8ce523e868e3bdf1846080",
+    "caveat": "only one task in the third image"
+  },
+  "protocol": {
+    "arms": ["test", "semantic"],
+    "rewards": ["Y + 0.5*p_T", "Y + 0.5*q(P_T)"],
+    "max_edits": 1,
+    "group_size": 4,
+    "tasks_per_update": 2,
+    "planned_updates_per_arm": 30,
+    "later_generation_setting": "no independent output cap; stop at EOS or pinned model 32768-token context"
+  },
+  "observed_runs": {
+    "two_arm_initial_dispatch": "stopped before any update: eager initialization of all 28 Modal tasks kept GPU idle",
+    "semantic_first_update": {
+      "completed_updates": 1,
+      "invalid_edits": 8,
+      "rollouts": 8,
+      "group_reward_ties": 2,
+      "grad_norm": 0.0,
+      "interpretation": "no effective parameter update; run stopped"
+    },
+    "one_task_smokes_afterward": "three further one-update semantic smokes with uncapped generation; all had tied rewards, invalid edits, and grad_norm=0",
+    "test_arm": "no completed update",
+    "heldout_evaluation": "not run"
+  },
+  "claim": "No valid test-versus-semantic RL comparison or learned-policy improvement exists."
+}

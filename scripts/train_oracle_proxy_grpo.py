@@ -59,8 +59,11 @@ def generate_action(model: Any, tokenizer: Any, prompt: str, *, device: torch.de
     if isinstance(encoded, dict):
         encoded = encoded["input_ids"]
     prompt_length = encoded.shape[1]
-    if prompt_length + max_new_tokens > context_tokens:
-        raise TaskError(f"prompt exceeds context budget: {prompt_length}+{max_new_tokens}>{context_tokens}")
+    if max_new_tokens < 0:
+        raise ValueError("max_new_tokens must be nonnegative")
+    generation_budget = context_tokens - prompt_length if max_new_tokens == 0 else max_new_tokens
+    if generation_budget < 1 or prompt_length + generation_budget > context_tokens:
+        raise TaskError(f"prompt exceeds context budget: {prompt_length}+{generation_budget}>{context_tokens}")
     ids = encoded.to(device)
     model.eval()
     sampling_options = {"temperature": 1.0, "top_p": 1.0} if sample else {}
@@ -68,7 +71,7 @@ def generate_action(model: Any, tokenizer: Any, prompt: str, *, device: torch.de
         generated = model.generate(
             input_ids=ids,
             attention_mask=torch.ones_like(ids),
-            max_new_tokens=max_new_tokens,
+            max_new_tokens=generation_budget,
             do_sample=sample,
             pad_token_id=tokenizer.pad_token_id,
             eos_token_id=tokenizer.eos_token_id,

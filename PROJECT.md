@@ -2,7 +2,7 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 offline replay complete; q-first SWE-smith qualification active, fixed model loaded on 5090, one-update real-repository RL engineering smoke failed before update; no formal RL result
+- Lifecycle status: exact-25 offline replay complete; q-first 20/8 slice frozen; real-task RL stopped after one zero-gradient semantic update; no valid test-versus-semantic result
 - Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-23
@@ -125,12 +125,16 @@ exploratory RL screen.
 
 The latest user direction is to use real SWE-smith repository tasks and RL,
 not synthetic Function-SWE samples. The first q-first screen yielded only
-4/311 qualifying tasks; an expanded, generic-input screen is running and
-must reach at least 40 gold-valid tasks before the formal 32/8 survival split.
+4/311 qualifying tasks; the expanded screen stopped with 29/636 q-valid tasks
+across three images, and 28 were frozen as 20 train / 8 heldout.
 The pinned 1.5B model was downloaded through parallel ranges, verified against
 its fixed weight hash, and passed an offline 5090 generation smoke. A
 four-task, one-update multi-edit GRPO engineering smoke failed in the terminal
 q scorer (`callable_import_or_execution_failed`) before any optimizer update.
+Subsequent one-edit attempts reached `optimizer.step()`, but the first formal
+semantic update had 8/8 invalid edits, tied within-group rewards, and zero
+gradient. Test-arm training and heldout evaluation did not complete. See
+`runs/swesmith_survival_status_v01/summary.json`.
 This agent is restricted to replacing one
 function/method with public-test feedback; it is not a full SWE-agent with
 arbitrary repository tools. Do not promote the smoke or original 64 candidate
