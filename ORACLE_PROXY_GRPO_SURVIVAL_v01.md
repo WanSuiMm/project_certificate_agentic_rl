@@ -1,6 +1,7 @@
 # Oracle-proxy GRPO survival experiment v0.1
 
-Status: protocol and reward contract frozen on 2026-09-23; **not launched**.
+Status: protocol and reward contract frozen on 2026-09-23; implementation has
+passed a trusted local toy smoke, but **no formal run has launched**.
 This is a new, exploratory oracle-reward experiment. It does not retroactively
 pass or replace the project's earlier certificate/value-prediction Gate 0.
 
@@ -14,6 +15,9 @@ Qwen2.5-Coder-1.5B-Instruct, BF16 LoRA rank 16, 8K context, three edit actions,
 four rollouts per task, 48 training and 16 held-out tasks, one seed, 100 updates
 per arm. Each update samples four tasks. Arms start from the same base checkpoint
 and receive equal rollout/update/evaluation budgets.
+The implementation config also fixes AdamW learning rate `1e-5`, two clipped
+policy epochs per update, clip epsilon `0.2`, frozen-reference KL coefficient
+`0.04`, gradient norm cap `1.0`, and unwarped sampling (`temperature=top_p=1`).
 
 For task-specific fixed input bank (X), compute the *unchanged* proxy
 
@@ -32,9 +36,12 @@ implementation is `scripts/oracle_proxy_reward.py`; it rejects missing or
 out-of-range scores. A success always outranks a failure in every arm.
 
 Task qualification is a necessary execution prerequisite, not a new signal
-audit: select 64 frozen SWE-smith Python tasks with a single executable target
-function/module, supported primitive inputs, deterministic reference and tests,
-nonzero initial reference disagreement, and a safe isolated candidate executor.
+audit: select 64 frozen SWE-smith-derived Python tasks with a single executable
+target function/module, supported primitive inputs, deterministic reference and
+tests, nonzero initial reference disagreement, and a safe isolated candidate
+executor. This creates a Function-SWE surrogate; its terminal `Y` is exact
+public-plus-hidden function-case success, **not** an official full-repository
+SWE-smith solve.
 Freeze task IDs, source hashes, input-bank hashes, split, and terminal test
 commands *before* seeing RL results. No tasks may be swapped post outcome.
 
@@ -52,3 +59,4 @@ smoke, and an uncontended GPU. None is inferred from a completed replay batch.
 Record host, GPU, PID, command, run directory, code commit, model revision,
 task/input hashes, and launch time when actually dispatched. A queued or
 prepared configuration must never be reported as training in progress.
+Implementation entry points and sandbox boundary: `FUNCTION_SWE_RUNTIME.md`.

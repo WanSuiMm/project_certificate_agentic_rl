@@ -17,6 +17,11 @@ critic training or online RL.
    full exact-bound audit, invalid cases, and next decision.
 6. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
 
+Separate exploratory RL code: [`ORACLE_PROXY_GRPO_SURVIVAL_v01.md`](ORACLE_PROXY_GRPO_SURVIVAL_v01.md)
+defines the frozen three-arm comparison; [`FUNCTION_SWE_RUNTIME.md`](FUNCTION_SWE_RUNTIME.md)
+maps its code, task format, and unfulfilled isolation/task prerequisites. It has
+not produced a training result.
+
 The two large raw JSONL files are frozen locally but intentionally omitted from
 the public review repository because they contain third-party issue text and
 machine-specific paths. Their hashes remain in the manifests, and the pinned
