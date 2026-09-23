@@ -1,0 +1,12 @@
+{
+  "protocol": "swesmith_closed_loop_8x16x8_v01",
+  "seed": 0,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+  "adapter": {"type": "lora", "rank": 16},
+  "context_tokens": 8192,
+  "max_generated_tokens_per_edit": 1024,
+  "pilot_tasks": 8,
+  "trajectories_per_task": 16,
+  "steps": 8
+}

@@ -32,10 +32,13 @@ def sha256(source: str) -> str:
 
 def feedback_from_public(score: dict) -> str:
     public = score["public"]
+    edit_feedback = ("Previous edit was invalid; source unchanged. "
+                     if score.get("invalid_body") else "")
     if public.get("valid"):
-        return (f"Public tests: {public['passed']}/{public['total']} passed; "
+        return (edit_feedback + f"Public tests: {public['passed']}/{public['total']} passed; "
                 f"exitcode={public['exitcode']}.")
-    return f"Public tests unavailable: {public.get('reason', 'invalid_observation')}."
+    return (edit_feedback +
+            f"Public tests unavailable: {public.get('reason', 'invalid_observation')}.")
 
 
 def public_fields(result: dict) -> dict:

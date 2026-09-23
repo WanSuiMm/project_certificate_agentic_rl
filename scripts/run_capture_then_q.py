@@ -51,7 +51,8 @@ def main() -> None:
     except Exception as exc:
         record(receipt_path, "failed", reason=type(exc).__name__, detail=str(exc)[:500])
         raise
-    record(receipt_path, "complete", observations=3612,
+    capture = json.loads((args.trajectories / "run.json").read_text(encoding="utf-8"))
+    record(receipt_path, "complete", observations=capture["states"],
            q_output=str(args.output_dir))
 
 

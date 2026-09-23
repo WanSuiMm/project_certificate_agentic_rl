@@ -38,8 +38,10 @@ GitHub snapshot.
 
 ## Interrupted P1–P8 capture
 
-The separate capture-only process reused existing P1 candidates and generated
-subsequent edits without running tests or `q` at each step. After the user's
+The separate **open-loop diagnostic** process reused existing P1 candidates
+and generated subsequent edits without running tests or `q` at each step.
+Because it did not return public-test feedback to the model, it is not the
+agreed closed-loop coding-agent trajectory. After the user's
 stop instruction, its preserved JSONL contained **438 state records** from
 **4 tasks**: P0: 4, P1: 55, P2: 55, P3–P8: 54 each. Thus **54 trajectories
 reached P8**; one more had reached P2. The planned 448 eight-step trajectories

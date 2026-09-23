@@ -6,11 +6,14 @@ trajectories. The original frozen SWE-smith trajectory audit is complete.
 A separate real-task agentic-RL preparation branch has 64 original candidate
 tasks, a stopped q-first screen, and an offline 5090 model smoke.
 The early two-arm survival attempt stopped after one zero-gradient semantic
-update. A later fixed-data LoRA comparison completed 20 updates per arm but
-showed no held-out candidate-ranking separation. An eight-step source capture
+update. A later fixed-data LoRA side experiment completed 20 updates per arm
+but did not test long-horizon credit. An **open-loop** eight-step source capture
 was stopped with only 54 complete P1–P8 trajectories; P2–P8 were not scored.
 See the [stopped snapshot](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md)
-for exact evidence and limits. The earlier
+for exact evidence and limits. A corrected closed-loop pilot is
+[specified but not run](CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md). A matched
+on-policy eight-step Test/Semantic GRPO implementation is also
+[code-ready but unrun](LONG_HORIZON_GRPO_PROTOCOL_20260924.md). The earlier
 [26-task provisional reward snapshot](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md)
 shows extra reference-proxy discrimination, not an RL improvement.
 
@@ -18,19 +21,23 @@ shows extra reference-proxy discrimination, not an RL improvement.
 
 1. [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md):
    latest offline LoRA result and interrupted eight-step source capture.
-2. [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md):
+2. [`CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md`](CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md):
+   corrected public-feedback trajectory pilot; no new result yet.
+3. [`LONG_HORIZON_GRPO_PROTOCOL_20260924.md`](LONG_HORIZON_GRPO_PROTOCOL_20260924.md):
+   frozen-policy GRPO-signal census, two on-policy arms, optional step-wise extension.
+4. [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md):
    provisional reward-information result and exact non-claim boundary.
-3. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
+5. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
    real-task pivot, qualification protocol, engineering failure, and open gates.
-4. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): compact task definition, claim boundary,
+6. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): compact task definition, claim boundary,
    code map, and reviewer questions.
-5. [`RESULTS.md`](RESULTS.md): canonical aggregates and formal status.
-6. [`ARCHITECTURE.md`](ARCHITECTURE.md): data flow, invariants, and exact scripts.
-7. [`MOTO_INTERMEDIATE_PROTOCOL_v01.md`](MOTO_INTERMEDIATE_PROTOCOL_v01.md):
+7. [`RESULTS.md`](RESULTS.md): canonical aggregates and formal status.
+8. [`ARCHITECTURE.md`](ARCHITECTURE.md): data flow, invariants, and exact scripts.
+9. [`MOTO_INTERMEDIATE_PROTOCOL_v01.md`](MOTO_INTERMEDIATE_PROTOCOL_v01.md):
    the frozen edit-level replay protocol.
-8. [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md):
+10. [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md):
    full exact-bound audit, invalid cases, and next decision.
-9. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
+11. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
 
 Separate exploratory RL code: [`ORACLE_PROXY_GRPO_SURVIVAL_v01.md`](ORACLE_PROXY_GRPO_SURVIVAL_v01.md)
 defines the frozen three-arm comparison; [`FUNCTION_SWE_RUNTIME.md`](FUNCTION_SWE_RUNTIME.md)

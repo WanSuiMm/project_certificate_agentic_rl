@@ -2,7 +2,7 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 replay complete; q-first 20/8 slice frozen; later fixed-data Test/Semantic LoRA arms completed 20 updates each with no held-out ranking separation; eight-step capture stopped partially ungraded
+- Lifecycle status: exact-25 replay complete; q-first 20/8 slice frozen; one-step fixed-data LoRA is a side experiment; prior eight-step capture was open-loop and stopped partially ungraded; corrected closed-loop census and on-policy eight-step GRPO code are ready but unrun
 - Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-24
@@ -31,10 +31,12 @@
 
 ## Claim Boundary
 
-The later source-only eight-step continuation was stopped at 54 complete
-P1–P8 trajectories (of 448 planned), without P2–P8 tests or `q` values.
-Fixed-data LoRA optimization completed but did not improve the held-out
-candidate-ranking check; there is no demonstrated learning benefit. The five exact Moto
+The later open-loop, source-only eight-step continuation was stopped at 54
+complete P1–P8 trajectories (of 448 planned), without P2–P8 tests or `q`
+values. It is not the agreed closed-loop agent protocol. Fixed-data LoRA
+optimization completed but only measures one-step candidate preferences; it
+does not test long-horizon semantic credit. The corrected public-feedback
+pilot and two-arm whole-trajectory GRPO are implemented but unrun. The five exact Moto
 rollouts now pass endpoint replay self-consistency under the PRoot execution
 substrate. Across 52 states, one unresolved rollout has a genuine regression
 excursion `(4,0) -> (4,12) -> (4,1)`, while one resolved rollout reaches `(0,0)`,

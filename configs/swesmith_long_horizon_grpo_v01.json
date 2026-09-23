@@ -1,0 +1,21 @@
+{
+  "protocol": "swesmith_long_horizon_grpo_v01",
+  "seed": 0,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+  "adapter": {"type": "lora", "rank": 16},
+  "context_tokens": 8192,
+  "max_generated_tokens_per_edit": 1024,
+  "steps": 8,
+  "group_size": 16,
+  "train_tasks": 20,
+  "heldout_tasks": 8,
+  "updates_per_arm": 20,
+  "eval_every_updates": 5,
+  "beta": 0.5,
+  "learning_rate": 0.00001,
+  "ppo_epochs": 1,
+  "clip_epsilon": 0.2,
+  "reference_kl_beta": 0.04,
+  "max_grad_norm": 1.0
+}
