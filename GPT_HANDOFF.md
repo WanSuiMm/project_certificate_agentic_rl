@@ -1,53 +1,44 @@
-# GPT handoff: body-action census and streaming eight-step observation
+# GPT handoff: provisional reward information, no RL outcome
 
-- Review base: `472010b4770ea485a5b286aac31912d63a43da99`
-- Evidence head: `33bbac919963021ff12b98f408f55725935e498a`
-- This handoff is metadata-only. Review the evidence-head delta for the
-  streaming/full-state protocol; historical exact-25 replay claims, the
-  provisional six-task statistics, and stopped GRPO outcome are unchanged.
+- Review base: `cfbe828678b8a76f241b30a6eb857f6376f77225`
+- Evidence head: `35f3b610a073b9d455a85d21b09e15e1d671066d`
+- This handoff is metadata-only. Review the evidence-head delta; historical
+  exact-25 replay and the stopped zero-gradient GRPO attempt are unchanged.
 
 ## Read first
 
-1. [`BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md):
-   the only new numerical evidence, explicitly a 6/28 provisional snapshot.
+1. [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md):
+   fixed partial reward snapshot and its claim boundary.
 2. [`RESULTS.md`](RESULTS.md) and [`GPT_CONTEXT.md`](GPT_CONTEXT.md): formal
-   status and claim boundary.
-3. For implementation review: `scripts/continue_swesmith_body_trajectories.py`,
-   `scripts/grade_swesmith_trajectory_q.py`, `scripts/run_swesmith_trajectory_pipeline.py`,
-   `scripts/swesmith_agent_edit.py`, and `scripts/swesmith_agent_worker.py`.
+   status and code/evidence routing.
+3. [`scripts/summarize_swesmith_reward_census.py`](scripts/summarize_swesmith_reward_census.py):
+   exact task-level and within-task computations.
 
-Raw task rows, completions, source states, logs, checkpoints, and private
-machine-specific launch receipts are intentionally not in this repository.
+Raw completions, per-sample rows, source states, logs, and machine-specific
+receipts are intentionally not uploaded. Do not open large JSONL first.
 
 ## Decision-relevant delta
 
-The apparent 1/4 valid-action body smoke was an indentation-assembler bug:
-replaying the same four frozen completions with the fixed assembler yields
-4/4 structurally valid programs. All four scored in the isolated evaluator.
-The 1.5B base-policy census uses 28 frozen tasks × 16 independent one-edit
-samples. Its first six complete tasks yielded 79/96 executable candidates;
-public-test pass fraction varies on 2/6 tasks, while reference agreement q
-varies on 6/6. Within-task q differs for 197/408 pairs with tied public-test
-fraction. These dependent pairs demonstrate additional discrimination, not
-long-horizon credit or policy improvement. Some unresolved candidates have
-q=1 on the finite observation bank.
+At the fixed 26/28-task snapshot, 328/416 candidates were executable and 43
+solved. On executable candidates, `Y+0.5p` varies on 11/26 tasks while
+`Y+0.5q` varies on 25/26; 14/26 have tied test reward but varying semantic
+reward. Among unresolved candidates, semantic reward splits 607/1,370
+within-task test-reward-tied pairs, across 23/26 tasks. Task is the meaningful
+coverage unit; pairs are dependent. Two unresolved executable candidates have
+q=1 on the finite bank. This supports extra reward resolution, **not** useful
+future credit, trained-policy improvement, or a result on the final 28-task
+census.
 
-A streaming observational run has been dispatched but has no result yet. As
-soon as a task's 16 P1 samples are complete, it reconstructs each P1 exactly,
-continues with seven further model edits using only public-test feedback,
-and saves full target-file source/body and score after every step. After all
-448 trajectories reach P8, a separate worker measures q at every P0–P8 state
-(3612 observations before per-task source-hash deduplication). No q is passed to the
-online policy; no RL update is part of this run. Local unit tests: 50 passed;
-one frozen-task reconstruction was 16/16 hash-exact; one public-only P2 and
-one q-only isolated scoring call completed. Streaming dispatch is verified;
-the first saved P0–P4 states were hash-valid and contained no q.
+The separate public-feedback-only eight-step observation remains in progress;
+all-state offline q and matched Test-vs-Semantic LoRA training have not run.
+The model is frozen during the census and trajectory observation. Local tests:
+51 passed.
 
 ## Reviewer questions
 
-1. Does the continuation genuinely keep q out of generation and online
-   feedback, and fail closed on any P1 reconstruction mismatch?
-2. Are the 6-task tie statistics presented strictly as within-task descriptive
-   evidence rather than independent-sample inference or an RL result?
-3. When full P0–P8 observations complete, how often does q change before
-   public feedback, and does early q predict later outcomes within public-test ties?
+1. Are the task-level reward-variation counts and executable-only denominator
+   sufficient to support the narrow extra-resolution claim?
+2. Could finite-bank q saturation (`q=1`, unresolved) invalidate the proposed
+   use as shaping reward despite the observed extra resolution?
+3. Which held-out, matched-budget LoRA intervention would actually test whether
+   that extra resolution improves long-horizon repair?
