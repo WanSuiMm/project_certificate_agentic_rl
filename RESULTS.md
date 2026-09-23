@@ -16,6 +16,9 @@
 | Moto intermediate states | same | 52 states; 44 valid `(F,R)` states | Every state attempted and preserved |
 | Moto transitions | same | 34 neutral, 3 positive, 1 negative, 9 invalid-adjacent | Non-monotone path structure exists |
 | Tool outcomes | per-task summaries | 48 attempted; 47 successful mutations | One failed editor attempt correctly creates no state |
+| Exact-25 batch | `runs/exact25_intermediate_v01/aggregate_summary.json` | 25/25 summaries; 18/25 strict endpoint gates | Partial qualification, not 25 valid endpoints |
+| Exact-25 observations | same | 184 states; 119 valid; 65 invalid | Invalid collection is not an `(F,R)` failure count |
+| Exact-25 transitions | same | 13 positive, 85 neutral, 2 negative, 59 invalid-adjacent | Two observed regressions; no certificate test |
 
 ## First replay conclusion
 
@@ -57,3 +60,13 @@ does not yet establish that a certificate representation predicts these states.
 It does establish that terminal outcomes discard real, decision-relevant path
 structure worth auditing. There is still no value-predictor comparison, sample-
 efficiency result, additive-decomposition validation, or online-RL result.
+
+## Exact-25 follow-up
+
+The full exact-binding batch finished, but seven task endpoints are invalid
+because of test-runner or image-environment problems. A naive 23/25 declared
+endpoint agreement counts invalid unresolved endpoints as agreement; the
+strict initialized-and-valid endpoint gate passes only 18/25. The aggregate
+preserves all 25 task curves and failures. The diagnoses and frozen next steps
+are in [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md).
+This remains historical trajectory replay, not live agent evaluation or RL.

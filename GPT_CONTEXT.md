@@ -19,9 +19,13 @@ before critic scaling or online RL.
   and agree with their declared endpoint.
 - `MOTO_INTERMEDIATE_AUDIT`: complete — 52 states, 47 successful mutations, one
   negative transition, and one trajectory-induced invalid region.
+- `EXACT25_BATCH`: complete — 25/25 summaries, 184 states.
+- `EXACT25_STRICT_ENDPOINT_GATE`: partial — 18/25; seven invalid endpoints
+  retained for runner/environment diagnosis.
 - `INTERMEDIATE_SIGNAL_GATE`: first signal present, prevalence not estimated.
 - `CRITIC_COMPARISON`: not run.
-- `ONLINE_RL`: disabled.
+- `LIVE_AGENT_CONTINUATION`: not run.
+- `ONLINE_RL`: not run.
 
 ## Variants and evidence strata
 
@@ -42,10 +46,13 @@ Supported now:
 
 - the panel and binding manifests are reproducibly frozen;
 - a broad path-level integrity problem exists in this selected panel;
-- one exact task was initialized and replayed successfully under PRoot.
+- 18/25 exact tasks meet the strict initialized, valid-endpoint replay gate
+  under PRoot; seven remain invalid and are retained for diagnosis;
 - the complete five-task Moto exact slice has endpoint self-consistency;
 - terminal labels hide a true regression excursion and a recoverable invalid
   region in this slice.
+- the wider exact-bound batch contains a second valid negative transition in
+  SQLFluff, without establishing prevalence or future-value information.
 
 Not supported now:
 
@@ -65,6 +72,8 @@ statistics are selection-conditioned and are not population estimates.
 - Patch integrity: `runs/patch_alignment_v01/patch_alignment_summary.json`
 - First replay receipt: `runs/qualification_v01/replay_receipt.json`
 - Moto aggregate: `runs/moto_intermediate_v01/aggregate_summary.json`
+- Exact-25 aggregate and next decision: [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md)
+- Exact-25 per-task curves: `runs/exact25_intermediate_v01/aggregate_summary.json`
 - Raw trajectory rows: omitted from the public repository; regenerate with the
   pinned selector and verify against the manifest hash.
 
@@ -78,6 +87,7 @@ statistics are selection-conditioned and are not population estimates.
 - Tool-outcome filtering: `replay_structured_edits.mutation_events`
 - Edit-level evaluator: `run_moto_intermediate.evaluate_state`
 - Moto aggregation: `summarize_moto_intermediate.main`
+- Exact-25 aggregation: `summarize_exact25_intermediate.aggregate_summaries`
 - Path confinement: `replay_structured_edits.confined_path`
 
 ## Reviewer questions
@@ -89,3 +99,5 @@ statistics are selection-conditioned and are not population estimates.
    evaluated on a balanced exact-bound replay subset without training a critic?
 4. Should invalid collection regions be modeled as a distinct state, or as a
    censored observation outside the two-dimensional `(F,R)` phenotype?
+5. Is the proposed matched-budget live-agent continuation comparison the
+   smallest decisive test of future-value information after replay repair?

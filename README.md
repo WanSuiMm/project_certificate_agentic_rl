@@ -13,7 +13,9 @@ critic training or online RL.
 3. [`ARCHITECTURE.md`](ARCHITECTURE.md): data flow, invariants, and exact scripts.
 4. [`MOTO_INTERMEDIATE_PROTOCOL_v01.md`](MOTO_INTERMEDIATE_PROTOCOL_v01.md):
    the frozen edit-level replay protocol.
-5. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
+5. [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md):
+   full exact-bound audit, invalid cases, and next decision.
+6. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
 
 The two large raw JSONL files are frozen locally but intentionally omitted from
 the public review repository because they contain third-party issue text and
@@ -41,6 +43,10 @@ selector/binder scripts regenerate them.
 - Scientific status: the slice establishes that endpoint labels hide meaningful
   edit-level path structure. It does not estimate prevalence or show a
   certificate-trained critic or online-RL gain.
+- Full exact-bound batch: 25/25 summaries, 184 states, but only 18/25 strict
+  endpoint gates pass. Seven invalid cases need targeted runner/environment
+  repair; two valid negative transitions are observed. No live agent, critic
+  training, or RL experiment has been run.
 
 ## Reproduce compact checks
 

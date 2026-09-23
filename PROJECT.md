@@ -2,10 +2,10 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: Moto intermediate audit complete; learning Gate 0 not run
-- Current artifact: frozen 40-rollout panel plus five-task exact Moto edit-level replay
+- Lifecycle status: exact-25 offline replay batch complete; 18/25 strict endpoint gates pass; learning Gate 0 not run
+- Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
-- Last verified: 2026-09-22
+- Last verified: 2026-09-23
 
 ## Research Contract
 
@@ -31,13 +31,18 @@
 
 ## Claim Boundary
 
-The project currently has no real-agent learning result. The five exact Moto
+The project currently has no live-agent continuation or learning result. The five exact Moto
 rollouts now pass endpoint replay self-consistency under the PRoot execution
 substrate. Across 52 states, one unresolved rollout has a genuine regression
 excursion `(4,0) -> (4,12) -> (4,1)`, while one resolved rollout reaches `(0,0)`,
 passes through a trajectory-induced uncollectable region, and recovers to
 `(0,0)`. This is first evidence that terminal labels hide useful path structure,
 but it is a single-repository slice and not a prevalence estimate.
+The subsequent exact-25 batch records 184 states, 119 valid `(F,R)` states,
+and two valid negative transitions across different repositories. Only 18/25
+tasks meet the strict endpoint gate; seven have invalid test observations from
+runner or environment faults. This is a partial engineering qualification,
+not a certificate-prediction result or a population estimate.
 The copied finite-world
 artifacts establish algebraic correctness, counterexamples, and certificate
 coverage in a 64-state generated setting. They do not establish critic gain,
@@ -61,6 +66,9 @@ not a claim about arbitrary repositories or general software engineering agents.
 - Replay qualification: `runs/qualification_v01/QUALIFICATION_SUMMARY.md`
 - Moto protocol: `MOTO_INTERMEDIATE_PROTOCOL_v01.md`
 - Moto aggregate: `runs/moto_intermediate_v01/aggregate_summary.json`
+- Exact-25 result and next gate: `EXACT25_RESULTS_AND_NEXT_v01.md`
+- Exact-25 aggregate: `runs/exact25_intermediate_v01/aggregate_summary.json`
+- Exact-25 aggregate generator: `python scripts/summarize_exact25_intermediate.py --run-dir RUN_DIR --expected-tasks 25`
 - Structured replay: `python scripts/replay_structured_edits.py --help`
 - Full experiment command: NOT_IMPLEMENTED
 - Results: engineering qualification only; no learning result
@@ -80,6 +88,9 @@ not a claim about arbitrary repositories or general software engineering agents.
 - Exploratory scientific evidence: the Moto slice contains one negative valid
   transition and one recoverable invalid region; terminal success alone hides
   both. This motivates, but does not establish, certificate predictive value.
+- Exact-25 qualification: batch 25/25 complete, strict endpoint gate 18/25;
+  65/184 state observations are invalid. These seven failed tasks remain in the
+  denominator pending targeted runner/environment repair.
 - Negative results: in the 64-state prior benchmark, exact suffix caching was faster
   and more informative than the abstract paired certificate.
 - Unsupported claims: certificate-supervised critic improvement, fixed-decomposition
@@ -95,9 +106,10 @@ not a claim about arbitrary repositories or general software engineering agents.
 
 ## Next Action
 
-Do not use the trajectory dataset's top-level `patch` as replay input. Extend the
-same frozen edit-level audit to a small repository-diverse exact-bound slice and
-separate valid `(F,R)` transitions from invalid collection regions. In parallel,
-define the cheapest certificate-derived feature that can be computed on these
-frozen states and tested without training a critic. Do not implement PPO before
-this gate.
+Do not use the trajectory dataset's top-level `patch` as replay input. Repair
+empty test-group semantics and diagnosed image dependencies in a new replay
+version, preserving v0.1. Then freeze repository-diverse pre-action checkpoints
+for matched-budget live-agent continuation evaluation and test a certificate
+feature against return-only and public-test baselines. Stop before online RL
+unless the preregistered held-out prediction gate passes. See
+`EXACT25_RESULTS_AND_NEXT_v01.md`.

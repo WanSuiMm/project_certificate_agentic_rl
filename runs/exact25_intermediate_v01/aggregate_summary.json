@@ -1,0 +1,1591 @@
+{
+  "protocol": "exact25_intermediate_v01",
+  "expected_task_count": 25,
+  "observed_task_count": 25,
+  "complete": true,
+  "endpoint_agreement_count": 23,
+  "endpoint_gate_pass_count": 18,
+  "all_endpoint_gates_pass": false,
+  "state_count": 184,
+  "valid_state_count": 119,
+  "transition_counts": {
+    "invalid": 59,
+    "negative": 2,
+    "neutral": 85,
+    "positive": 13
+  },
+  "trajectories_with_negative_transition": 2,
+  "trajectories_with_invalid_state": 8,
+  "tasks": [
+    {
+      "traj_id": "adrienverge__yamllint.8513d9b9.pr_591.mz3vj24e",
+      "instance_id": "adrienverge__yamllint.8513d9b9.pr_591",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 10,
+      "valid_state_count": 10,
+      "mutation_count": 9,
+      "transition_counts": {
+        "neutral": 8,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 365,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 365,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 365,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 365,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 365,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 364,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 364,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 7,
+          "F": 364,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 8,
+          "F": 364,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 9,
+          "F": 364,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "conan-io__conan.86f29e13.pr_17531.mz3vj24e",
+      "instance_id": "conan-io__conan.86f29e13.pr_17531",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 3,
+      "valid_state_count": 3,
+      "mutation_count": 2,
+      "transition_counts": {
+        "neutral": 1,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "dask__dask.5f61e423.pr_10422.mz3vj24e",
+      "instance_id": "dask__dask.5f61e423.pr_10422",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 3,
+      "valid_state_count": 3,
+      "mutation_count": 2,
+      "transition_counts": {
+        "neutral": 1,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "dask__dask.5f61e423.pr_10521.mz3vj24e",
+      "instance_id": "dask__dask.5f61e423.pr_10521",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 4,
+      "valid_state_count": 4,
+      "mutation_count": 3,
+      "transition_counts": {
+        "neutral": 2,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "dask__dask.5f61e423.pr_8686.mz3vj24e",
+      "instance_id": "dask__dask.5f61e423.pr_8686",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 5,
+      "valid_state_count": 5,
+      "mutation_count": 4,
+      "transition_counts": {
+        "neutral": 3,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "dask__dask.5f61e423.pr_9578.mz3vj24e",
+      "instance_id": "dask__dask.5f61e423.pr_9578",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 4,
+      "valid_state_count": 4,
+      "mutation_count": 3,
+      "transition_counts": {
+        "neutral": 2,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "facebookresearch__hydra.0f03eb60.pr_1560.oosvj10h",
+      "instance_id": "facebookresearch__hydra.0f03eb60.pr_1560",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 5,
+      "valid_state_count": 5,
+      "mutation_count": 4,
+      "transition_counts": {
+        "neutral": 3,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "facebookresearch__hydra.0f03eb60.pr_2543.mz3vj24e",
+      "instance_id": "facebookresearch__hydra.0f03eb60.pr_2543",
+      "declared_resolved": true,
+      "observed_resolved": false,
+      "endpoint_agrees": false,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 3,
+      "valid_state_count": 0,
+      "mutation_count": 2,
+      "transition_counts": {
+        "invalid": 2
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "getmoto__moto.694ce1f4.pr_5043.oosvj10h",
+      "instance_id": "getmoto__moto.694ce1f4.pr_5043",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 5,
+      "valid_state_count": 5,
+      "mutation_count": 4,
+      "transition_counts": {
+        "neutral": 3,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "getmoto__moto.694ce1f4.pr_6509.oosvj10h",
+      "instance_id": "getmoto__moto.694ce1f4.pr_6509",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 19,
+      "valid_state_count": 11,
+      "mutation_count": 18,
+      "transition_counts": {
+        "invalid": 9,
+        "neutral": 8,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 6,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 7,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 8,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 9,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 10,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 11,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 12,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 13,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 14,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 15,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 16,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 17,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 18,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "getmoto__moto.694ce1f4.pr_6557.mz3vj24e",
+      "instance_id": "getmoto__moto.694ce1f4.pr_6557",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 13,
+      "valid_state_count": 13,
+      "mutation_count": 12,
+      "transition_counts": {
+        "neutral": 12
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 7,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 8,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 9,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 10,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 11,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 12,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "getmoto__moto.694ce1f4.pr_7144.mz3vj24e",
+      "instance_id": "getmoto__moto.694ce1f4.pr_7144",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 8,
+      "valid_state_count": 8,
+      "mutation_count": 7,
+      "transition_counts": {
+        "negative": 1,
+        "neutral": 5,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 4,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 4,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 4,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 4,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 4,
+          "R": 12,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 4,
+          "R": 1,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 4,
+          "R": 1,
+          "valid": true
+        },
+        {
+          "state_index": 7,
+          "F": 4,
+          "R": 1,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "getmoto__moto.694ce1f4.pr_7946.mz3vj24e",
+      "instance_id": "getmoto__moto.694ce1f4.pr_7946",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 7,
+      "valid_state_count": 7,
+      "mutation_count": 6,
+      "transition_counts": {
+        "neutral": 6
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 2,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "iterative__dvc.1d6ea681.pr_5188.oosvj10h",
+      "instance_id": "iterative__dvc.1d6ea681.pr_5188",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 8,
+      "valid_state_count": 8,
+      "mutation_count": 7,
+      "transition_counts": {
+        "neutral": 7
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 7,
+          "F": 15,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "pandas-dev__pandas.95280573.pr_53078.mz3vj24e",
+      "instance_id": "pandas-dev__pandas.95280573.pr_53078",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 3,
+      "valid_state_count": 3,
+      "mutation_count": 2,
+      "transition_counts": {
+        "neutral": 1,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "pandas-dev__pandas.95280573.pr_56194.mz3vj24e",
+      "instance_id": "pandas-dev__pandas.95280573.pr_56194",
+      "declared_resolved": true,
+      "observed_resolved": true,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 4,
+      "valid_state_count": 4,
+      "mutation_count": 3,
+      "transition_counts": {
+        "neutral": 2,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 0,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "Project-MONAI__MONAI.a09c1f08.pr_4745.j51zqipu",
+      "instance_id": "Project-MONAI__MONAI.a09c1f08.pr_4745",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 5,
+      "valid_state_count": 0,
+      "mutation_count": 4,
+      "transition_counts": {
+        "invalid": 4
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 3,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 4,
+          "F": null,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "Project-MONAI__MONAI.a09c1f08.pr_5423.oosvj10h",
+      "instance_id": "Project-MONAI__MONAI.a09c1f08.pr_5423",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 8,
+      "valid_state_count": 0,
+      "mutation_count": 7,
+      "transition_counts": {
+        "invalid": 7
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 3,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 4,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 5,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 6,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 7,
+          "F": null,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "pydantic__pydantic.acb0f10f.pr_5483.mz3vj24e",
+      "instance_id": "pydantic__pydantic.acb0f10f.pr_5483",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 24,
+      "valid_state_count": 0,
+      "mutation_count": 23,
+      "transition_counts": {
+        "invalid": 23
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 3,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 4,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 5,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 6,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 7,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 8,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 9,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 10,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 11,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 12,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 13,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 14,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 15,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 16,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 17,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 18,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 19,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 20,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 21,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 22,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 23,
+          "F": null,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "pydicom__pydicom.7d361b3d.pr_1987.mz3vj24e",
+      "instance_id": "pydicom__pydicom.7d361b3d.pr_1987",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 6,
+      "valid_state_count": 0,
+      "mutation_count": 5,
+      "transition_counts": {
+        "invalid": 5
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 4,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 5,
+          "F": 1,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "python__mypy.e93f06ce.pr_10308.oosvj10h",
+      "instance_id": "python__mypy.e93f06ce.pr_10308",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 6,
+      "valid_state_count": 6,
+      "mutation_count": 5,
+      "transition_counts": {
+        "neutral": 5
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "python__mypy.e93f06ce.pr_12951.oosvj10h",
+      "instance_id": "python__mypy.e93f06ce.pr_12951",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 5,
+      "valid_state_count": 0,
+      "mutation_count": 4,
+      "transition_counts": {
+        "invalid": 4
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 4,
+          "F": 1,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "rustedpy__result.0b855e1e.pr_135.mz3vj24e",
+      "instance_id": "rustedpy__result.0b855e1e.pr_135",
+      "declared_resolved": true,
+      "observed_resolved": false,
+      "endpoint_agrees": false,
+      "endpoint_gate": false,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 6,
+      "valid_state_count": 0,
+      "mutation_count": 5,
+      "transition_counts": {
+        "invalid": 5
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 1,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 2,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 3,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 4,
+          "F": null,
+          "R": null,
+          "valid": false
+        },
+        {
+          "state_index": 5,
+          "F": null,
+          "R": null,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "traj_id": "scrapy__scrapy.35212ec5.pr_6374.mz3vj24e",
+      "instance_id": "scrapy__scrapy.35212ec5.pr_6374",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 8,
+      "valid_state_count": 8,
+      "mutation_count": 7,
+      "transition_counts": {
+        "neutral": 7
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 7,
+          "F": 10,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "traj_id": "sqlfluff__sqlfluff.50a1c4b6.pr_5880.mz3vj24e",
+      "instance_id": "sqlfluff__sqlfluff.50a1c4b6.pr_5880",
+      "declared_resolved": false,
+      "observed_resolved": false,
+      "endpoint_agrees": true,
+      "endpoint_gate": true,
+      "initialization_check_returncode": 0,
+      "initialization_apply_returncode": 0,
+      "state_count": 12,
+      "valid_state_count": 12,
+      "mutation_count": 11,
+      "transition_counts": {
+        "negative": 1,
+        "neutral": 9,
+        "positive": 1
+      },
+      "curve": [
+        {
+          "state_index": 0,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 1,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 2,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 3,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 4,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 5,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 6,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 7,
+          "F": 1,
+          "R": 1,
+          "valid": true
+        },
+        {
+          "state_index": 8,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 9,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 10,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        },
+        {
+          "state_index": 11,
+          "F": 1,
+          "R": 0,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}
