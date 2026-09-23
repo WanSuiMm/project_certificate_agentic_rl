@@ -10,8 +10,10 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import random
+import time
 
 import torch
 
@@ -57,18 +59,24 @@ def save_state(path: Path, known: dict, row: dict) -> None:
     known[key] = row
 
 
-def load_census(path: Path, selection: dict) -> dict[tuple[str, int], dict]:
-    status = json.loads((path / "run.json").read_text(encoding="utf-8"))["status"]
-    if status != "complete":
-        raise RuntimeError(f"one-edit census is not complete: {status}")
-    rows = [json.loads(line) for line in (path / "results.jsonl").read_text(encoding="utf-8").splitlines()]
-    expected = {(task_id, sample) for task_id in selection["ids"] for sample in range(16)}
-    found = {(row["instance_id"], row["sample"]) for row in rows}
-    if len(rows) != 448 or found != expected:
-        raise RuntimeError("one-edit census does not contain exactly 28 x 16 unique candidates")
+def ready_task_census(path: Path, task_id: str, task_index: int) -> list[dict] | None:
+    """Read only a complete task-contiguous block; ignore the live file tail."""
+    lines = (path / "results.jsonl").read_text(encoding="utf-8").splitlines()
+    block = lines[task_index * 16:(task_index + 1) * 16]
+    if len(block) < 16:
+        return None
+    rows = [json.loads(line) for line in block]
+    if (len(rows) != 16 or {row["sample"] for row in rows} != set(range(16))
+            or any(row["instance_id"] != task_id for row in rows)):
+        raise RuntimeError(f"incomplete or reordered P1 block: {task_id}")
     if any(row["status"] not in {"scored", "invalid_candidate", "invalid_body"} for row in rows):
-        raise RuntimeError("one-edit census contains infrastructure or task errors")
-    return {(row["instance_id"], row["sample"]): row for row in rows}
+        raise RuntimeError(f"P1 block contains task or scorer errors: {task_id}")
+    return [{"instance_id": task_id, "sample": row["sample"],
+             "status": row["status"], "completion": row["completion"],
+             "final_source_sha256": row["final_source_sha256"],
+             "generated_tokens": row["generated_tokens"],
+             "score": ({key: row["score"][key] for key in ("public", "p_T", "solved", "status")}
+                       if row["status"] != "invalid_body" else None)} for row in rows]
 
 
 def main() -> None:
@@ -79,6 +87,7 @@ def main() -> None:
     parser.add_argument("--q-results", required=True, type=Path)
     parser.add_argument("--census", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--census-pid", type=int, required=True)
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
     selection = json.loads(args.selection.read_text(encoding="utf-8"))
@@ -86,11 +95,9 @@ def main() -> None:
         raise ValueError("wrong frozen selection")
     if config["max_edits"] != 1 or config["max_generated_tokens_per_edit"] != 1024:
         raise ValueError("wrong body-action configuration")
-    census = load_census(args.census, selection)
-    census_sha = hashlib.sha256((args.census / "results.jsonl").read_bytes()).hexdigest()
+    task_ids = selection["ids"]
     metadata = {"kind": "eight_step_observational_trajectory_public_only",
-                "status": "running", "tasks": 28, "trajectories_per_task": 16, "steps": 8,
-                "source_census_sha256": census_sha,
+                "status": "running", "tasks": len(task_ids), "trajectories_per_task": 16, "steps": 8,
                 "selection_sha256": hashlib.sha256(args.selection.read_bytes()).hexdigest(),
                 "config_sha256": hashlib.sha256(args.config.read_bytes()).hexdigest(),
                 "model_revision": config["model_revision"],
@@ -98,11 +105,12 @@ def main() -> None:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     receipt = args.output_dir / "run.json"
     states_path = args.output_dir / "states.jsonl"
+    frozen_path = args.output_dir / "frozen_p1_inputs.jsonl"
     if receipt.exists():
         old = json.loads(receipt.read_text(encoding="utf-8"))
         if any(old[key] != metadata[key] for key in ("kind", "tasks", "trajectories_per_task",
-                                                  "steps", "source_census_sha256",
-                                                  "selection_sha256", "config_sha256", "model_revision")):
+                                                  "steps", "selection_sha256", "config_sha256",
+                                                  "model_revision")):
             raise RuntimeError("cannot resume with changed inputs")
         if old["status"] == "complete":
             return
@@ -117,6 +125,14 @@ def main() -> None:
             if key in known or sha256(row["source"]) != row["source_sha256"]:
                 raise RuntimeError(f"duplicate or corrupt saved state: {key}")
             known[key] = row
+    frozen = {}
+    if frozen_path.exists():
+        for line in frozen_path.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            key = row["instance_id"], row["sample"]
+            if key in frozen or "q" in row or (row.get("score") and "q" in row["score"]):
+                raise RuntimeError(f"duplicate or q-contaminated frozen P1 input: {key}")
+            frozen[key] = row
 
     device = torch.device("cuda:0")
     if not torch.cuda.is_available():
@@ -126,12 +142,33 @@ def main() -> None:
     torch.cuda.manual_seed_all(config["seed"])
     tokenizer, model = load_policy(config, device)
     executor = SWESmithModalExecutor()
-    items = load_selected(args.tasks, args.q_results, selection["ids"])
-    for item in items:
+    items = load_selected(args.tasks, args.q_results, task_ids)
+    for task_index, item in enumerate(items):
         task = item["task"]
         task_id = task["instance_id"]
         if all((task_id, sample, 8) in known for sample in range(16)):
             continue
+        if not all((task_id, sample) in frozen for sample in range(16)):
+            while True:
+                block = ready_task_census(args.census, task_id, task_index)
+                if block is not None:
+                    for row in block:
+                        key = task_id, row["sample"]
+                        if key in frozen:
+                            if frozen[key] != row:
+                                raise RuntimeError(f"P1 input changed: {key}")
+                            continue
+                        append(frozen_path, row)
+                        frozen[key] = row
+                    break
+                try:
+                    os.kill(args.census_pid, 0)
+                except ProcessLookupError as exc:
+                    census_receipt = args.census / "run.json"
+                    status = (json.loads(census_receipt.read_text(encoding="utf-8")).get("status")
+                              if census_receipt.exists() else "missing")
+                    raise RuntimeError(f"census exited before P1 block: {task_id}; status={status}") from exc
+                time.sleep(60)
         init = executor.call(task, mode="init")
         if not init["gold_self_consistent"]:
             raise RuntimeError(f"gold self-consistency failed: {task_id}")
@@ -149,7 +186,7 @@ def main() -> None:
         for sample in range(16):
             if (task_id, sample, 8) in known:
                 continue
-            first = census[(task_id, sample)]
+            first = frozen[(task_id, sample)]
             if (task_id, sample, 1) not in known:
                 try:
                     source = replace_callable_body(buggy, path, first["completion"])
@@ -164,8 +201,7 @@ def main() -> None:
                                                                  include_proxy=False))
                 else:
                     # The census already ran the public tests. Discard its q field.
-                    first_public = public_fields({key: first["score"][key]
-                                                  for key in ("public", "p_T", "solved", "status")})
+                    first_public = public_fields(first["score"])
                 save_state(states_path, known, {"instance_id": task_id, "trajectory_id": sample,
                            "step": 1, "source": source, "body": current_callable_body(source, path),
                            "source_sha256": sha256(source), "action_completion": first["completion"],
@@ -199,9 +235,12 @@ def main() -> None:
                            "invalid_body": invalid, "generated_tokens": len(action.token_ids) - action.prompt_length,
                            "feedback_given": feedback, **public})
         print(f"{task_id}: 16 trajectories through P8", flush=True)
-    if len(known) != 28 + 28 * 16 * 8:
+    if len(known) != len(task_ids) + len(task_ids) * 16 * 8:
         raise RuntimeError(f"incomplete trajectory state count: {len(known)}")
+    if len(frozen) != 448:
+        raise RuntimeError(f"incomplete frozen P1 inputs: {len(frozen)}")
     metadata.update(status="complete", states=len(known),
+                    frozen_p1_sha256=hashlib.sha256(frozen_path.read_bytes()).hexdigest(),
                     finished_utc=datetime.now(timezone.utc).isoformat())
     receipt.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
     print(f"complete: {len(known)} states", flush=True)

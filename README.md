@@ -10,8 +10,9 @@ zero gradient; no valid RL comparison or held-out result exists.
 A separate body-only one-edit census is now running on the frozen 28 tasks.
 Its [six-task provisional snapshot](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md)
 shows extra reference-proxy discrimination but is not an RL result. The same
-first edits are queued for public-feedback-only continuation to eight steps,
-followed by offline `q` grading at steps 0, 4, and 8; no multi-step result exists yet.
+first edits stream into public-feedback-only continuation to eight steps as
+each task's 16 P1 samples become ready. After completion, offline `q` grading
+covers every state P0–P8; no multi-step result exists yet.
 
 ## Start here
 

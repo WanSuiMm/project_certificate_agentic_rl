@@ -130,6 +130,9 @@ statistics are selection-conditioned and are not population estimates.
   `swesmith_agent_edit.current_callable_body`
 - Public-only sequential rollout: `continue_swesmith_body_trajectories.main`
 - Offline q: `grade_swesmith_trajectory_q.main`, worker `run(mode="proxy_only")`
+- Eight-step observation: ready 16-sample P1 blocks stream to P8 with public
+  feedback only; after completion, offline q covers every P0–P8 state, 3612
+  observations before per-task source-hash deduplication. No RL update here.
 - Real Modal checks: `smoke_swesmith_modal_image.main`,
   `smoke_swesmith_gold_modal.main`, `swesmith_gold_worker.main`
 

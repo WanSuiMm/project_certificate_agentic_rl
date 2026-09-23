@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-"""Wait for the frozen census, then run public-only continuation and offline q."""
+"""Stream ready P1 blocks into public-only trajectories, then grade all states."""
 
 from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
 import json
-import os
 from pathlib import Path
 import subprocess
 import sys
-import time
 
 
 def utc_now() -> str:
@@ -34,25 +32,12 @@ def main() -> None:
     scripts = Path(__file__).resolve().parent
     common = ["--selection", str(args.selection), "--tasks", str(args.tasks),
               "--q-results", str(args.q_results)]
-    write_receipt(receipt, "waiting_for_census", census=str(args.census),
+    write_receipt(receipt, "continuing_trajectories", census=str(args.census),
                   trajectories=str(args.trajectories), offline_q=str(args.offline_q))
     try:
-        while True:
-            census_receipt = args.census / "run.json"
-            if census_receipt.exists():
-                status = json.loads(census_receipt.read_text(encoding="utf-8"))["status"]
-                if status == "complete":
-                    break
-                if status != "running":
-                    raise RuntimeError(f"census ended without complete status: {status}")
-            try:
-                os.kill(args.census_pid, 0)
-            except ProcessLookupError as exc:
-                raise RuntimeError("census process exited without complete receipt") from exc
-            time.sleep(60)
-        write_receipt(receipt, "continuing_trajectories")
         subprocess.run([sys.executable, str(scripts / "continue_swesmith_body_trajectories.py"),
                         "--config", str(args.config), *common, "--census", str(args.census),
+                        "--census-pid", str(args.census_pid),
                         "--output-dir", str(args.trajectories)], check=True)
         write_receipt(receipt, "grading_q_offline")
         subprocess.run([sys.executable, str(scripts / "grade_swesmith_trajectory_q.py"),

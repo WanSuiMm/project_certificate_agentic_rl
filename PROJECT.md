@@ -31,7 +31,8 @@
 
 ## Claim Boundary
 
-The project currently has no live-agent continuation or learning result. The five exact Moto
+The project has a live-agent continuation in progress, but no completed
+continuation or learning result. The five exact Moto
 rollouts now pass endpoint replay self-consistency under the PRoot execution
 substrate. Across 52 states, one unresolved rollout has a genuine regression
 excursion `(4,0) -> (4,12) -> (4,1)`, while one resolved rollout reaches `(0,0)`,
@@ -145,10 +146,12 @@ agreement `q` from the isolated scorer. On 2026-09-23, a single 1.5B base-policy
 in `p_T` and `q`, and whether `q` breaks public-test ties. The first six
 complete tasks are reported provisionally in
 `BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`; the 28-task aggregate remains
-pending. A dependent run is queued to continue the same 448 first edits to
-eight sequential edits with public-test feedback only. Every program state is
-saved; only after all trajectories finish will a separate worker measure q at
-P0/P4/P8. This is observational sampling, not RL training. Test-arm training
+pending. A streaming continuation has been dispatched: each complete 16-sample
+P1 task block is immediately continued to eight sequential edits, without
+waiting for the entire census. The policy sees only public-test feedback.
+Every P0–P8 program state is saved; after all trajectories finish, a separate
+worker measures q at every state (3612 observations before source-hash
+deduplication). This is observational sampling, not RL training. Test-arm training
 and heldout evaluation have not run.
 See `runs/swesmith_survival_status_v01/summary.json` for the earlier failure.
 This agent is restricted to replacing one

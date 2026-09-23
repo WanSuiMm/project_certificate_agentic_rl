@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from continue_swesmith_body_trajectories import feedback_from_public, load_census, public_fields
+from continue_swesmith_body_trajectories import feedback_from_public, ready_task_census, public_fields
 
 
 class TrajectoryProtocolTest(unittest.TestCase):
@@ -18,16 +18,22 @@ class TrajectoryProtocolTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             public_fields({**result, "q": 0.8})
 
-    def test_census_must_be_complete_and_exact(self):
+    def test_census_ready_block_is_public_only(self):
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder)
-            (path / "run.json").write_text(json.dumps({"status": "running"}))
-            with self.assertRaisesRegex(RuntimeError, "not complete"):
-                load_census(path, {"ids": ["t"]})
-            (path / "run.json").write_text(json.dumps({"status": "complete"}))
             (path / "results.jsonl").write_text("", encoding="utf-8")
-            with self.assertRaisesRegex(RuntimeError, "28 x 16"):
-                load_census(path, {"ids": ["t"]})
+            self.assertIsNone(ready_task_census(path, "t", 0))
+            rows = [{"instance_id": "t", "sample": i, "status": "scored",
+                     "completion": "return x", "final_source_sha256": "abc",
+                     "generated_tokens": 3,
+                     "score": {"public": {"passed": 0, "total": 1}, "p_T": 0,
+                               "solved": False, "status": "scored", "q": 0.9}}
+                    for i in range(16)]
+            (path / "results.jsonl").write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+            block = ready_task_census(path, "t", 0)
+            self.assertEqual(len(block), 16)
+            self.assertNotIn("q", block[0]["score"])
+            self.assertIsNone(ready_task_census(path, "next", 1))
 
 
 if __name__ == "__main__":

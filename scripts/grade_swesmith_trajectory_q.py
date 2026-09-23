@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline q measurements for P0, P4, P8 after all trajectories finish."""
+"""Offline q measurements for every P0..P8 state after trajectories finish."""
 
 from __future__ import annotations
 
@@ -26,30 +26,32 @@ def main() -> None:
     parser.add_argument("--output-dir", required=True, type=Path)
     args = parser.parse_args()
     trajectory_receipt = json.loads((args.trajectories / "run.json").read_text(encoding="utf-8"))
-    if trajectory_receipt["status"] != "complete" or trajectory_receipt["states"] != 3612:
+    expected_states = 28 + 28 * 16 * 8
+    if (trajectory_receipt["status"] != "complete" or trajectory_receipt["states"] != expected_states
+            or trajectory_receipt["tasks"] != 28):
         raise RuntimeError("all 28 x 16 trajectories must reach P8 before offline q")
     state_path = args.trajectories / "states.jsonl"
     selected = json.loads(args.selection.read_text(encoding="utf-8"))
+    task_ids = selected["ids"]
     selected_states = {}
     for line in state_path.read_text(encoding="utf-8").splitlines():
         row = json.loads(line)
         if "q" in row or "q_invalid_candidate" in row:
             raise RuntimeError("online trajectory contains q")
-        if row["step"] not in {0, 4, 8}:
-            continue
         key = row["instance_id"], row["trajectory_id"], row["step"]
         if key in selected_states or sha256(row["source"]) != row["source_sha256"]:
             raise RuntimeError(f"duplicate or corrupt checkpoint: {key}")
         selected_states[key] = row
-    expected = {(task_id, None, 0) for task_id in selected["ids"]}
-    expected |= {(task_id, sample, step) for task_id in selected["ids"]
-                 for sample in range(16) for step in (4, 8)}
-    if selected_states.keys() != expected or len(selected_states) != 924:
-        raise RuntimeError("expected exactly 28 shared P0 and 448 each of P4/P8")
+    expected = {(task_id, None, 0) for task_id in task_ids}
+    expected |= {(task_id, sample, step) for task_id in task_ids
+                 for sample in range(16) for step in range(1, 9)}
+    expected_observations = expected_states
+    if selected_states.keys() != expected or len(selected_states) != expected_observations:
+        raise RuntimeError("missing required P0..P8 checkpoints")
 
     states_sha = hashlib.sha256(state_path.read_bytes()).hexdigest()
-    metadata = {"kind": "offline_reference_q_P0_P4_P8", "status": "running",
-                "states_sha256": states_sha, "requested_state_count": 924,
+    metadata = {"kind": "offline_reference_q_P0_P8", "status": "running",
+                "states_sha256": states_sha, "requested_state_count": expected_observations,
                 "started_utc": datetime.now(timezone.utc).isoformat()}
     args.output_dir.mkdir(parents=True, exist_ok=True)
     receipt = args.output_dir / "run.json"
@@ -71,7 +73,7 @@ def main() -> None:
             if key in measured:
                 raise RuntimeError(f"duplicate q measurement: {key}")
             measured[key] = row
-    items = load_selected(args.tasks, args.q_results, selected["ids"])
+    items = load_selected(args.tasks, args.q_results, task_ids)
     by_task = {item["task"]["instance_id"]: item for item in items}
     executor = SWESmithModalExecutor()
     for key in sorted(expected, key=lambda k: (k[0], k[2], -1 if k[1] is None else k[1])):
@@ -102,13 +104,13 @@ def main() -> None:
                                      "source_sha256": state["source_sha256"],
                                      "status": result["status"], "q": result["q"]},
                                     ensure_ascii=False) + "\n")
-    if len(observation_path.read_text(encoding="utf-8").splitlines()) != 924:
+    if len(observation_path.read_text(encoding="utf-8").splitlines()) != expected_observations:
         raise RuntimeError("offline q observations incomplete")
     metadata.update(status="complete", unique_measured_states=len(measured),
                     valid_q=sum(row["status"] == "q_scored" for row in measured.values()),
                     finished_utc=datetime.now(timezone.utc).isoformat())
     receipt.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
-    print(f"offline q complete: {len(measured)} unique states, 924 observations", flush=True)
+    print(f"offline q complete: {len(measured)} unique states, {expected_observations} observations", flush=True)
 
 
 if __name__ == "__main__":
