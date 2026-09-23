@@ -19,6 +19,8 @@
 | Exact-25 batch | `runs/exact25_intermediate_v01/aggregate_summary.json` | 25/25 summaries; 18/25 strict endpoint gates | Partial qualification, not 25 valid endpoints |
 | Exact-25 observations | same | 184 states; 119 valid; 65 invalid | Invalid collection is not an `(F,R)` failure count |
 | Exact-25 transitions | same | 13 positive, 85 neutral, 2 negative, 59 invalid-adjacent | Two observed regressions; no certificate test |
+| Real SWE-smith RL candidate slice | `runs/swesmith_agentic_64_candidates_v01/manifest.json` | 64 official rows, eight images, 48/16 split | Selection only; not 64 validated environments |
+| Real Modal gold smoke | `SWE_SMITH_AGENTIC_64_STATUS.md` | One h11 task: clean pass, injected fail, restored pass | One-task execution qualification; no agent rollout or RL |
 
 ## First replay conclusion
 

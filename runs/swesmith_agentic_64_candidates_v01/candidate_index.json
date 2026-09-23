@@ -1,0 +1,450 @@
+[
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.func_pm_remove_assign__5x4wkruy",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 27
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.func_pm_remove_assign__zoabe7vs",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 3
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.lm_rewrite__m18l6eca",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 38
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.func_pm_ctrl_shuffle__a18woe9c",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 1
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.lm_rewrite__lwbj327q",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 12
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.func_pm_ctrl_invert_if__b2edq4y9",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 20
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.func_pm_ctrl_invert_if__c4prqbfc",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "heldout",
+    "f2p_count": 5,
+    "p2p_count": 1
+  },
+  {
+    "instance_id": "sunpy__sunpy.f8edfd5c.func_pm_ctrl_shuffle__aossjhqx",
+    "image_name": "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "split": "heldout",
+    "f2p_count": 2,
+    "p2p_count": 11
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.pr_3022",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "train",
+    "f2p_count": 3,
+    "p2p_count": 1
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.lm_rewrite__ed6ai5z7",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "train",
+    "f2p_count": 2,
+    "p2p_count": 8
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.combine_file__pqh6xp6l",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 22
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.lm_rewrite__004ka3pp",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "train",
+    "f2p_count": 2,
+    "p2p_count": 11
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.lm_rewrite__0y7zdvel",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "train",
+    "f2p_count": 9,
+    "p2p_count": 95
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.lm_rewrite__r0kyjrwf",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "train",
+    "f2p_count": 5,
+    "p2p_count": 18
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.combine_file__loysz5my",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "heldout",
+    "f2p_count": 8,
+    "p2p_count": 2
+  },
+  {
+    "instance_id": "facebookresearch__hydra.0f03eb60.lm_rewrite__cwrumwzf",
+    "image_name": "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "split": "heldout",
+    "f2p_count": 4,
+    "p2p_count": 100
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.func_basic__430lolni",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "train",
+    "f2p_count": 7,
+    "p2p_count": 69
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.func_basic__furm153o",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "train",
+    "f2p_count": 7,
+    "p2p_count": 69
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.func_pm_ctrl_shuffle__k518ruwy",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "train",
+    "f2p_count": 3,
+    "p2p_count": 73
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.func_pm_ctrl_invert_if__oewmjyr1",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "train",
+    "f2p_count": 3,
+    "p2p_count": 73
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.func_pm_ctrl_shuffle__3zoiffcf",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "train",
+    "f2p_count": 10,
+    "p2p_count": 66
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.func_basic__3v18db0m",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 75
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.lm_rewrite__lwydv6nc",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "heldout",
+    "f2p_count": 1,
+    "p2p_count": 75
+  },
+  {
+    "instance_id": "python-hyper__h11.bed0dd4a.combine_file__eoteqsqn",
+    "image_name": "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "split": "heldout",
+    "f2p_count": 8,
+    "p2p_count": 68
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.lm_rewrite__58grwkl8",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "train",
+    "f2p_count": 4,
+    "p2p_count": 12
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.pr_229",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 15
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.lm_rewrite__oeqmfyq1",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 15
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.combine_file__9ga4hh9z",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "train",
+    "f2p_count": 4,
+    "p2p_count": 12
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.combine_file__jtga1vqq",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "train",
+    "f2p_count": 2,
+    "p2p_count": 14
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.lm_rewrite__uaqwvdnw",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 15
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.func_basic__68y76uqd",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "heldout",
+    "f2p_count": 1,
+    "p2p_count": 15
+  },
+  {
+    "instance_id": "hukkin__tomli.443a0c1b.lm_rewrite__a8do5ku4",
+    "image_name": "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "split": "heldout",
+    "f2p_count": 1,
+    "p2p_count": 15
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.func_pm_ctrl_invert_if__ucfg5jwb",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "train",
+    "f2p_count": 4,
+    "p2p_count": 73
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.combine_file__lei8r7jm",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "train",
+    "f2p_count": 6,
+    "p2p_count": 71
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.func_basic__i0isv1qr",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 76
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.func_basic__r61ngyr2",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "train",
+    "f2p_count": 3,
+    "p2p_count": 74
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.func_basic__80yvqfdc",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 76
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.func_basic__qeia2qfr",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 76
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.pr_2085",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "heldout",
+    "f2p_count": 2,
+    "p2p_count": 75
+  },
+  {
+    "instance_id": "django__channels.a144b4b8.func_pm_class_rm_funcs__xrnwbeb7",
+    "image_name": "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "split": "heldout",
+    "f2p_count": 8,
+    "p2p_count": 69
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_class_rm_funcs__fdibz29l",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_class_rm_funcs__1zezezqe",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_basic__3yir7e7s",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "train",
+    "f2p_count": 3,
+    "p2p_count": 15
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_assign__w2a8939s",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_assign__r6sanfog",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.lm_rewrite__f9p7evxv",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "heldout",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_ctrl_shuffle__lb0gs3i9",
+    "image_name": "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "split": "heldout",
+    "f2p_count": 1,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.lm_rewrite__ohf7uhjc",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 52
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__s3bic552",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 6
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.func_pm_remove_assign__9a4u83h2",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "train",
+    "f2p_count": 5,
+    "p2p_count": 51
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.lm_rewrite__57d1a6ra",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 4
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.func_pm_remove_assign__g5tnjn66",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "train",
+    "f2p_count": 2,
+    "p2p_count": 7
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.func_pm_ctrl_shuffle__lyjy8a2g",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "train",
+    "f2p_count": 5,
+    "p2p_count": 35
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.func_pm_ctrl_invert_if__5d6wfqr8",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "heldout",
+    "f2p_count": 5,
+    "p2p_count": 2
+  },
+  {
+    "instance_id": "tobymao__sqlglot.036601ba.func_pm_ctrl_shuffle__r2awnza2",
+    "image_name": "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "split": "heldout",
+    "f2p_count": 2,
+    "p2p_count": 17
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.combine_file__67ziqhs5",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "train",
+    "f2p_count": 8,
+    "p2p_count": 75
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.func_basic__o322s5z4",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "train",
+    "f2p_count": 1,
+    "p2p_count": 82
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.combine_file__mzgeptwj",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "train",
+    "f2p_count": 9,
+    "p2p_count": 74
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.func_pm_ctrl_shuffle__eqle6h52",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "train",
+    "f2p_count": 4,
+    "p2p_count": 79
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.func_pm_remove_cond__faplhgmw",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "train",
+    "f2p_count": 2,
+    "p2p_count": 81
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.combine_file__xaj03xl3",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "train",
+    "f2p_count": 10,
+    "p2p_count": 73
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.func_basic__hvpog885",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "heldout",
+    "f2p_count": 8,
+    "p2p_count": 75
+  },
+  {
+    "instance_id": "erikrose__parsimonious.0d3f5f93.func_basic__sswvmpia",
+    "image_name": "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93",
+    "split": "heldout",
+    "f2p_count": 1,
+    "p2p_count": 82
+  }
+]

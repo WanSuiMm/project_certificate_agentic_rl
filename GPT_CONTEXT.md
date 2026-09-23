@@ -26,6 +26,13 @@ before critic scaling or online RL.
 - `CRITIC_COMPARISON`: not run.
 - `LIVE_AGENT_CONTINUATION`: not run.
 - `ONLINE_RL`: not run.
+- `REAL_SWE_SMITH_64_SELECTION`: candidate slice frozen; 64 official task rows,
+  eight images, 48/16 split; not runtime-qualified.
+- `REAL_MODAL_IMAGE_SMOKE`: one h11 image starts at `/testbed`.
+- `REAL_MODAL_GOLD_SMOKE`: one h11 target test passes clean, fails after official
+  bug injection, and passes again after reversal; not full grading.
+- `AGENTIC_RL_ROLLOUT_OR_UPDATE`: not run. The Function-SWE trainer is a separate
+  surrogate and cannot train on the real-task slice.
 
 ## Variants and evidence strata
 
@@ -76,6 +83,11 @@ statistics are selection-conditioned and are not population estimates.
 - Exact-25 per-task curves: `runs/exact25_intermediate_v01/aggregate_summary.json`
 - Raw trajectory rows: omitted from the public repository; regenerate with the
   pinned selector and verify against the manifest hash.
+- New real-task candidate manifest and claim boundary:
+  [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md) and
+  `runs/swesmith_agentic_64_candidates_v01/manifest.json`. The compact
+  `candidate_index.json` lists all 64 IDs; raw task rows are locally frozen
+  and omitted from this public review repository.
 
 ## Exact code symbols
 
@@ -89,6 +101,11 @@ statistics are selection-conditioned and are not population estimates.
 - Moto aggregation: `summarize_moto_intermediate.main`
 - Exact-25 aggregation: `summarize_exact25_intermediate.aggregate_summaries`
 - Path confinement: `replay_structured_edits.confined_path`
+- Real-task selection: `freeze_swesmith_agentic_candidates.eligible` and
+  `freeze_swesmith_agentic_candidates.select`
+- Public task index: `summarize_swesmith_agentic_candidates.summarize`
+- Real Modal checks: `smoke_swesmith_modal_image.main`,
+  `smoke_swesmith_gold_modal.main`, `swesmith_gold_worker.main`
 
 ## Reviewer questions
 

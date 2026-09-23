@@ -20,3 +20,8 @@ runs/selection_v01/task_bindings.jsonl
 
 # Keep compact replay summaries public; retain per-state XML/text locally.
 runs/moto_intermediate_v01/getmoto__*/state_*/
+
+# Private operational staging and regenerable SWE-smith task text/patches.
+runs/function_swe_curation_v01/
+runs/seetacloud_deployment_v01/
+runs/swesmith_agentic_64_candidates_v01/tasks.jsonl

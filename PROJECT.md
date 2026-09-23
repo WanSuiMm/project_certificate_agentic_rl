@@ -2,7 +2,7 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 offline replay complete; oracle-proxy Modal scorer live toy smoke passed, RL not launched
+- Lifecycle status: exact-25 offline replay complete; oracle-proxy code deployed to a new 5090 and Modal scorer live toy smoke passed, RL not launched
 - Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-23
@@ -72,12 +72,13 @@ not a claim about arbitrary repositories or general software engineering agents.
 - New exploratory RL protocol: `ORACLE_PROXY_GRPO_SURVIVAL_v01.md`
 - Frozen RL config: `configs/oracle_proxy_grpo_survival_v01.json`
 - RL runtime and prerequisites: `FUNCTION_SWE_RUNTIME.md`
+- Real SWE-smith agentic pivot and 64-task candidate slice: `SWE_SMITH_AGENTIC_64_STATUS.md`
 - Modal isolation smoke: `python scripts/smoke_modal_function_swe.py --receipt NEW_RECEIPT_PATH`
 - Modal smoke result: `runs/modal_sandbox_smoke_v01/SMOKE_SUMMARY.md`
 - RL trainer: `python scripts/train_oracle_proxy_grpo.py --help`
 - RL code checks: `python -m unittest discover -s tests -v`
 - Structured replay: `python scripts/replay_structured_edits.py --help`
-- Full experiment command: implemented with Modal adapter; live toy smoke passed, but 64-task manifest and GPU smoke remain; not run
+- Full experiment command: implemented with Modal adapter; new-host live toy smoke passed, but 64-task manifest and pinned-model GPU smoke remain; not run
 - Results: engineering qualification only; no learning result
 
 ## Evidence State
@@ -116,7 +117,21 @@ not a claim about arbitrary repositories or general software engineering agents.
 The user has requested a distinct oracle-proxy GRPO survival experiment, using
 only terminal `Y`, `Y+0.5p_T`, and `Y+0.5q(P_T)` rewards. Its protocol is frozen
 in `ORACLE_PROXY_GRPO_SURVIVAL_v01.md`. The training loop and scoring contract
-have trusted local and live Modal toy smokes. Prepare a qualified 48/16 task
-manifest and matched one-update GPU smoke before dispatch; do not label
-preparation as a launched run. The original certificate/value-prediction Gate 0
-remains unpassed and separate from this exploratory RL screen.
+have trusted local and live Modal toy smokes, including on the new 5090 host.
+The committed source was deployed and all 36 tests pass there. A qualified
+48/16 task manifest is still absent; the uploaded source-proxy packages cover
+one Pydantic trajectory and three component probes, not 64 Function-SWE tasks.
+The pinned model's tokenizer loads, but the 3.09 GB weight transfer did not
+complete through either available download route during the bounded check.
+Prepare the qualified task manifest, finish a pinned-model GPU smoke, and run a
+matched one-update smoke before formal dispatch. Do not label preparation as a
+launched run. The original certificate/value-prediction Gate 0 remains unpassed
+and separate from this exploratory RL screen.
+
+The latest user direction is to use real SWE-smith repository tasks and actual
+agentic RL, not to curate synthetic Function-SWE samples. A pinned official
+64-task candidate slice and one real Modal image/gold-injection smoke now exist;
+see `SWE_SMITH_AGENTIC_64_STATUS.md`. This does not validate all eight images and 64 tasks
+or supply a multi-turn agent, repository-level semantic proxy, model inference,
+or training result. The Function-SWE trainer is not a valid launcher for the
+real-task slice.

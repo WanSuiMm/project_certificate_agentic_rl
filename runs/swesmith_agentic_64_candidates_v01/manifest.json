@@ -1,0 +1,32 @@
+{
+  "status": "official_task_candidates_not_runtime_qualified",
+  "dataset": "SWE-bench/SWE-smith-py",
+  "revision": "77cab9055d42ab4a5c25c89a8f937096db13558e",
+  "seed": "swesmith-agentic-64-v01",
+  "rows_scanned": 50908,
+  "tasks_sha256": "475b0731feed69a2bccd97d8635c26fe42a389f574c419757d892e87e3eb2013",
+  "selection": "single non-test Python file, nonempty issue, <=6000 patch chars, 1-10 F2P, 1-100 P2P; 8 hash-ranked images x 8 hash-ranked tasks; per image 6 train / 2 heldout",
+  "eligible_rows": 4510,
+  "viable_images": 52,
+  "selected_images": [
+    "swebench/swesmith.x86_64.sunpy_1776_sunpy.f8edfd5c",
+    "swebench/swesmith.x86_64.facebookresearch_1776_hydra.0f03eb60",
+    "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a",
+    "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b",
+    "swebench/swesmith.x86_64.django_1776_channels.a144b4b8",
+    "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac",
+    "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba",
+    "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93"
+  ],
+  "split_counts": {
+    "train": 48,
+    "heldout": 16
+  },
+  "not_verified": [
+    "Modal image startup",
+    "gold reverse patch",
+    "candidate agent loop",
+    "semantic proxy",
+    "GRPO training"
+  ]
+}

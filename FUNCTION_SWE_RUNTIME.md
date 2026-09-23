@@ -1,7 +1,10 @@
 # Function-SWE RL runtime
 
 Status: trusted-fixture mock and real two-score Modal smoke passed on
-2026-09-23. No 64-task manifest, GPU training, or held-out result exists yet.
+2026-09-23, including after deployment to the new 5090 host. Remote unit tests
+pass (36/36). No 64-task manifest, pinned-model GPU smoke, GPU training, or
+held-out result exists yet. The large pinned weight download was stopped after
+a bounded network check; no model inference was claimed.
 See `runs/modal_sandbox_smoke_v01/SMOKE_SUMMARY.md` for the claim boundary.
 
 `scripts/freeze_function_task.py` accepts one JSON spec with `task_id`, `issue`,
