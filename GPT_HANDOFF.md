@@ -1,52 +1,43 @@
-# GPT handoff: q-first SWE-smith RL engineering status
+# GPT handoff: one-edit RL survival attempt stopped
 
-- Review base: `85d88eb692ba753eb539d78d477055e0d7d3a309`
-- Evidence head: `ae9b436ec9e5621a7f66a426fcfc12b97e672dde`
-- This handoff is metadata-only. Review the evidence-head delta; the historical
-  exact-25 replay data and its claim boundary are unchanged.
+- Review base: `5439d82f88b79f186cf93b6c91c28b44ac01fe7c`
+- Evidence head: `ce38de1253538a56c42fb5dc2494679ab1400f1c`
+- This handoff is metadata-only; the historical exact-25 replay claims are
+  unchanged. Review only the evidence-head delta.
 
-## Read only these first
+## Read first
 
-1. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): task,
-   q-first qualification, model smoke, failed RL smoke, and remaining gates.
-2. [`runs/swesmith_online_status_v01/summary.json`](runs/swesmith_online_status_v01/summary.json):
-   timestamped compact counts and failure status.
-3. [`RESULTS.md`](RESULTS.md) and [`GPT_CONTEXT.md`](GPT_CONTEXT.md): canonical
-   evidence table and claim/non-claim boundary.
-4. For implementation review only: `scripts/swesmith_q_qualifier_worker.py`,
-   `scripts/swesmith_agent_worker.py`, `scripts/swesmith_modal_executor.py`,
-   and `scripts/train_swesmith_agent_grpo.py`.
+1. [`runs/swesmith_survival_status_v01/summary.json`](runs/swesmith_survival_status_v01/summary.json):
+   compact selection, launch, failure, and non-claim record.
+2. [`RESULTS.md`](RESULTS.md) and [`PROJECT.md`](PROJECT.md): current status and
+   research boundary.
+3. For implementation review: `scripts/train_swesmith_agent_grpo.py`,
+   `scripts/swesmith_agent_edit.py`, `scripts/swesmith_agent_worker.py`, and
+   `configs/swesmith_survival_20x8_v01.json`.
 
-Do not open raw task JSONL, local logs, caches, or model files first. They are
-omitted from this repository. The small q-first pool manifests preserve the
-pinned source revision and task-row hashes for regeneration.
+Do not open raw task rows, model caches, server logs, or local launch receipts;
+they are intentionally absent from GitHub.
 
 ## Decision-relevant delta
 
-The original 64 official rows were only candidates; the reference-semantic
-proxy requires a separate q-first screen. The first screen qualified 4/311.
-At a timestamped *partial* snapshot of the expanded 724-candidate pool,
-28/171 checked rows were q-valid; this is not a finalized selection or a
-policy success rate. The first four q-valid tasks passed official bug-injection
-self-consistency, all from one repository.
+The expanded q-first screen stopped at 29/636 q-valid tasks across three
+images. A 20-train / 8-heldout set was frozen, but the third image contributes
+only one task. A one-edit Test-vs-Semantic GRPO comparison was attempted, not
+completed. Its first semantic update produced 8/8 invalid edits, tied rewards
+within both groups, and `grad_norm=0`; the process was stopped. Subsequent
+one-task smokes also had zero gradients. There is no effective policy update,
+test-arm update, held-out solve rate, or evidence that q improves RL.
 
-The pinned Qwen2.5-Coder-1.5B-Instruct weight passed full-hash verification and
-an offline RTX 5090 load/generation smoke. A restricted, multi-edit agent on
-real repositories then attempted a four-task, one-update GRPO smoke. It failed
-in terminal q scoring with `callable_import_or_execution_failed` **before any
-optimizer update**. There is no three-arm RL result, held-out solve rate, or
-evidence that q improves learning. This agent replaces one function/method and
-gets public-test feedback; it is not a full SWE-agent tool workflow.
-
-The old Function-SWE trainer is a surrogate and must not be interpreted as the
-real-task launcher. The previous exact-25 trajectory replay result, including
-seven invalid endpoints, is unchanged.
+The code now scores candidate import failures as `q=0` and candidate public
+test collection failures as `p_T=0, solved=false`, while retaining fail-closed
+infrastructure errors. Non-semantic arms do not request q. Output generation
+has no independent token cap, ending at EOS or the pinned model's 32,768-token
+context boundary. These are engineering changes, not positive scientific
+results. The earlier Function-SWE trainer remains a separate surrogate.
 
 ## Reviewer questions
 
-1. Is the q bank's signature/default/literal-based input distribution
-   sufficiently independent of F2P/P2P public tests for the stated comparison?
-2. What minimal fix to terminal q scoring preserves the frozen qualification
-   definition and fails closed on import/execution errors?
-3. After that fix, what one-update smoke would establish engineering readiness
-   before freezing 40 q- and gold-qualified tasks and launching the three arms?
+1. Does this 1.5B replacement-function action format produce enough valid,
+   reward-distinct rollouts to justify another RL attempt?
+2. If not, should the one-edit survival line stop here rather than expanding
+   the task pool or inventing more proxy variants?
