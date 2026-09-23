@@ -1,44 +1,39 @@
-# GPT handoff: provisional reward information, no RL outcome
+# GPT handoff: stopped offline LoRA and partial P1–P8 capture
 
-- Review base: `cfbe828678b8a76f241b30a6eb857f6376f77225`
-- Evidence head: `35f3b610a073b9d455a85d21b09e15e1d671066d`
-- This handoff is metadata-only. Review the evidence-head delta; historical
-  exact-25 replay and the stopped zero-gradient GRPO attempt are unchanged.
+- Review base: `36165fea8b77414ca97a41025184cfcb1ce9b0fa`
+- Evidence head: `5737257` (commit containing code, summary, and raw snapshot)
+- This handoff is metadata-only; review the evidence-head delta first.
 
 ## Read first
 
-1. [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md):
-   fixed partial reward snapshot and its claim boundary.
-2. [`RESULTS.md`](RESULTS.md) and [`GPT_CONTEXT.md`](GPT_CONTEXT.md): formal
-   status and code/evidence routing.
-3. [`scripts/summarize_swesmith_reward_census.py`](scripts/summarize_swesmith_reward_census.py):
-   exact task-level and within-task computations.
+1. [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md): exact outcomes and claim limits.
+2. [`RESULTS.md`](RESULTS.md): canonical status table.
+3. [`configs/swesmith_offline_448_lora_v01.json`](configs/swesmith_offline_448_lora_v01.json) and the new `scripts/` files: implementation.
 
-Raw completions, per-sample rows, source states, logs, and machine-specific
-receipts are intentionally not uploaded. Do not open large JSONL first.
+The 9 MB partial source-state JSONL is secondary evidence; do not open it
+first. Earlier Moto/exact-25 replay claims are unchanged.
 
 ## Decision-relevant delta
 
-At the fixed 26/28-task snapshot, 328/416 candidates were executable and 43
-solved. On executable candidates, `Y+0.5p` varies on 11/26 tasks while
-`Y+0.5q` varies on 25/26; 14/26 have tied test reward but varying semantic
-reward. Among unresolved candidates, semantic reward splits 607/1,370
-within-task test-reward-tied pairs, across 23/26 tasks. Task is the meaningful
-coverage unit; pairs are dependent. Two unresolved executable candidates have
-q=1 on the finite bank. This supports extra reward resolution, **not** useful
-future credit, trained-policy improvement, or a result on the final 28-task
-census.
+Fixed-data Test and Semantic LoRA arms each completed 20 updates with nonzero
+gradients. On the same 128 held-out frozen completions, their task-macro
+candidate-ranking concordances were equal: 0.6581 for terminal outcome,
+0.6887 for Test reward, and 0.8018 for Semantic reward. This is **not** a
+solve-rate or on-policy RL result; it provides no evidence of a semantic-arm
+advantage. There were no new held-out rollouts.
 
-The separate public-feedback-only eight-step observation remains in progress;
-all-state offline q and matched Test-vs-Semantic LoRA training have not run.
-The model is frozen during the census and trajectory observation. Local tests:
-51 passed.
+The requested capture-only eight-step run was terminated after 438 state rows:
+54 complete P1–P8 trajectories across four tasks, far short of 448 planned.
+P2–P8 contain source states only: **no test, terminal, or q values**. The
+deferred offline q process did not start. The raw receipt still says `running`
+because of external termination; the stopped-snapshot document governs status.
+
+Validation: new scripts passed `py_compile`; `python -m pytest -q tests`
+passed 51 tests. Whole-repository pytest collection collides on two unrelated
+user-pasted `test_probe.py` copies; no project test failed.
 
 ## Reviewer questions
 
-1. Are the task-level reward-variation counts and executable-only denominator
-   sufficient to support the narrow extra-resolution claim?
-2. Could finite-bank q saturation (`q=1`, unresolved) invalidate the proposed
-   use as shaping reward despite the observed extra resolution?
-3. Which held-out, matched-budget LoRA intervention would actually test whether
-   that extra resolution improves long-horizon repair?
+1. Does the fixed-candidate ranking have enough sensitivity to detect a useful policy change after only 20 offline updates?
+2. What new on-policy, held-out solve-rate experiment would be necessary before claiming that semantic `q` improves RL?
+3. Should the ungraded, incomplete P1–P8 state capture be retained solely as a reproducibility artifact?
