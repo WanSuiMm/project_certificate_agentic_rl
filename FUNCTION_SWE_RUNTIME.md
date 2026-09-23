@@ -1,7 +1,8 @@
 # Function-SWE RL runtime
 
-Status: code and trusted-fixture mock smoke only. No 64-task manifest, real
-Modal smoke, GPU training, or held-out result exists yet.
+Status: trusted-fixture mock and real two-score Modal smoke passed on
+2026-09-23. No 64-task manifest, GPU training, or held-out result exists yet.
+See `runs/modal_sandbox_smoke_v01/SMOKE_SUMMARY.md` for the claim boundary.
 
 `scripts/freeze_function_task.py` accepts one JSON spec with `task_id`, `issue`,
 `target_function`, `buggy_source`, `reference_source`, `provenance`, nonempty
@@ -65,5 +66,6 @@ start independently from the same pinned base model. The trainer records setup
 hashes, task schedule, rollouts, training metrics and deterministic held-out
 pass@1 at updates 0/20/40/60/80/100. Held-out execution omits proxy scoring.
 The endpoint here is Function-SWE pure-function test solving; it is **not** an
-official full-repository SWE-smith solve. The Modal adapter is implemented but
-has not been live-validated; no AutoDL deployment wrapper exists.
+official full-repository SWE-smith solve. The Modal adapter has a live toy
+transport smoke but no full-scale performance measurement. No AutoDL deployment
+wrapper exists.

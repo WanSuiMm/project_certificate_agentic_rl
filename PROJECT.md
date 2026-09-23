@@ -2,7 +2,7 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 offline replay complete; oracle-proxy GRPO code has a trusted-fixture smoke, not launched
+- Lifecycle status: exact-25 offline replay complete; oracle-proxy Modal scorer live toy smoke passed, RL not launched
 - Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-23
@@ -73,10 +73,11 @@ not a claim about arbitrary repositories or general software engineering agents.
 - Frozen RL config: `configs/oracle_proxy_grpo_survival_v01.json`
 - RL runtime and prerequisites: `FUNCTION_SWE_RUNTIME.md`
 - Modal isolation smoke: `python scripts/smoke_modal_function_swe.py --receipt NEW_RECEIPT_PATH`
+- Modal smoke result: `runs/modal_sandbox_smoke_v01/SMOKE_SUMMARY.md`
 - RL trainer: `python scripts/train_oracle_proxy_grpo.py --help`
 - RL code checks: `python -m unittest discover -s tests -v`
 - Structured replay: `python scripts/replay_structured_edits.py --help`
-- Full experiment command: implemented with Modal adapter but requires live Modal smoke and qualified 64-task manifest; not run
+- Full experiment command: implemented with Modal adapter; live toy smoke passed, but 64-task manifest and GPU smoke remain; not run
 - Results: engineering qualification only; no learning result
 
 ## Evidence State
@@ -115,7 +116,7 @@ not a claim about arbitrary repositories or general software engineering agents.
 The user has requested a distinct oracle-proxy GRPO survival experiment, using
 only terminal `Y`, `Y+0.5p_T`, and `Y+0.5q(P_T)` rewards. Its protocol is frozen
 in `ORACLE_PROXY_GRPO_SURVIVAL_v01.md`. The training loop and scoring contract
-have a trusted local toy smoke. Prepare a qualified 48/16 task manifest, a
-live Modal isolation smoke, and matched one-update GPU smoke before dispatch; do not label
+have trusted local and live Modal toy smokes. Prepare a qualified 48/16 task
+manifest and matched one-update GPU smoke before dispatch; do not label
 preparation as a launched run. The original certificate/value-prediction Gate 0
 remains unpassed and separate from this exploratory RL screen.
