@@ -1,39 +1,26 @@
-# GPT handoff: stopped offline LoRA and partial P1–P8 capture
+# GPT handoff: eight-step semantic GRPO code, no new run
 
-- Review base: `36165fea8b77414ca97a41025184cfcb1ce9b0fa`
-- Evidence head: `5737257` (commit containing code, summary, and raw snapshot)
-- This handoff is metadata-only; review the evidence-head delta first.
+- Review base: `885275c3f7fabead88a20fc523b6cfa7259e5ecb`
+- Evidence head: `a3b5a52` (experiment code, protocol, and tests)
+- This handoff is metadata-only. Review the evidence-head delta first.
 
 ## Read first
 
-1. [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md): exact outcomes and claim limits.
-2. [`RESULTS.md`](RESULTS.md): canonical status table.
-3. [`configs/swesmith_offline_448_lora_v01.json`](configs/swesmith_offline_448_lora_v01.json) and the new `scripts/` files: implementation.
-
-The 9 MB partial source-state JSONL is secondary evidence; do not open it
-first. Earlier Moto/exact-25 replay claims are unchanged.
+1. [`LONG_HORIZON_GRPO_PROTOCOL_20260924.md`](LONG_HORIZON_GRPO_PROTOCOL_20260924.md): three experiments, reward definitions, and claim limits.
+2. [`CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md`](CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md): public-feedback rollout and offline q ordering.
+3. [`RESULTS.md`](RESULTS.md): canonical results, including the unchanged negative/offline evidence.
+4. [`scripts/train_swesmith_long_horizon_grpo.py`](scripts/train_swesmith_long_horizon_grpo.py): on-policy Test and Semantic arms; [`scripts/summarize_swesmith_trajectory_grpo_signal.py`](scripts/summarize_swesmith_trajectory_grpo_signal.py): frozen-policy census summary.
 
 ## Decision-relevant delta
 
-Fixed-data Test and Semantic LoRA arms each completed 20 updates with nonzero
-gradients. On the same 128 held-out frozen completions, their task-macro
-candidate-ranking concordances were equal: 0.6581 for terminal outcome,
-0.6887 for Test reward, and 0.8018 for Semantic reward. This is **not** a
-solve-rate or on-policy RL result; it provides no evidence of a semantic-arm
-advantage. There were no new held-out rollouts.
+The earlier open-loop/no-feedback capture was not silently reused. A new eight-edit closed-loop pipeline records public-test feedback after each edit, keeps q hidden from the policy, then computes q for all P0–P8 states offline. It uses a persistent sandbox per task, transfers the 256-case q bank once, and deduplicates identical source states.
 
-The requested capture-only eight-step run was terminated after 438 state rows:
-54 complete P1–P8 trajectories across four tasks, far short of 448 planned.
-P2–P8 contain source states only: **no test, terminal, or q values**. The
-deferred offline q process did not start. The raw receipt still says `running`
-because of external termination; the stopped-snapshot document governs status.
+The primary intervention now has two matched on-policy whole-trajectory GRPO arms: `Y8 + 0.5 p8` and `Y8 + 0.5 q8`. Each task group has 16 fresh trajectories, eight edits each, with one group-relative advantage per trajectory. An opt-in step-wise credit extension exists but is not the primary experiment. `Y8` denotes selected public-test resolution, not an independent hidden grader.
 
-Validation: new scripts passed `py_compile`; `python -m pytest -q tests`
-passed 51 tests. Whole-repository pytest collection collides on two unrelated
-user-pasted `test_probe.py` copies; no project test failed.
+The server was off: **none of these three new experiments has run**. No new scientific result or timing claim follows from this commit. The previous 54 open-loop trajectories and fixed-P1 LoRA comparison remain separate, unchanged diagnostics. Local verification: `python -m pytest -q tests` passed 61 tests; staged diff and secret scans passed.
 
 ## Reviewer questions
 
-1. Does the fixed-candidate ranking have enough sensitivity to detect a useful policy change after only 20 offline updates?
-2. What new on-policy, held-out solve-rate experiment would be necessary before claiming that semantic `q` improves RL?
-3. Should the ungraded, incomplete P1–P8 state capture be retained solely as a reproducibility artifact?
+1. Does the frozen-policy eight-step census show Semantic rescue of groups tied under Test reward?
+2. On matched fresh policy rollouts, does Semantic improve held-out public-test solve@8 versus Test at equal environment steps?
+3. Only if the primary comparison is informative, does step-wise credit add benefit beyond whole-trajectory GRPO?
