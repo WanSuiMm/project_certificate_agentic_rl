@@ -1,0 +1,46 @@
+{
+  "status": "pre_formal_engineering",
+  "dataset": "SWE-bench/SWE-smith-py",
+  "dataset_revision": "77cab9055d42ab4a5c25c89a8f937096db13558e",
+  "q_first_v01": {
+    "checked": 311,
+    "q_valid": 4,
+    "interpretation": "completed first generic-input screen; insufficient for RL task split"
+  },
+  "q_first_v03_snapshot": {
+    "observed_at_utc": "2026-09-23T13:38:12.367752+00:00",
+    "status": "partial_running_snapshot",
+    "pool_candidates": 724,
+    "checked": 171,
+    "q_valid": 28,
+    "skip": 143,
+    "results_prefix_sha256": "88a19484250cdbb88a6221201af09f4a647c8dd92509a844975aedd621e23b461",
+    "leading_skip_reasons": {
+      "unknown_parameter_type": 43,
+      "q_outside_0.05_to_0.95_headroom": 34,
+      "unsupported_arity": 25,
+      "not_one_sync_callable": 20
+    }
+  },
+  "gold_self_consistency_v01": {
+    "checked": 4,
+    "valid": 4,
+    "scope": "one repository; engineering check"
+  },
+  "pinned_model_gpu_smoke": {
+    "status": "pass",
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+    "weight_sha256": "c1b9b30e907950516ba3c646bdf570d8084c25a6410a0cdca80cf04b11bc13a8",
+    "generated_tokens": 16,
+    "peak_allocated_gib": 2.887
+  },
+  "one_update_rl_smoke": {
+    "status": "failed_before_update",
+    "arm": "semantic",
+    "tasks": 4,
+    "error": "ScorerError: worker_error/SkipTask/callable_import_or_execution_failed",
+    "claim": "no completed GRPO update or held-out RL result"
+  },
+  "formal_rl": "not_launched"
+}

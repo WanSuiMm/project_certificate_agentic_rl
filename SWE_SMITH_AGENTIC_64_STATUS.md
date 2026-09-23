@@ -2,7 +2,8 @@
 
 Date: 2026-09-23. This is a new, user-directed pivot to real repository tasks,
 not an amendment that makes the earlier Function-SWE result into agentic RL.
-No policy rollout or RL update has launched.
+No formal policy rollout or RL update has completed. A restricted one-update
+engineering smoke failed in the terminal q scorer before an optimizer update.
 
 ## Official task source and 64-task candidate slice
 
@@ -66,3 +67,30 @@ images/tasks; wire a real multi-turn agent harness to Modal; construct and freez
 the reference-behavior bank independently of public tests; run a matched
 one-update 5090 smoke; only then dispatch the three RL arms. Preserve all
 failures in the denominator or make exclusions before any policy outcomes.
+
+## Q-first and fixed-model update (2026-09-23)
+
+The original 64 are not assumed q-compatible. A new outcome-blind selector
+streams the same pinned 50,908-row dataset, prioritizes function-level tasks,
+and qualifies each in its official network-blocked Modal image. The 256-input
+bank is generated from callable signatures, defaults, source literals and
+generic relational perturbations, never F2P/P2P inputs. It is kept only when
+the clean reference is deterministic, the official bug changes 13–243 of the
+256 observations, and the callable signature remains unchanged. The first
+screen qualified 4/311 tasks; its low yield is retained, not hidden. A broader
+pool of 724 candidates across 15 images is currently being screened. These
+are qualification counts, not learning results. A separate gold check found
+the first four qualified tasks reproduced the official failure.
+
+The pinned Qwen2.5-Coder-1.5B-Instruct weight was downloaded in eight parallel
+range streams and verified by full SHA-256 against the pinned Hugging Face blob.
+An offline RTX 5090 BF16 load/generation smoke passed: 16 new tokens and
+2.887 GiB peak allocated memory. A four-task, one-update engineering smoke
+was attempted using three sequential replacement edits and official public
+test feedback per rollout, with terminal `q` hidden from the agent. This is a
+restricted function/method-edit agent on real repositories, **not** a full
+SWE-agent shell/editor workflow. It failed in the terminal q scorer with
+`worker_error/SkipTask/callable_import_or_execution_failed` before any optimizer
+update. This is an engineering failure, not a policy outcome. Formal arms still
+require a completed one-update smoke and at least 40 q- and gold-qualified
+tasks frozen before policy outcomes.

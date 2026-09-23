@@ -3,14 +3,15 @@
 This project asks whether program-semantic certificates expose a useful
 intermediate state for predicting terminal success on real coding-agent
 trajectories. The original frozen SWE-smith trajectory audit is complete.
-A separate real-task agentic-RL preparation branch now has 64 official
-SWE-smith candidate tasks and a one-task Modal execution check; it has not
-launched policy training.
+A separate real-task agentic-RL preparation branch has 64 original candidate
+tasks, an active q-first qualification screen, and an offline 5090 model smoke.
+Its first restricted-agent RL engineering smoke failed before an optimizer
+update; no formal three-arm policy experiment has launched.
 
 ## Start here
 
 1. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
-   real-task pivot, official data provenance, Modal smoke, and unfulfilled gates.
+   real-task pivot, qualification protocol, engineering failure, and open gates.
 2. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): compact task definition, claim boundary,
    code map, and reviewer questions.
 3. [`RESULTS.md`](RESULTS.md): canonical aggregates and formal status.
@@ -25,7 +26,8 @@ Separate exploratory RL code: [`ORACLE_PROXY_GRPO_SURVIVAL_v01.md`](ORACLE_PROXY
 defines the frozen three-arm comparison; [`FUNCTION_SWE_RUNTIME.md`](FUNCTION_SWE_RUNTIME.md)
 maps its code, task format, and unfulfilled isolation/task prerequisites. It has
 not produced a training result. The Modal Sandbox scorer passed a live two-score
-toy smoke; the frozen 64-task manifest and GPU training smoke remain pending.
+toy smoke; the original 64-task manifest is frozen, but the real-task GRPO
+update has not passed.
 Do not run that Function-SWE trainer on the new repository-level task slice.
 For the new slice, start with
 [`runs/swesmith_agentic_64_candidates_v01/manifest.json`](runs/swesmith_agentic_64_candidates_v01/manifest.json),
@@ -61,8 +63,15 @@ selector/binder scripts regenerate them.
   certificate-trained critic or online-RL gain.
 - Full exact-bound batch: 25/25 summaries, 184 states, but only 18/25 strict
   endpoint gates pass. Seven invalid cases need targeted runner/environment
-  repair; two valid negative transitions are observed. No live agent, critic
-  training, or RL experiment has been run.
+  repair; two valid negative transitions are observed. This historical batch
+  has no live-agent continuation, critic training, or RL result.
+- Real-task q-first screen: 4/311 in the first completed screen; an expanded
+  724-candidate screen had 28 qualifying tasks among 171 checked at its
+  timestamped partial snapshot. This is selection, not policy performance.
+- Fixed-model smoke: pinned Qwen2.5-Coder-1.5B-Instruct loaded and generated
+  on RTX 5090. The restricted-agent one-update GRPO smoke failed in terminal
+  q scoring before an optimizer update. See
+  [`summary.json`](runs/swesmith_online_status_v01/summary.json).
 
 ## Reproduce compact checks
 

@@ -31,8 +31,14 @@ before critic scaling or online RL.
 - `REAL_MODAL_IMAGE_SMOKE`: one h11 image starts at `/testbed`.
 - `REAL_MODAL_GOLD_SMOKE`: one h11 target test passes clean, fails after official
   bug injection, and passes again after reversal; not full grading.
-- `AGENTIC_RL_ROLLOUT_OR_UPDATE`: not run. The Function-SWE trainer is a separate
-  surrogate and cannot train on the real-task slice.
+- `Q_FIRST_QUALIFICATION`: first screen 4/311; expanded screen 28/171 at a
+  timestamped partial snapshot, not a finalized task set.
+- `PINNED_MODEL_GPU_SMOKE`: passed 16-token offline generation on RTX 5090.
+- `RESTRICTED_AGENT_RL_SMOKE`: failed in terminal q scoring before any optimizer
+  update; no completed GRPO update or formal three-arm result. This is a
+  function/method replacement agent, not a full SWE-agent workflow.
+- `AGENTIC_RL_ROLLOUT_OR_UPDATE`: no completed update. The Function-SWE trainer
+  is a separate surrogate and cannot train on the real-task slice.
 
 ## Variants and evidence strata
 
@@ -88,6 +94,8 @@ statistics are selection-conditioned and are not population estimates.
   `runs/swesmith_agentic_64_candidates_v01/manifest.json`. The compact
   `candidate_index.json` lists all 64 IDs; raw task rows are locally frozen
   and omitted from this public review repository.
+- Timestamped q-first, model, and RL-smoke status:
+  [`runs/swesmith_online_status_v01/summary.json`](runs/swesmith_online_status_v01/summary.json).
 
 ## Exact code symbols
 

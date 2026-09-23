@@ -1,0 +1,39 @@
+{
+  "status": "q_qualification_pool_not_policy_training_set",
+  "dataset": "SWE-bench/SWE-smith-py",
+  "revision": "77cab9055d42ab4a5c25c89a8f937096db13558e",
+  "seed": "swesmith-qfirst-pool-v01",
+  "image_keywords": [
+    "python-string-similarity",
+    "tomli",
+    "python-hyper_1776_h11",
+    "sqlglot",
+    "parsimonious"
+  ],
+  "max_per_image": 80,
+  "rows_scanned": 50908,
+  "eligible_counts": {
+    "swebench/swesmith.x86_64.erikrose_1776_parsimonious.0d3f5f93": 64,
+    "swebench/swesmith.x86_64.hukkin_1776_tomli.443a0c1b": 43,
+    "swebench/swesmith.x86_64.luozhouyang_1776_python-string-similarity.115acaac": 50,
+    "swebench/swesmith.x86_64.python-hyper_1776_h11.bed0dd4a": 74,
+    "swebench/swesmith.x86_64.tobymao_1776_sqlglot.036601ba": 395
+  },
+  "chosen_count": 311,
+  "families": {
+    "func_basic": 113,
+    "func_pm_ctrl_invert_if": 23,
+    "lm_rewrite": 52,
+    "func_pm_class_rm_funcs": 10,
+    "func_pm_remove_assign": 23,
+    "func_pm_ctrl_shuffle": 36,
+    "func_pm_remove_cond": 30,
+    "func_pm_class_rm_base": 4,
+    "func_pm_op_change_const": 3,
+    "func_pm_remove_wrapper": 1,
+    "func_pm_op_change": 3,
+    "func_pm_op_swap": 8,
+    "func_pm_remove_loop": 5
+  },
+  "tasks_sha256": "eade31cceb08d3e04f102e36a1144abea41216d32b895e39459e819e66c21b5e"
+}

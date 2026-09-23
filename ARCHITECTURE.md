@@ -61,6 +61,14 @@ pre/post endpoint tests + replay receipt
 | `scripts/summarize_moto_intermediate.py` | compact endpoint gates, curves, and transition counts |
 | `scripts/audit_replay_surface.py` | undo and shell-side mutation audit for exact-bound rows |
 | `scripts/summarize_swesmith_selection.py` | descriptive, selection-conditioned panel summary |
+| `scripts/build_swesmith_qfirst_pool.py` | outcome-blind function-level candidate pool from pinned tasks |
+| `scripts/swesmith_q_qualifier_worker.py` | generic-input reference/bug agreement bank in official image |
+| `scripts/batch_swesmith_q_modal.py` | batched Modal q qualification |
+| `scripts/freeze_swesmith_q_selection.py` | freeze qualified train/evaluation selection |
+| `scripts/swesmith_agent_edit.py` | restricted replacement-edit action parser and confinement |
+| `scripts/swesmith_agent_worker.py` | official-image rollout with public-test feedback |
+| `scripts/swesmith_modal_executor.py` | remote sandbox scoring interface |
+| `scripts/train_swesmith_agent_grpo.py` | pinned-model restricted-agent GRPO trainer; first smoke failed before update |
 | `tests/` | unit checks for selection, integrity audit, replay, and prior manifests |
 
 ## Completed bounded slice

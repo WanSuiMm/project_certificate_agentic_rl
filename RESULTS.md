@@ -21,6 +21,11 @@
 | Exact-25 transitions | same | 13 positive, 85 neutral, 2 negative, 59 invalid-adjacent | Two observed regressions; no certificate test |
 | Real SWE-smith RL candidate slice | `runs/swesmith_agentic_64_candidates_v01/manifest.json` | 64 official rows, eight images, 48/16 split | Selection only; not 64 validated environments |
 | Real Modal gold smoke | `SWE_SMITH_AGENTIC_64_STATUS.md` | One h11 task: clean pass, injected fail, restored pass | One-task execution qualification; no agent rollout or RL |
+| Q-first first screen | `runs/swesmith_online_status_v01/summary.json` | 4/311 q-valid | Qualification yield, not RL performance |
+| Q-first expanded screen | same, timestamped snapshot | 28/171 q-valid from 724 candidates | Partial running snapshot; no frozen formal set |
+| First four q-valid gold checks | same | 4/4 self-consistent, one repository | Engineering qualification only |
+| Pinned model GPU smoke | same | 16-token generation; 2.887 GiB peak allocated | Model loading works, not training |
+| Restricted-agent one-update smoke | same | terminal q scorer failed before optimizer update | No GRPO update or scientific result |
 
 ## First replay conclusion
 
