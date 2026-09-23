@@ -49,9 +49,10 @@ def append_jsonl(path: Path, row: dict[str, Any]) -> None:
 
 
 def generate_action(model: Any, tokenizer: Any, prompt: str, *, device: torch.device,
-                    context_tokens: int, max_new_tokens: int, sample: bool) -> Action:
+                    context_tokens: int, max_new_tokens: int, sample: bool,
+                    system_prompt: str = "You are a Python repair agent. Output exactly one complete replacement function definition.") -> Action:
     messages = [
-        {"role": "system", "content": "You are a Python repair agent. Output exactly one complete replacement function definition."},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": prompt},
     ]
     encoded = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True,

@@ -43,6 +43,15 @@ before critic scaling or online RL.
   8/8 edits were invalid, within-group rewards tied, and gradient was zero.
   Stopped without an effective parameter update, test-arm update, or heldout
   result; see `runs/swesmith_survival_status_v01/summary.json`.
+- `BODY_CENSUS_28X16`: running; a frozen six-task snapshot shows 79/96
+  executable candidates, task-level `q` variance on 6/6 versus public-test
+  variance on 2/6, and 197/408 within-task public-test ties split by `q`.
+  See `BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`. This is observational
+  information, not long-horizon credit or RL improvement.
+- `EIGHT_STEP_TRAJECTORIES`: dependent continuation queued, not complete.
+  It reuses each census P1, saves P0 through P8, and uses only public-test
+  feedback online. `q(P0)`, `q(P4)`, and `q(P8)` are measured offline after
+  all trajectories finish. The policy never sees q.
 
 ## Variants and evidence strata
 
@@ -116,6 +125,11 @@ statistics are selection-conditioned and are not population estimates.
 - Real-task selection: `freeze_swesmith_agentic_candidates.eligible` and
   `freeze_swesmith_agentic_candidates.select`
 - Public task index: `summarize_swesmith_agentic_candidates.summarize`
+- One-edit census: `sample_swesmith_body_28x16.main` and `information_metrics`
+- Body assembly and saved state: `swesmith_agent_edit.replace_callable_body`,
+  `swesmith_agent_edit.current_callable_body`
+- Public-only sequential rollout: `continue_swesmith_body_trajectories.main`
+- Offline q: `grade_swesmith_trajectory_q.main`, worker `run(mode="proxy_only")`
 - Real Modal checks: `smoke_swesmith_modal_image.main`,
   `smoke_swesmith_gold_modal.main`, `swesmith_gold_worker.main`
 

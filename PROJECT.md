@@ -74,13 +74,15 @@ not a claim about arbitrary repositories or general software engineering agents.
 - RL runtime and prerequisites: `FUNCTION_SWE_RUNTIME.md`
 - Real SWE-smith agentic pivot and 64-task candidate slice: `SWE_SMITH_AGENTIC_64_STATUS.md`
 - q-first selector and official-image worker: `scripts/build_swesmith_qfirst_pool.py`, `scripts/swesmith_q_qualifier_worker.py`
-- Restricted real-repository multi-edit trainer: `scripts/train_swesmith_agent_grpo.py`
+- Restricted real-repository one-body-edit trainer: `scripts/train_swesmith_agent_grpo.py`
+- Frozen base-policy census (one pass, 28 tasks × 16 candidates): `scripts/sample_swesmith_body_28x16.py`
+- Eight-step observational continuation and offline q: `scripts/continue_swesmith_body_trajectories.py`, `scripts/grade_swesmith_trajectory_q.py`; dependency runner `scripts/run_swesmith_trajectory_pipeline.py`
 - Modal isolation smoke: `python scripts/smoke_modal_function_swe.py --receipt NEW_RECEIPT_PATH`
 - Modal smoke result: `runs/modal_sandbox_smoke_v01/SMOKE_SUMMARY.md`
 - RL trainer: `python scripts/train_oracle_proxy_grpo.py --help`
 - RL code checks: `python -m unittest discover -s tests -v`
 - Structured replay: `python scripts/replay_structured_edits.py --help`
-- Restricted experiment entry: `scripts/train_swesmith_agent_grpo.py`; first one-update smoke failed before the update, formal three-arm run not launched
+- Restricted experiment entry: `scripts/train_swesmith_agent_grpo.py`; formal GRPO comparison not launched
 - Results: engineering qualification only; no learning result
 
 ## Evidence State
@@ -133,8 +135,22 @@ four-task, one-update multi-edit GRPO engineering smoke failed in the terminal
 q scorer (`callable_import_or_execution_failed`) before any optimizer update.
 Subsequent one-edit attempts reached `optimizer.step()`, but the first formal
 semantic update had 8/8 invalid edits, tied within-group rewards, and zero
-gradient. Test-arm training and heldout evaluation did not complete. See
-`runs/swesmith_survival_status_v01/summary.json`.
+gradient. A later body-only 1.5B sample initially appeared 1/4 structurally
+valid. Replaying the same four frozen completions after fixing an assembler
+indentation bug made all 4/4 parse successfully; the former 1/4 figure was a
+parser artifact, not evidence that the model lacks valid-action support. All
+four then returned terminal `Y`, public-test fraction `p_T`, and reference
+agreement `q` from the isolated scorer. On 2026-09-23, a single 1.5B base-policy
+28×16 census was dispatched to measure valid action rate, task-level variation
+in `p_T` and `q`, and whether `q` breaks public-test ties. The first six
+complete tasks are reported provisionally in
+`BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`; the 28-task aggregate remains
+pending. A dependent run is queued to continue the same 448 first edits to
+eight sequential edits with public-test feedback only. Every program state is
+saved; only after all trajectories finish will a separate worker measure q at
+P0/P4/P8. This is observational sampling, not RL training. Test-arm training
+and heldout evaluation have not run.
+See `runs/swesmith_survival_status_v01/summary.json` for the earlier failure.
 This agent is restricted to replacing one
 function/method with public-test feedback; it is not a full SWE-agent with
 arbitrary repository tools. Do not promote the smoke or original 64 candidate

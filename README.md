@@ -7,20 +7,27 @@ A separate real-task agentic-RL preparation branch has 64 original candidate
 tasks, a stopped q-first screen, and an offline 5090 model smoke.
 The later two-arm survival attempt stopped after one semantic update with
 zero gradient; no valid RL comparison or held-out result exists.
+A separate body-only one-edit census is now running on the frozen 28 tasks.
+Its [six-task provisional snapshot](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md)
+shows extra reference-proxy discrimination but is not an RL result. The same
+first edits are queued for public-feedback-only continuation to eight steps,
+followed by offline `q` grading at steps 0, 4, and 8; no multi-step result exists yet.
 
 ## Start here
 
-1. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
+1. [`BODY_CENSUS_PARTIAL_6_TASKS_20260923.md`](BODY_CENSUS_PARTIAL_6_TASKS_20260923.md):
+   newest provisional information result and exact non-claim boundary.
+2. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
    real-task pivot, qualification protocol, engineering failure, and open gates.
-2. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): compact task definition, claim boundary,
+3. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): compact task definition, claim boundary,
    code map, and reviewer questions.
-3. [`RESULTS.md`](RESULTS.md): canonical aggregates and formal status.
-4. [`ARCHITECTURE.md`](ARCHITECTURE.md): data flow, invariants, and exact scripts.
-5. [`MOTO_INTERMEDIATE_PROTOCOL_v01.md`](MOTO_INTERMEDIATE_PROTOCOL_v01.md):
+4. [`RESULTS.md`](RESULTS.md): canonical aggregates and formal status.
+5. [`ARCHITECTURE.md`](ARCHITECTURE.md): data flow, invariants, and exact scripts.
+6. [`MOTO_INTERMEDIATE_PROTOCOL_v01.md`](MOTO_INTERMEDIATE_PROTOCOL_v01.md):
    the frozen edit-level replay protocol.
-6. [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md):
+7. [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md):
    full exact-bound audit, invalid cases, and next decision.
-7. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
+8. [`PROJECT.md`](PROJECT.md): broader research contract and next gate.
 
 Separate exploratory RL code: [`ORACLE_PROXY_GRPO_SURVIVAL_v01.md`](ORACLE_PROXY_GRPO_SURVIVAL_v01.md)
 defines the frozen three-arm comparison; [`FUNCTION_SWE_RUNTIME.md`](FUNCTION_SWE_RUNTIME.md)

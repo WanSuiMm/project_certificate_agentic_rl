@@ -3,31 +3,44 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from swesmith_agent_edit import InvalidEdit, replace_callable
+from swesmith_agent_edit import InvalidEdit, current_callable_body, replace_callable_body
 
 
-class AgentEditTest(unittest.TestCase):
-    def test_method(self):
-        source = "class A:\n    def f(self, x: int):\n        return x\n\n    def g(self):\n        return 2\n"
-        edited = replace_callable(source, ["A", "f"], "def f(self, x: int):\n    return x + 1")
-        self.assertIn("    def f(self, x: int):\n        return x + 1", edited)
-        self.assertIn("    def g(self):", edited)
+class AgentBodyEditTest(unittest.TestCase):
+    def test_method_preserves_decorator_name_and_signature(self):
+        source = "class A:\n    @staticmethod\n    def f(x: int) -> int:\n        return x\n\n    def g(self):\n        return 2\n"
+        edited = replace_callable_body(source, ["A", "f"], "return x + 1")
+        self.assertIn("    @staticmethod\n    def f(x: int) -> int:\n        return x + 1", edited)
+        self.assertIn("    def g(self):\n        return 2", edited)
 
-    def test_signature_rejected(self):
+    def test_fence_and_body_import(self):
+        source = "def f(x):\n    return x\n"
+        edited = replace_callable_body(source, ["f"], "```python\nimport math\nreturn math.floor(x)\n```")
+        self.assertEqual(edited, "def f(x):\n    import math\n    return math.floor(x)\n")
+
+    def test_fenced_indented_body_keeps_relative_indent(self):
+        source = "def f(x):\n    return x\n"
+        edited = replace_callable_body(source, ["f"],
+                                       "```python\n        if x:\n            return 1\n        return 0\n```")
+        self.assertEqual(edited, "def f(x):\n    if x:\n        return 1\n    return 0\n")
+
+    def test_invalid_body(self):
         with self.assertRaises(InvalidEdit):
-            replace_callable("def f(x):\n    return x\n", ["f"], "def f(y):\n    return y")
+            replace_callable_body("def f(x):\n    return x\n", ["f"], "if x:\nreturn 1")
 
-    def test_top_level(self):
-        self.assertEqual(replace_callable("def f(x):\n    return x\n", ["f"],
-                                          "def f(x):\n    return x + 1"),
+    def test_inline_body(self):
+        self.assertEqual(replace_callable_body("def f(x): return x\n", ["f"], "return x + 1"),
                          "def f(x):\n    return x + 1\n")
 
-    def test_complete_function_after_unclosed_fence(self):
-        self.assertEqual(replace_callable("def f(x):\n    return x\n", ["f"],
-                                          "```python\ndef f(x):\n    return x + 1"),
-                         "def f(x):\n    return x + 1\n")
+    def test_saved_body_matches_assembled_state(self):
+        source = "def f(x):\n    return x\n"
+        edited = replace_callable_body(source, ["f"],
+                                       "```python\n        if x:\n            return 1\n        return 0\n```")
+        self.assertEqual(current_callable_body(edited, ["f"]),
+                         "if x:\n    return 1\nreturn 0")
+        self.assertEqual(replace_callable_body(source, ["f"],
+                                               current_callable_body(edited, ["f"])), edited)
 
-    def test_ignores_non_function_preamble(self):
-        self.assertEqual(replace_callable("def f(x):\n    return x\n", ["f"],
-                                          "```python\nimport os\ndef f(x):\n    return x + 1\n```"),
-                         "def f(x):\n    return x + 1\n")
+
+if __name__ == "__main__":
+    unittest.main()

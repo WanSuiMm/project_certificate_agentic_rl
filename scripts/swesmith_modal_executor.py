@@ -31,7 +31,7 @@ class SWESmithModalExecutor:
              buggy_source_sha256: str | None = None, q_bank: dict | None = None,
              include_proxy: bool = False) -> dict:
         request = {"mode": mode, "task": task}
-        if mode == "score":
+        if mode in {"score", "proxy_only"}:
             request.update({"source": source, "buggy_source_sha256": buggy_source_sha256,
                             "q_bank": q_bank, "include_proxy": include_proxy})
         sandbox = self.modal.Sandbox.create(

@@ -31,9 +31,12 @@ print("SWE_SMITH_RESULT=" + json.dumps({"exitcode": int(code), "outcomes": resul
 def tests(selectors: list[str]) -> dict:
     if not selectors:
         return {"valid": False, "reason": "no_test_selectors"}
-    run = subprocess.run([TESTBED_PYTHON, "-c", PYTEST_DRIVER], cwd=ROOT,
-                         input=json.dumps(selectors), text=True, capture_output=True,
-                         timeout=240, check=False)
+    try:
+        run = subprocess.run([TESTBED_PYTHON, "-c", PYTEST_DRIVER], cwd=ROOT,
+                             input=json.dumps(selectors), text=True, capture_output=True,
+                             timeout=240, check=False)
+    except subprocess.TimeoutExpired:
+        return {"valid": False, "reason": "pytest_timeout"}
     marker = "SWE_SMITH_RESULT="
     lines = [line.split(marker, 1)[1] for line in run.stdout.splitlines() if marker in line]
     if run.returncode or len(lines) != 1:
@@ -72,7 +75,7 @@ def run(request: dict) -> dict:
                 "clean_tests": clean_test, "buggy_f2p": buggy_test,
                 "gold_self_consistent": bool(clean_test["valid"] and clean_test["exitcode"] == 0
                                               and buggy_test["valid"] and buggy_test["exitcode"] != 0)}
-    if request["mode"] != "score":
+    if request["mode"] not in {"score", "proxy_only"}:
         raise ValueError("unknown mode")
     if hashlib.sha256(buggy_source.encode()).hexdigest() != request["buggy_source_sha256"]:
         raise RuntimeError("buggy_source_hash_mismatch")
@@ -80,9 +83,27 @@ def run(request: dict) -> dict:
     if len(candidate) > 300_000:
         raise ValueError("candidate_source_too_large")
     target.write_text(candidate, encoding="utf-8")
+    if request["mode"] == "proxy_only":
+        bank = request["q_bank"]
+        reference = bank["reference"]
+        if len(reference) != 256:
+            raise RuntimeError("q_bank_observation_count_mismatch")
+        try:
+            observed = run_observer({key: bank[key] for key in ("module", "callable", "params", "cases")})
+        except (SkipTask, subprocess.TimeoutExpired) as exc:
+            return {"status": "q_invalid_candidate", "instance_id": task["instance_id"],
+                    "reason": type(exc).__name__, "q": None}
+        if len(observed) != 256:
+            raise RuntimeError("q_bank_observation_count_mismatch")
+        return {"status": "q_scored", "instance_id": task["instance_id"],
+                "q": sum(a == b for a, b in zip(observed, reference)) / 256}
     public = tests(selectors)
-    if not public["valid"] and public.get("reason") == "pytest_driver_failure":
-        return {"status": "invalid_test_observation", "public": public}
+    if not public["valid"]:
+        failed = {"status": "invalid_candidate", "instance_id": task["instance_id"],
+                  "public": public, "p_T": 0.0, "solved": False}
+        if request.get("include_proxy", False):
+            failed["q"] = 0.0
+        return failed
     result = {"status": "scored", "instance_id": task["instance_id"],
               "public": public, "p_T": public.get("pass_fraction", 0.0) if public["valid"] else 0.0,
               "solved": bool(public["valid"] and public["exitcode"] == 0
@@ -94,11 +115,9 @@ def run(request: dict) -> dict:
             raise RuntimeError("q_bank_observation_count_mismatch")
         try:
             observed = run_observer({key: bank[key] for key in ("module", "callable", "params", "cases")})
-        except SkipTask as exc:
-            if str(exc) not in {"callable_import_or_execution_failed", "observer_stdout_not_json"}:
-                raise
+        except (SkipTask, subprocess.TimeoutExpired) as exc:
             observed = []
-            result["q_invalid_candidate"] = str(exc)
+            result["q_invalid_candidate"] = type(exc).__name__
         if observed and len(observed) != 256:
             raise RuntimeError("q_bank_observation_count_mismatch")
         result["q"] = sum(a == b for a, b in zip(observed, reference)) / 256
