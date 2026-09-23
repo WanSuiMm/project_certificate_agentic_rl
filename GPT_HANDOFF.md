@@ -1,55 +1,37 @@
-# GPT handoff: Moto intermediate audit v0.1
+# GPT handoff: exact-25 replay audit
 
-- Review base: `98c12d775d9110aebc524729b052b11cb92dd0f1`
-- Evidence head: `c1e30ea678237c264d3c07388849570332e35a1f`
-- Scope: first five-task exact-bound Moto intermediate replay
+- Review base: `340b492ca63bf89864ff297a78bc048cc363c9be`
+- Evidence head: `473ad6828cd25960d1168a5cc4ff19d0d5e97a34`
+- This handoff is a metadata-only follow-up; the evidence head above is stable.
 
-## Read only these first
+## Read first
 
-1. [`RESULTS.md`](RESULTS.md), especially “Moto intermediate audit v0.1”.
-2. [`runs/moto_intermediate_v01/aggregate_summary.json`](runs/moto_intermediate_v01/aggregate_summary.json).
-3. [`MOTO_INTERMEDIATE_PROTOCOL_v01.md`](MOTO_INTERMEDIATE_PROTOCOL_v01.md).
-4. [`GPT_CONTEXT.md`](GPT_CONTEXT.md) for the current claim boundary.
+1. [`EXACT25_RESULTS_AND_NEXT_v01.md`](EXACT25_RESULTS_AND_NEXT_v01.md):
+   result, invalid-case diagnoses, and next decision.
+2. [`RESULTS.md`](RESULTS.md): aggregate table and prior Moto context.
+3. [`GPT_CONTEXT.md`](GPT_CONTEXT.md): claim boundary and code map.
 
-Do not begin with the per-task summaries or replay-surface row file; they are
-supporting evidence for the compact aggregate.
+Only open [`aggregate_summary.json`](runs/exact25_intermediate_v01/aggregate_summary.json)
+to inspect individual curves; its 1,591 lines encode 184 states, not additional
+prose. Do not start with raw trajectories, logs, or image assets.
 
-## What changed
+## Decision-relevant change
 
-- Replayed two resolved and three unresolved exact Moto trajectories from fresh
-  image-derived root filesystems.
-- Recorded FAIL_TO_PASS and PASS_TO_PASS outcomes after every confirmed editor
-  mutation: 52 states, 47 successful mutations, 48 attempted mutations.
-- Added tool-outcome filtering so a failed editor call does not create a fake
-  state transition.
-- Added the exact-25 undo/shell-mutation surface audit. Moto has no such replay
-  complication; three non-Moto exact rows have suspicious shell-side mutations.
+The exact-bound batch has 25/25 task summaries but only 18/25 strict endpoint
+gates. Across 184 states, 119 have valid `(F,R)` observations. Two valid
+negative transitions exist (Moto and SQLFluff). Seven invalid endpoints are
+retained and diagnosed as runner/environment issues. A naive 23/25 endpoint
+agreement is **not** a pass claim.
 
-## Decision-relevant evidence
-
-- Endpoint gate: 5/5 pass and `PRoot_ENDPOINT_REPLAY_PASS=true`.
-- `pr_7144`: `(4,0) -> (4,12) -> (4,1)`, a valid negative excursion in an
-  ultimately unresolved trajectory.
-- `pr_6509`: `(1,0) -> (0,0) -> invalid x8 -> (0,0)`. The invalid region begins
-  with a trajectory edit that imports an unavailable symbol and ends when a
-  later edit repairs the module; it is not test-induced workspace drift.
-- Three positive, one negative, 34 neutral, and nine invalid-adjacent
-  transitions were observed. This is a one-repository signal slice, not a
-  prevalence estimate.
-
-## Unchanged claim boundary
-
-- No certificate feature has been evaluated on these states yet.
-- No critic comparison, held-out predictive gain, sample-efficiency result, or
-  online-RL claim exists.
-- The selected panel remains selection-conditioned and the 15 profile-fallback
-  rows remain outside the primary exact stratum.
+No live-agent continuation, certificate predictor comparison, or online RL was
+run. Next: repair test-runner semantics and dependencies in a new run version,
+then preregister matched-budget live-agent continuations and a held-out
+certificate-vs-public-test prediction comparison. Stop before RL if that gate
+fails. The replay/aggregation code and tests are included in this repository.
 
 ## Reviewer questions
 
-1. Is the negative `pr_7144` excursion sufficient to justify expanding the same
-   frozen phenotype audit across repositories before implementing a critic?
-2. Should collection-invalid states be represented as a distinct categorical
-   state or treated as censored observations outside `(F,R)`?
-3. What is the cheapest certificate-derived feature to compute on the frozen
-   state sequence without leaking future edits or terminal outcome?
+1. Are the seven invalid endpoints correctly kept outside valid `(F,R)` analysis
+   without silently excluding them from the denominator?
+2. Is the proposed live-agent continuation comparison sufficient to test
+   future-value information without suffix leakage before RL?
