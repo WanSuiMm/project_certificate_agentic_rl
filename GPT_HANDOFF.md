@@ -1,50 +1,52 @@
-# GPT handoff: real SWE-smith agentic-RL preparation
+# GPT handoff: q-first SWE-smith RL engineering status
 
-- Review base: `4a1eca5ae3a1ec0ad806e2d37bfd42b70705f4e7`
-- Evidence head: `fdfd157da0e129349cd6517fa232ddd4308881d5`
-- This is a metadata-only handoff after the evidence head; do not reread the
-  unchanged exact-25 raw curves or interpret this commit as new experiment data.
+- Review base: `85d88eb692ba753eb539d78d477055e0d7d3a309`
+- Evidence head: `ae9b436ec9e5621a7f66a426fcfc12b97e672dde`
+- This handoff is metadata-only. Review the evidence-head delta; the historical
+  exact-25 replay data and its claim boundary are unchanged.
 
 ## Read only these first
 
-1. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): current
-   real-task claim boundary and one-task Modal gold smoke.
-2. [`runs/swesmith_agentic_64_candidates_v01/manifest.json`](runs/swesmith_agentic_64_candidates_v01/manifest.json):
-   pinned dataset, deterministic filter, split and frozen full-row hash.
-3. [`candidate_index.json`](runs/swesmith_agentic_64_candidates_v01/candidate_index.json):
-   64 official IDs and their image/split/test counts.
-4. Only if reviewing implementation: `scripts/freeze_swesmith_agentic_candidates.py`,
-   `scripts/smoke_swesmith_modal_image.py`, `scripts/smoke_swesmith_gold_modal.py`,
-   and `scripts/swesmith_gold_worker.py`.
+1. [`SWE_SMITH_AGENTIC_64_STATUS.md`](SWE_SMITH_AGENTIC_64_STATUS.md): task,
+   q-first qualification, model smoke, failed RL smoke, and remaining gates.
+2. [`runs/swesmith_online_status_v01/summary.json`](runs/swesmith_online_status_v01/summary.json):
+   timestamped compact counts and failure status.
+3. [`RESULTS.md`](RESULTS.md) and [`GPT_CONTEXT.md`](GPT_CONTEXT.md): canonical
+   evidence table and claim/non-claim boundary.
+4. For implementation review only: `scripts/swesmith_q_qualifier_worker.py`,
+   `scripts/swesmith_agent_worker.py`, `scripts/swesmith_modal_executor.py`,
+   and `scripts/train_swesmith_agent_grpo.py`.
 
-The full raw task JSONL (issue text and patches), HF cache, and machine-specific
-receipts are deliberately not published. The pinned selector regenerates the
-full task rows; verify its SHA-256 against the manifest. Do not try to execute
-the compact index as if it contained the patches.
+Do not open raw task JSONL, local logs, caches, or model files first. They are
+omitted from this repository. The small q-first pool manifests preserve the
+pinned source revision and task-row hashes for regeneration.
 
 ## Decision-relevant delta
 
-From the official pinned `SWE-bench/SWE-smith-py` revision, 50,908 rows were
-scanned and 64 task candidates selected: eight images, eight tasks per image,
-48 training and 16 held-out. This is selection, **not** qualification of all
-64 environments. One official h11 image started in Modal; for one official
-task, a target test passed clean, failed after bug injection and passed after
-reversal. The first attempt used the wrong base interpreter and was invalid;
-the passing check used SWE-smith's `testbed` Conda interpreter.
+The original 64 official rows were only candidates; the reference-semantic
+proxy requires a separate q-first screen. The first screen qualified 4/311.
+At a timestamped *partial* snapshot of the expanded 724-candidate pool,
+28/171 checked rows were q-valid; this is not a finalized selection or a
+policy success rate. The first four q-valid tasks passed official bug-injection
+self-consistency, all from one repository.
 
-The historical exact-25 replay result and its seven invalid endpoints are
-unchanged. No multi-turn agent rollout, repository-level semantic proxy, GPU
-model inference, GRPO update, or held-out solve result exists. In particular,
-`scripts/train_oracle_proxy_grpo.py` is the earlier Function-SWE surrogate and
-must **not** be run on the new real-task slice.
+The pinned Qwen2.5-Coder-1.5B-Instruct weight passed full-hash verification and
+an offline RTX 5090 load/generation smoke. A restricted, multi-edit agent on
+real repositories then attempted a four-task, one-update GRPO smoke. It failed
+in terminal q scoring with `callable_import_or_execution_failed` **before any
+optimizer update**. There is no three-arm RL result, held-out solve rate, or
+evidence that q improves learning. This agent replaces one function/method and
+gets public-test feedback; it is not a full SWE-agent tool workflow.
+
+The old Function-SWE trainer is a surrogate and must not be interpreted as the
+real-task launcher. The previous exact-25 trajectory replay result, including
+seven invalid endpoints, is unchanged.
 
 ## Reviewer questions
 
-1. Is this outcome-blind, image-reuse-aware 48/16 candidate selection suitable
-   as an engineering screen, with all later image/task exclusions recorded
-   before any policy outcomes?
-2. What is the smallest faithful full-repository reference-behavior bank for
-   `q(P)` that is not merely a repackaging of the official F2P/P2P tests?
-3. Which existing agent harness can be connected to Modal's persistent task
-   Sandbox and a separate fresh grading Sandbox on one 32 GiB GPU, without
-   representing the Function-SWE surrogate as agentic RL?
+1. Is the q bank's signature/default/literal-based input distribution
+   sufficiently independent of F2P/P2P public tests for the stated comparison?
+2. What minimal fix to terminal q scoring preserves the frozen qualification
+   definition and fails closed on import/execution errors?
+3. After that fix, what one-update smoke would establish engineering readiness
+   before freezing 40 q- and gold-qualified tasks and launching the three arms?
