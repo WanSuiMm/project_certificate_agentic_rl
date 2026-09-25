@@ -36,6 +36,9 @@ the [frozen protocol](ORACLE_CREDIT_BENCHMARK_v01.md), and
 For the original theory, September 21 experiment handoff, and how their
 claims differ from the current executable q proxy, read
 [`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md).
+For the three later discussion notes on the theory recheck, a conditional
+paper story, and related work, read
+[`THEORY_STORY_AND_RELATED_WORK_20260925.md`](THEORY_STORY_AND_RELATED_WORK_20260925.md).
 The following documents are the prior evidence and implementation history.
 
 1. [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md):

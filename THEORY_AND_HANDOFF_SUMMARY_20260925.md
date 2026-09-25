@@ -4,6 +4,8 @@ This is a reading map for three local source packages, **not** a new theorem,
 new SWE run, or RL-training result. The September 21 handoff and adapter are
 already represented in this repository; the September 24 recheck is summarized
 here rather than uploading a second archive of overlapping materials.
+The later conditional paper storyline and checked related-work reading map are
+in [`THEORY_STORY_AND_RELATED_WORK_20260925.md`](THEORY_STORY_AND_RELATED_WORK_20260925.md).
 
 | Source | Repository route | What it establishes |
 |---|---|---|
