@@ -1,45 +1,51 @@
-# GPT handoff: original theory and September 21 plan summarized
+# GPT handoff: Oracle Credit P2 follow-up
 
-- Review base: `30e3039` (completed Oracle Credit evidence and its handoff)
-- Evidence head: `a499d71fb9d16d667e62ca7c833e34639130f512`
+- Review base: `290a9d22ef50c89963fcd928add22e8cfbc9623f`
+- Evidence head: `bc1c7f9af89b546ba3e12f6684d1c797a0110add`
 - This handoff is metadata-only. Review the evidence-head delta first.
 
 ## Read first
 
-1. [`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md):
-   the concise synthesis of the September 24 theory recheck, original September
-   21 experiment handoff, and certificate-compatible RL adapter.
-2. [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md):
-   unchanged completed SWE-smith pilot and its inconclusive result.
-3. [`docs/CODEX_CERTIFICATE_AGENTIC_RL_EXPERIMENT_PLAN_v01.md`](docs/CODEX_CERTIFICATE_AGENTIC_RL_EXPERIMENT_PLAN_v01.md)
-   and [`baselines/prior/certificate_rl_adapter/THEORY.md`](baselines/prior/certificate_rl_adapter/THEORY.md):
-   original long-form proposal and committed adapter source, only if detail is
-   needed. Do not open large per-state JSONL first.
+1. [`ORACLE_P2_POLICY_DYNAMICS_20260925.md`](ORACLE_P2_POLICY_DYNAMICS_20260925.md):
+   motivation from the supplied GPT note, corrected first-hit count, new
+   depth-one q analysis, and limits.
+2. [`evidence/oracle_credit_p2_q_v01/analysis.json`](evidence/oracle_credit_p2_q_v01/analysis.json):
+   reproducible matched-support task metrics. The 384-row source-free
+   [`observations.jsonl`](evidence/oracle_credit_p2_q_v01/observations.jsonl)
+   is secondary; do not open it first.
+3. [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md):
+   original K=4 fixed-P8 result, unchanged from the review base.
 
-## Decision-relevant delta
+## What changed
 
-This update **adds no new experiment or code change**. It makes the theory
-boundary explicit: paired semantic certificates or frozen 256-probe agreement
-measure *present program behavior*, not certified future agent value.
-Objective-preserving potential shaping with correctly matched `Phi+W` yields
-the same TD/GAE signal as the original reward plus total critic; a denser
-reward display alone cannot rescue tied whole-trajectory GRPO groups without
-changing the objective. The original handoff's proposed critic baselines,
-leakage checks, task-family splits and online gate are research design, not
-completed outcomes; its default online budget was zero.
+The frozen Oracle Credit 6 × 16 × 4 trajectories were **not regenerated**.
+Their first-hit selected-public-test outcome is 53/384, versus 14/384 passing
+at P8. The supplied note had quoted 57/384; the published analysis corrects
+that arithmetic against the original step journal. Frozen-bank q was measured
+offline on the existing P2 sources: 373/384 numeric observations, with 320
+new unique-source observer calls and 43 distinct sources reused from P1.
 
-The adapter's finite-tree algebra and the September 24 independent finite-MDP
-recheck are reported as numerical identity checks, **not** SWE execution or
-trained-RL performance. The current SWE-smith `q` is a behavioral probe proxy,
-not the proposal's learned interval-certified potential. The completed Oracle
-Credit pilot, its K=4 uncertainty and the absence of a trained long-horizon
-RL comparison are unchanged from the review base.
+On matched P1-unsolved, valid-body candidates with tied P1 public-test scores,
+mean P2 q and mean q drift show **mixed** descriptive direction against the
+noisy first-hit continuation value: two of three informative tasks improve
+over raw q in some comparisons, one worsens. All three tasks are from one
+repository. P2 is drawn from the same K=4 continuations as the target, so the
+result is in-sample and cannot establish predictive generalization. No trained
+PRM, new policy rollout, or online RL result was added.
+
+The new code is [`scripts/grade_swesmith_oracle_p2_q.py`](scripts/grade_swesmith_oracle_p2_q.py)
+for frozen-bank scoring and [`scripts/summarize_swesmith_oracle_p2_q.py`](scripts/summarize_swesmith_oracle_p2_q.py)
+for a source-free first-hit recount and comparison. The full source run and
+private q bank were not uploaded. Existing theory synthesis and original
+September 21 handoff are unchanged; see
+[`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md)
+only if that earlier context is needed.
 
 ## Reviewer questions
 
-1. Does the synthesis keep static semantics, edit-level certificates and
-   policy-conditioned continuation value adequately separate?
-2. Are any claims in the original September 21 plan inadvertently presented
-   as implemented or empirically established?
-3. Does the current Oracle Credit result support any stronger conclusion than
-   the explicitly scoped inconclusive frozen-policy P8 pilot?
+1. Does the first-hit recount correctly separate selected-test first success
+   from P8 survival and hidden correctness?
+2. Does the matched-support table justify only a mixed descriptive finding,
+   especially given K=4, dependent candidate pairs and same-continuation P2?
+3. Is the local semantic-drift hypothesis stated as motivation rather than an
+   established cheap advantage or PRM proxy?
