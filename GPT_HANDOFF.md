@@ -1,51 +1,49 @@
-# GPT handoff: Oracle Credit P2 follow-up
+# GPT handoff: theory, conditional story, and related work
 
-- Review base: `290a9d22ef50c89963fcd928add22e8cfbc9623f`
-- Evidence head: `bc1c7f9af89b546ba3e12f6684d1c797a0110add`
-- This handoff is metadata-only. Review the evidence-head delta first.
+- Review base: `06c65cbf43d4517494ccf4fca6bc03e9e7747e1f`
+- Evidence head: `519b01e5d64fcbb9d5f5f4dc061082e344d2d1e3`
+- This handoff is metadata-only; review the evidence-head delta first.
 
 ## Read first
 
-1. [`ORACLE_P2_POLICY_DYNAMICS_20260925.md`](ORACLE_P2_POLICY_DYNAMICS_20260925.md):
-   motivation from the supplied GPT note, corrected first-hit count, new
-   depth-one q analysis, and limits.
-2. [`evidence/oracle_credit_p2_q_v01/analysis.json`](evidence/oracle_credit_p2_q_v01/analysis.json):
-   reproducible matched-support task metrics. The 384-row source-free
-   [`observations.jsonl`](evidence/oracle_credit_p2_q_v01/observations.jsonl)
-   is secondary; do not open it first.
-3. [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md):
-   original K=4 fixed-P8 result, unchanged from the review base.
+1. [`THEORY_STORY_AND_RELATED_WORK_20260925.md`](THEORY_STORY_AND_RELATED_WORK_20260925.md):
+   synthesis of the three supplied notes. It distinguishes the theory recheck,
+   a *conditional* paper storyline, and verified related-work positioning.
+2. [`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md):
+   original theory/adapter provenance and numerical-check limits.
+3. [`ORACLE_P2_POLICY_DYNAMICS_20260925.md`](ORACLE_P2_POLICY_DYNAMICS_20260925.md):
+   latest empirical result; unchanged in this delta. The source-free aggregate
+   is [`analysis.json`](evidence/oracle_credit_p2_q_v01/analysis.json).
 
-## What changed
+## Decision-relevant delta
 
-The frozen Oracle Credit 6 × 16 × 4 trajectories were **not regenerated**.
-Their first-hit selected-public-test outcome is 53/384, versus 14/384 passing
-at P8. The supplied note had quoted 57/384; the published analysis corrects
-that arithmetic against the original step journal. Frozen-bank q was measured
-offline on the existing P2 sources: 373/384 numeric observations, with 320
-new unique-source observer calls and 43 distinct sources reused from P1.
+This update adds **no experiment, model training, code change, or improved
+result**. It makes three supplied discussion notes available in a concise
+GitHub reading path:
 
-On matched P1-unsolved, valid-body candidates with tied P1 public-test scores,
-mean P2 q and mean q drift show **mixed** descriptive direction against the
-noisy first-hit continuation value: two of three informative tasks improve
-over raw q in some comparisons, one worsens. All three tasks are from one
-repository. P2 is drawn from the same K=4 continuations as the target, so the
-result is in-sample and cannot establish predictive generalization. No trained
-PRM, new policy rollout, or online RL result was added.
+- The independent theory recheck separates current program error from
+  policy-conditioned value. Correct terminal potential settlement preserves
+  the original objective, while matched `Phi+W` and `V` critics have identical
+  TD/GAE residuals. `Delta q` is not generally action advantage.
+- The proposed strong storyline requires a chain of still-unproven results:
+  semantic resolution, held-out future-value relevance, a better matched
+  critic, and online solve-rate gains under the **same** task reward. Its paper
+  narrative is not a result or claim of novelty.
+- The literature map points to MC step-importance, AgentPRM, VPR,
+  SWE-Shepherd and RUDDER via checked primary sources. It corrects the
+  supplied note's VPR task examples and does not assert an exhaustive novelty
+  search or a completed PRM quality–cost comparison.
 
-The new code is [`scripts/grade_swesmith_oracle_p2_q.py`](scripts/grade_swesmith_oracle_p2_q.py)
-for frozen-bank scoring and [`scripts/summarize_swesmith_oracle_p2_q.py`](scripts/summarize_swesmith_oracle_p2_q.py)
-for a source-free first-hit recount and comparison. The full source run and
-private q bank were not uploaded. Existing theory synthesis and original
-September 21 handoff are unchanged; see
-[`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md)
-only if that earlier context is needed.
+The prior Oracle Credit result remains noisy and mixed: 53/384 first-hit
+selected-test continuations, 373/384 numeric P2 q observations, and no
+independent validation that static q or depth-one drift estimates long-horizon
+value. No online RL result exists.
 
 ## Reviewer questions
 
-1. Does the first-hit recount correctly separate selected-test first success
-   from P8 survival and hidden correctness?
-2. Does the matched-support table justify only a mixed descriptive finding,
-   especially given K=4, dependent candidate pairs and same-continuation P2?
-3. Is the local semantic-drift hypothesis stated as motivation rather than an
-   established cheap advantage or PRM proxy?
+1. Are the algebraic identities, finite-world checks, empirical SWE findings,
+   and aspirational critic experiment clearly separated?
+2. Does the related-work positioning cite comparable methods without claiming
+   the current pilot has already matched their training or evaluation?
+3. Is the strongest paper story explicitly conditional on held-out value and
+   same-reward online RL evidence?
