@@ -71,6 +71,8 @@ pre/post endpoint tests + replay receipt
 | `scripts/run_swesmith_oracle_credit.py` | frozen-policy P1-to-P8 closed-loop continuation, public-feedback ready queue, durable action/state/outcome journals |
 | `scripts/summarize_swesmith_oracle_credit.py` | candidate Monte Carlo Q, Wilson intervals, task-macro p/q comparisons |
 | `scripts/export_swesmith_oracle_public.py` | source-free evidence export with raw artifact hashes and row-count checks |
+| `scripts/grade_swesmith_oracle_p2_q.py` | frozen-bank P2 q scoring, P1 parity control, source-hash deduplication and resumable journal |
+| `scripts/summarize_swesmith_oracle_p2_q.py` | first-hit recount and source-free P1/P2 proxy comparison on matched candidates |
 | `scripts/train_swesmith_agent_grpo.py` | pinned-model restricted-agent GRPO trainer; first smoke failed before update |
 | `tests/` | unit checks for selection, integrity audit, replay, and prior manifests |
 

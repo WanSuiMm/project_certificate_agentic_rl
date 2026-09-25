@@ -1,0 +1,442 @@
+{
+  "P2_q_observations": 384,
+  "P2_q_valid_observations": 373,
+  "caveat": "K=4 first-hit Q is noisy; P2 q is computed from the same continuations as Q_hit, so this is not an independent predictive validation.",
+  "first_hit_by_step": {
+    "1": 12,
+    "2": 13,
+    "3": 4,
+    "4": 7,
+    "5": 3,
+    "6": 4,
+    "7": 3,
+    "8": 7
+  },
+  "first_hit_trajectories": 53,
+  "fully_matched_candidates": 87,
+  "informative_tasks": 3,
+  "schema_version": 1,
+  "target": "first solve at any P1..P8; absorbing-success recount",
+  "task_macro_spearman": {
+    "mean_delta_q": 0.09752411740533108,
+    "mean_q2": 0.07958545349345567,
+    "p1": 0.5897768258913226,
+    "q1": -0.0031963770065369566
+  },
+  "tasks": {
+    "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr": {
+      "P1_candidates_with_any_first_hit": 0,
+      "candidates": 16,
+      "first_hits": 0,
+      "matched_P1_unsolved_valid_body": 13,
+      "matched_candidates": 14,
+      "metrics": {
+        "mean_delta_q": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "mean_q2": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "p1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "q1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        }
+      }
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq": {
+      "P1_candidates_with_any_first_hit": 14,
+      "candidates": 16,
+      "first_hits": 35,
+      "matched_P1_unsolved_valid_body": 10,
+      "matched_candidates": 16,
+      "metrics": {
+        "mean_delta_q": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.4722222222222222,
+            "correct": 8,
+            "oracle_nontied_pairs": 18,
+            "proxy_ties": 1
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.35353535353535354,
+            "correct": 34,
+            "oracle_nontied_pairs": 99,
+            "proxy_ties": 2
+          },
+          "spearman_vs_Q_hit": -0.335194939659057
+        },
+        "mean_q2": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.5833333333333334,
+            "correct": 10,
+            "oracle_nontied_pairs": 18,
+            "proxy_ties": 1
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.5808080808080808,
+            "correct": 56,
+            "oracle_nontied_pairs": 99,
+            "proxy_ties": 3
+          },
+          "spearman_vs_Q_hit": 0.19565677473311474
+        },
+        "p1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.5,
+            "correct": 0,
+            "oracle_nontied_pairs": 18,
+            "proxy_ties": 18
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.7323232323232324,
+            "correct": 57,
+            "oracle_nontied_pairs": 99,
+            "proxy_ties": 31
+          },
+          "spearman_vs_Q_hit": 0.5897768258913226
+        },
+        "q1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.6388888888888888,
+            "correct": 5,
+            "oracle_nontied_pairs": 18,
+            "proxy_ties": 13
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.7222222222222222,
+            "correct": 62,
+            "oracle_nontied_pairs": 99,
+            "proxy_ties": 19
+          },
+          "spearman_vs_Q_hit": 0.538851539646944
+        }
+      }
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k": {
+      "P1_candidates_with_any_first_hit": 0,
+      "candidates": 16,
+      "first_hits": 0,
+      "matched_P1_unsolved_valid_body": 11,
+      "matched_candidates": 16,
+      "metrics": {
+        "mean_delta_q": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "mean_q2": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "p1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "q1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        }
+      }
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75": {
+      "P1_candidates_with_any_first_hit": 10,
+      "candidates": 16,
+      "first_hits": 16,
+      "matched_P1_unsolved_valid_body": 11,
+      "matched_candidates": 13,
+      "metrics": {
+        "mean_delta_q": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.8414634146341463,
+            "correct": 29,
+            "oracle_nontied_pairs": 41,
+            "proxy_ties": 11
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.7410714285714286,
+            "correct": 36,
+            "oracle_nontied_pairs": 56,
+            "proxy_ties": 11
+          },
+          "spearman_vs_Q_hit": 0.5271241022363655
+        },
+        "mean_q2": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.6463414634146342,
+            "correct": 21,
+            "oracle_nontied_pairs": 41,
+            "proxy_ties": 11
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.5982142857142857,
+            "correct": 28,
+            "oracle_nontied_pairs": 56,
+            "proxy_ties": 11
+          },
+          "spearman_vs_Q_hit": 0.22723531679984088
+        },
+        "p1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.5,
+            "correct": 0,
+            "oracle_nontied_pairs": 41,
+            "proxy_ties": 41
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.5,
+            "correct": 0,
+            "oracle_nontied_pairs": 56,
+            "proxy_ties": 56
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "q1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.3780487804878049,
+            "correct": 3,
+            "oracle_nontied_pairs": 41,
+            "proxy_ties": 25
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.36607142857142855,
+            "correct": 6,
+            "oracle_nontied_pairs": 56,
+            "proxy_ties": 29
+          },
+          "spearman_vs_Q_hit": -0.3390817233268989
+        }
+      }
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe": {
+      "P1_candidates_with_any_first_hit": 1,
+      "candidates": 16,
+      "first_hits": 2,
+      "matched_P1_unsolved_valid_body": 14,
+      "matched_candidates": 15,
+      "metrics": {
+        "mean_delta_q": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.5769230769230769,
+            "correct": 4,
+            "oracle_nontied_pairs": 13,
+            "proxy_ties": 7
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.6071428571428571,
+            "correct": 5,
+            "oracle_nontied_pairs": 14,
+            "proxy_ties": 7
+          },
+          "spearman_vs_Q_hit": 0.10064318963868474
+        },
+        "mean_q2": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.34615384615384615,
+            "correct": 0,
+            "oracle_nontied_pairs": 13,
+            "proxy_ties": 9
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.32142857142857145,
+            "correct": 0,
+            "oracle_nontied_pairs": 14,
+            "proxy_ties": 9
+          },
+          "spearman_vs_Q_hit": -0.18413573105258862
+        },
+        "p1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.5,
+            "correct": 0,
+            "oracle_nontied_pairs": 13,
+            "proxy_ties": 13
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.5,
+            "correct": 0,
+            "oracle_nontied_pairs": 14,
+            "proxy_ties": 14
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "q1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": 0.3076923076923077,
+            "correct": 0,
+            "oracle_nontied_pairs": 13,
+            "proxy_ties": 8
+          },
+          "pairwise": {
+            "accuracy_ties_half": 0.2857142857142857,
+            "correct": 0,
+            "oracle_nontied_pairs": 14,
+            "proxy_ties": 8
+          },
+          "spearman_vs_Q_hit": -0.20935894733965596
+        }
+      }
+    },
+    "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu": {
+      "P1_candidates_with_any_first_hit": 0,
+      "candidates": 16,
+      "first_hits": 0,
+      "matched_P1_unsolved_valid_body": 11,
+      "matched_candidates": 13,
+      "metrics": {
+        "mean_delta_q": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "mean_q2": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "p1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        },
+        "q1": {
+          "P1_unsolved_public_ties": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "pairwise": {
+            "accuracy_ties_half": null,
+            "correct": 0,
+            "oracle_nontied_pairs": 0,
+            "proxy_ties": 0
+          },
+          "spearman_vs_Q_hit": null
+        }
+      }
+    }
+  }
+}

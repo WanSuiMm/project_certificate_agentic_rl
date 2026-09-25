@@ -1,11 +1,13 @@
 # Certificate-Supervised Agentic Value Learning
 
-Latest result: the [Oracle Credit Benchmark](ORACLE_CREDIT_RESULTS_20260925.md)
-completed 6 tasks × 16 frozen P1 candidates × 4 seven-edit continuations.
-Fourteen of 384 endpoints passed selected public tests, but no within-task
-candidate-value pair was confidently distinguishable at K=4. Whether semantic
-q predicts long-horizon success beyond public tests remains **inconclusive**;
-no online RL result follows from this pilot.
+Latest result: the [Oracle Credit P2 follow-up](ORACLE_P2_POLICY_DYNAMICS_20260925.md)
+measured frozen-bank `q(P2)` offline on all 384 saved second-step states. A
+first-hit recount finds 53/384 continuations pass selected public tests at
+least once, versus 14/384 still passing at P8. One-step semantic drift gives
+mixed within-task ordering, not a validated long-horizon value proxy. The
+underlying [Oracle Credit Benchmark](ORACLE_CREDIT_RESULTS_20260925.md)
+completed 6 tasks × 16 frozen P1 candidates × 4 seven-edit continuations;
+no online RL result follows from either analysis.
 
 This project asks whether program-semantic certificates expose a useful
 intermediate state for predicting terminal success on real coding-agent
@@ -26,8 +28,10 @@ shows extra reference-proxy discrimination, not an RL improvement.
 
 ## Start here
 
-For the current result, read [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md),
-then the [frozen protocol](ORACLE_CREDIT_BENCHMARK_v01.md) and
+For the current result, read [`ORACLE_P2_POLICY_DYNAMICS_20260925.md`](ORACLE_P2_POLICY_DYNAMICS_20260925.md),
+then the [P2 analysis](evidence/oracle_credit_p2_q_v01/analysis.json),
+[`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md),
+the [frozen protocol](ORACLE_CREDIT_BENCHMARK_v01.md), and
 [`evidence/oracle_credit_6x16x4_v01/summary.json`](evidence/oracle_credit_6x16x4_v01/summary.json).
 For the original theory, September 21 experiment handoff, and how their
 claims differ from the current executable q proxy, read

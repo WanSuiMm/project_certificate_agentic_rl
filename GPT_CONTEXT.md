@@ -31,6 +31,10 @@ before critic scaling or online RL.
 - `ORACLE_CREDIT_PILOT`: complete but inconclusive at K=4; no within-task
   candidate Q pair has disjoint two-sided 95% Wilson intervals. See
   `ORACLE_CREDIT_RESULTS_20260925.md`.
+- `ORACLE_P2_Q_FOLLOW_UP`: complete offline measurement; 373/384 numeric P2 q,
+  53/384 first-hit selected-test successes, and mixed depth-one ordering in
+  three informative same-repository tasks. This is not independent value
+  validation or online RL. See `ORACLE_P2_POLICY_DYNAMICS_20260925.md`.
 - `REAL_SWE_SMITH_64_SELECTION`: candidate slice frozen; 64 official task rows,
   eight images, 48/16 split; not runtime-qualified.
 - `REAL_MODAL_IMAGE_SMOKE`: one h11 image starts at `/testbed`.

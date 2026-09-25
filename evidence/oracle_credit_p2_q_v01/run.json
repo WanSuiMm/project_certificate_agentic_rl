@@ -1,0 +1,26 @@
+{
+  "kind": "oracle_credit_p2_frozen_q",
+  "status": "complete",
+  "task_ids": [
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+    "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+    "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75"
+  ],
+  "expected_p2_observations": 384,
+  "unique_p2_sources": 363,
+  "pinned": {
+    "source_run_sha256": "e3a6a3ed7a6dd0000eef28cef3b7bc8b59c2377b5760864335ad77a634705b10",
+    "states_sha256": "7a054a106febce98bb83a430abf37fa656f6fabed96c5926047905dff3f1bc63",
+    "candidates_sha256": "06535d520b2903206a44defcd069deffc16c5f150f1d894f23185a24b96dd76b",
+    "tasks_sha256": "fdd388575b8c844f2192555befc1ec7f202f9c5d99f99c473abec23c33ef2d87",
+    "q_results_sha256": "d536bd992b1a18441db561acef9e2f7d70f21d08f4c8941618758f22a0f14efc"
+  },
+  "started_utc": "2026-09-25T08:05:12.890180+00:00",
+  "unique_new_measured": 320,
+  "reused_p1_sources": 43,
+  "valid_q_observations": 373,
+  "finished_utc": "2026-09-25T08:23:53.612907+00:00"
+}
