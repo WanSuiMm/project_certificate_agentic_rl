@@ -2,7 +2,7 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: Oracle Credit pilot and offline P2 q follow-up complete; future-value comparison unresolved at K=4; training remains deferred
+- Lifecycle status: Oracle Credit pilot, offline P2 q, and local grouped-residual audit complete; future-value comparison unresolved at K=4; training remains deferred
 - Current artifact: completed 6 × 16 × 4 frozen-policy Oracle Credit pilot with first-hit recount and P2 semantic-drift diagnostic, alongside the earlier frozen panel and exact-bound replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
 - Last verified: 2026-09-25
@@ -60,6 +60,7 @@ not a claim about arbitrary repositories or general software engineering agents.
 ## Canonical Entry Points
 
 - Read first: `ORACLE_P2_POLICY_DYNAMICS_20260925.md`, then `ORACLE_CREDIT_RESULTS_20260925.md` and `ORACLE_CREDIT_BENCHMARK_v01.md`
+- Local exploratory DWR result: `DWR_RESIDUAL_AUDIT_20260925.md`; collector `scripts/audit_dwr_residual_local.py`, analyzer `scripts/analyze_dwr_residual_local.py`
 - Active entry: `scripts/run_swesmith_oracle_credit.py`
 - Active config: `configs/swesmith_oracle_credit_6x16x4_v01.json`
 - Oracle analysis: `scripts/summarize_swesmith_oracle_credit.py`
