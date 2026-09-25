@@ -29,6 +29,9 @@ shows extra reference-proxy discrimination, not an RL improvement.
 For the current result, read [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md),
 then the [frozen protocol](ORACLE_CREDIT_BENCHMARK_v01.md) and
 [`evidence/oracle_credit_6x16x4_v01/summary.json`](evidence/oracle_credit_6x16x4_v01/summary.json).
+For the original theory, September 21 experiment handoff, and how their
+claims differ from the current executable q proxy, read
+[`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md).
 The following documents are the prior evidence and implementation history.
 
 1. [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md):

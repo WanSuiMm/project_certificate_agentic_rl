@@ -99,6 +99,8 @@ statistics are selection-conditioned and are not population estimates.
 
 - Canonical numbers and verdicts: [`RESULTS.md`](RESULTS.md)
 - Oracle Credit completed pilot: [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md)
+- Original theory and handoff, with current claim boundaries:
+  [`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md)
 - Pipeline and invariants: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - Selection provenance: `runs/selection_v01/selection_manifest.json`
 - Binding provenance: `runs/selection_v01/task_bindings_manifest.json`
