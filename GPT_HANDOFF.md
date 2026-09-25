@@ -1,56 +1,45 @@
-# GPT handoff: completed Oracle Credit pilot
+# GPT handoff: original theory and September 21 plan summarized
 
-- Review base: `375e25a` (previous GitHub handoff)
-- Evidence head: `544f5f76d2b6a08648895cd32f8991ecf1e2996c`
-- This handoff is metadata-only; review the evidence-head delta first.
+- Review base: `30e3039` (completed Oracle Credit evidence and its handoff)
+- Evidence head: `a499d71fb9d16d667e62ca7c833e34639130f512`
+- This handoff is metadata-only. Review the evidence-head delta first.
 
 ## Read first
 
-1. [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md):
-   canonical completed result and claim limits.
-2. [`evidence/oracle_credit_6x16x4_v01/summary.json`](evidence/oracle_credit_6x16x4_v01/summary.json):
-   all candidate p, q, Monte Carlo Q, uncertainty and per-task comparisons.
-3. [`ORACLE_CREDIT_BENCHMARK_v01.md`](ORACLE_CREDIT_BENCHMARK_v01.md):
-   frozen question, protocol, outcome definition and recovery semantics.
-4. [`scripts/run_swesmith_oracle_credit.py`](scripts/run_swesmith_oracle_credit.py)
-   and [`scripts/summarize_swesmith_oracle_credit.py`](scripts/summarize_swesmith_oracle_credit.py):
-   generation/feedback loop and analysis implementation.
+1. [`THEORY_AND_HANDOFF_SUMMARY_20260925.md`](THEORY_AND_HANDOFF_SUMMARY_20260925.md):
+   the concise synthesis of the September 24 theory recheck, original September
+   21 experiment handoff, and certificate-compatible RL adapter.
+2. [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md):
+   unchanged completed SWE-smith pilot and its inconclusive result.
+3. [`docs/CODEX_CERTIFICATE_AGENTIC_RL_EXPERIMENT_PLAN_v01.md`](docs/CODEX_CERTIFICATE_AGENTIC_RL_EXPERIMENT_PLAN_v01.md)
+   and [`baselines/prior/certificate_rl_adapter/THEORY.md`](baselines/prior/certificate_rl_adapter/THEORY.md):
+   original long-form proposal and committed adapter source, only if detail is
+   needed. Do not open large per-state JSONL first.
 
 ## Decision-relevant delta
 
-The frozen-policy 6-task × 16-candidate × 4-continuation pilot is now complete:
-384/384 P8 outcomes, 2,688/2,688 scored edits, 14 selected-public-test
-successes. The initial interrupted journal was preserved and imported into a
-new buffered run, which completed without discarding its frozen actions. The
-public evidence includes source-free per-state and terminal rows plus raw-file
-hashes; private source text, issue text, completions, test feedback, and launch
-receipts were not uploaded.
+This update **adds no new experiment or code change**. It makes the theory
+boundary explicit: paired semantic certificates or frozen 256-probe agreement
+measure *present program behavior*, not certified future agent value.
+Objective-preserving potential shaping with correctly matched `Phi+W` yields
+the same TD/GAE signal as the original reward plus total critic; a denser
+reward display alone cannot rescue tied whole-trajectory GRPO groups without
+changing the objective. The original handoff's proposed critic baselines,
+leakage checks, task-family splits and online gate are research design, not
+completed outcomes; its default online budget was zero.
 
-The outcome is **INCONCLUSIVE**, not a q win: there are no within-task Q pairs
-with disjoint 95% Wilson intervals at K=4. Descriptively, on the three tasks
-with nonconstant empirical Q (all one repository), matched-support q pair
-accuracy is 36.6% versus p 49.5%. Two task directions are unfavorable to q,
-but the noisy Q and dependent candidate pairs do not support a decisive
-negative claim. Three candidates already solved at P1, yet only 1/12 forced
-P8 continuations remained solved; the benchmark measures value under this
-specific seven-more-edit frozen policy, not intrinsic patch quality.
-
-Unchanged: the one-edit census shows extra q resolution, not future-value
-alignment; the earlier fixed-data LoRA result is not an on-policy long-horizon
-RL comparison; the proposed matched Test/Semantic GRPO intervention remains
-unrun. No PRM benchmark or critic comparison was run.
-
-Local verification: 75 tests passed; the staged files and public export passed
-row-count, link, whitespace, and sensitive-pattern checks. The downloaded raw
-summary/state/outcome SHA-256 values match the server run; deployed runner and
-scorer hashes match the committed source.
+The adapter's finite-tree algebra and the September 24 independent finite-MDP
+recheck are reported as numerical identity checks, **not** SWE execution or
+trained-RL performance. The current SWE-smith `q` is a behavioral probe proxy,
+not the proposal's learned interval-certified potential. The completed Oracle
+Credit pilot, its K=4 uncertainty and the absence of a trained long-horizon
+RL comparison are unchanged from the review base.
 
 ## Reviewer questions
 
-1. Is the K=4 Wilson non-overlap rule too conservative to serve as a useful
-   pilot screen, while still correctly preventing a positive claim here?
-2. Do the low or negative descriptive q/Q associations on the three informative
-   tasks suggest a protocol-specific mismatch between P1 agreement and forced
-   P8 continuation value, beyond Monte Carlo noise?
-3. What is the smallest future-value test that would distinguish these
-   explanations without claiming an RL result from the current pilot?
+1. Does the synthesis keep static semantics, edit-level certificates and
+   policy-conditioned continuation value adequately separate?
+2. Are any claims in the original September 21 plan inadvertently presented
+   as implemented or empirically established?
+3. Does the current Oracle Credit result support any stronger conclusion than
+   the explicitly scoped inconclusive frozen-policy P8 pilot?
