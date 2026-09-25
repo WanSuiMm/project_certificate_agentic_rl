@@ -1,5 +1,12 @@
 # Certificate-Supervised Agentic Value Learning
 
+Latest result: the [Oracle Credit Benchmark](ORACLE_CREDIT_RESULTS_20260925.md)
+completed 6 tasks × 16 frozen P1 candidates × 4 seven-edit continuations.
+Fourteen of 384 endpoints passed selected public tests, but no within-task
+candidate-value pair was confidently distinguishable at K=4. Whether semantic
+q predicts long-horizon success beyond public tests remains **inconclusive**;
+no online RL result follows from this pilot.
+
 This project asks whether program-semantic certificates expose a useful
 intermediate state for predicting terminal success on real coding-agent
 trajectories. The original frozen SWE-smith trajectory audit is complete.
@@ -18,6 +25,11 @@ on-policy eight-step Test/Semantic GRPO implementation is also
 shows extra reference-proxy discrimination, not an RL improvement.
 
 ## Start here
+
+For the current result, read [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md),
+then the [frozen protocol](ORACLE_CREDIT_BENCHMARK_v01.md) and
+[`evidence/oracle_credit_6x16x4_v01/summary.json`](evidence/oracle_credit_6x16x4_v01/summary.json).
+The following documents are the prior evidence and implementation history.
 
 1. [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md):
    latest offline LoRA result and interrupted eight-step source capture.

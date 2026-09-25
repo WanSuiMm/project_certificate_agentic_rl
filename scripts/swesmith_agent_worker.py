@@ -138,10 +138,14 @@ class TaskWorker:
             if bank is None:
                 raise RuntimeError("q_bank_missing")
             result = self.observe_q(bank)
+            if self.target.read_text(encoding="utf-8") != candidate:
+                raise RuntimeError("candidate_source_mutated_during_probe")
             if self.non_target_status() != self.other_status:
                 raise RuntimeError("observer_mutated_other_repository_files")
             return result
         public = tests(self.selectors)
+        if self.target.read_text(encoding="utf-8") != candidate:
+            raise RuntimeError("candidate_source_mutated_during_tests")
         if self.non_target_status() != self.other_status:
             raise RuntimeError("public_tests_mutated_other_repository_files")
         if not public["valid"]:

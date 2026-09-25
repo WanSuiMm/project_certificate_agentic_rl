@@ -10,6 +10,10 @@ class ScorerError(RuntimeError):
     pass
 
 
+class WorkerEndedError(ScorerError):
+    """The persistent sandbox stopped before returning one observation."""
+
+
 class SWESmithTaskSession:
     """One JSON-lines worker and checkout for all observations of one task."""
 
@@ -19,23 +23,26 @@ class SWESmithTaskSession:
         self.sandbox = None
         self.output = None
         self.buggy_source_sha256 = None
+        self.worker_ended = False
 
     def __enter__(self):
         self.sandbox = self.executor.modal.Sandbox.create(
             "python", "-u", "/opt/swesmith_agent_worker.py", "--serve",
             app=self.executor.app, image=self.executor._image(self.task["image_name"]),
             timeout=7200, cpu=1, memory=2048, block_network=True,
+            env={"PYTHONDONTWRITEBYTECODE": "1"},
         )
         self.output = iter(self.sandbox.stdout)
         return self
 
     def __exit__(self, *_exc) -> None:
         if self.sandbox is not None:
+            sandbox, self.sandbox = self.sandbox, None
             try:
-                self.sandbox.terminate()
+                if not self.worker_ended:
+                    sandbox.terminate()
             finally:
-                self.sandbox.detach()
-            self.sandbox = None
+                sandbox.detach()
 
     def _request(self, request: dict) -> dict:
         if self.sandbox is None:
@@ -45,7 +52,8 @@ class SWESmithTaskSession:
         try:
             result = json.loads(next(self.output))
         except (StopIteration, json.JSONDecodeError) as exc:
-            raise ScorerError("task worker ended or returned non-JSON") from exc
+            self.worker_ended = True
+            raise WorkerEndedError("task worker ended or returned non-JSON") from exc
         if result.get("status") in {"worker_error", "invalid_test_observation"}:
             raise ScorerError(f"invalid scorer result: {result}")
         if result.get("instance_id") != self.task["instance_id"]:

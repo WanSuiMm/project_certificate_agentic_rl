@@ -2,10 +2,10 @@
 
 - Project: Certificate-Supervised Agentic Value Learning (CSAVL; working name)
 - Activity tier: 1
-- Lifecycle status: exact-25 replay complete; q-first 20/8 slice frozen; one-step fixed-data LoRA is a side experiment; prior eight-step capture was open-loop and stopped partially ungraded; corrected closed-loop census and on-policy eight-step GRPO code are ready but unrun
-- Current artifact: frozen 40-rollout panel plus 25 exact-bound edit-level replays
+- Lifecycle status: Oracle Credit Benchmark pilot complete; future-value comparison inconclusive at K=4; training remains deferred
+- Current artifact: completed 6 × 16 × 4 frozen-policy Oracle Credit pilot, alongside the earlier frozen panel and exact-bound replays
 - Closest venue: ICLR/NeurIPS candidate only if the real-agent intermediate signal survives
-- Last verified: 2026-09-24
+- Last verified: 2026-09-25
 
 ## Research Contract
 
@@ -59,7 +59,11 @@ not a claim about arbitrary repositories or general software engineering agents.
 
 ## Canonical Entry Points
 
-- Read first: `GATE0_INTERMEDIATE_SIGNAL_PROTOCOL_v01.md`
+- Read first: `ORACLE_CREDIT_RESULTS_20260925.md`, then `ORACLE_CREDIT_BENCHMARK_v01.md`
+- Active entry: `scripts/run_swesmith_oracle_credit.py`
+- Active config: `configs/swesmith_oracle_credit_6x16x4_v01.json`
+- Oracle analysis: `scripts/summarize_swesmith_oracle_credit.py`
+- Failed-run recovery: `scripts/launch_swesmith_oracle_credit.py --import-run-dir FAILED_RUN_DIRECTORY` creates a new, provenance-linked run without changing the failed run
 - Project overview: `README.md`
 - Original execution specification: `docs/CODEX_CERTIFICATE_AGENTIC_RL_EXPERIMENT_PLAN_v01.md`
 - Prior-evidence provenance: `docs/HANDOFF_PROVENANCE.md`
@@ -122,6 +126,15 @@ not a claim about arbitrary repositories or general software engineering agents.
 - a protocol separating information gain from decomposition gain and online gain.
 
 ## Next Action
+
+The `ORACLE_CREDIT_BENCHMARK_v01.md` pilot completed: six task IDs, all 16
+frozen P1 candidates, four closed-loop continuations each through P8. All 384
+endpoints are present, but none of the noisy K=4 candidate-value comparisons
+passed its confident-pair threshold. `ORACLE_CREDIT_RESULTS_20260925.md` is
+the canonical result; this is not evidence that q improves long-horizon RL.
+No further paid run is authorized by this status document alone.
+
+### Historical execution notes (superseded by the oracle pilot)
 
 The user has requested a distinct oracle-proxy GRPO survival experiment, using
 only terminal `Y`, `Y+0.5p_T`, and `Y+0.5q(P_T)` rewards. Its protocol is frozen

@@ -24,8 +24,13 @@ before critic scaling or online RL.
   retained for runner/environment diagnosis.
 - `INTERMEDIATE_SIGNAL_GATE`: first signal present, prevalence not estimated.
 - `CRITIC_COMPARISON`: not run.
-- `LIVE_AGENT_CONTINUATION`: not run.
+- `LIVE_AGENT_CONTINUATION`: a bounded frozen-policy Oracle Credit pilot is complete;
+  6 tasks, 96 P1 candidates, 384 P8 continuations, and 14 selected-public-test
+  successes. This is not the original full-agent Gate 0 comparison.
 - `ONLINE_RL`: not run.
+- `ORACLE_CREDIT_PILOT`: complete but inconclusive at K=4; no within-task
+  candidate Q pair has disjoint two-sided 95% Wilson intervals. See
+  `ORACLE_CREDIT_RESULTS_20260925.md`.
 - `REAL_SWE_SMITH_64_SELECTION`: candidate slice frozen; 64 official task rows,
   eight images, 48/16 split; not runtime-qualified.
 - `REAL_MODAL_IMAGE_SMOKE`: one h11 image starts at `/testbed`.
@@ -48,10 +53,11 @@ before critic scaling or online RL.
   on 25/26 tasks versus test reward on 11/26; 14/26 have tied test reward but
   varying semantic reward. See `BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`.
   This is observational information, not long-horizon credit or RL improvement.
-- `EIGHT_STEP_TRAJECTORIES`: streaming continuation running, not complete.
-  It reuses each census P1, saves P0 through P8, and uses only public-test
-  feedback online. `q` at every `P0`–`P8` state is measured offline after
-  all trajectories finish. The policy never sees q.
+- `EIGHT_STEP_TRAJECTORIES`: the older open-loop source-only capture stopped
+  after 54 complete trajectories; the proposed 28 × 16 all-state-q census was
+  not completed. The distinct 6 × 16 × 4 Oracle Credit continuation pilot is
+  complete with public-test feedback at every step; it evaluates only P1 q.
+  The policy never sees q.
 
 ## Variants and evidence strata
 
@@ -92,6 +98,7 @@ statistics are selection-conditioned and are not population estimates.
 ## Evidence routing
 
 - Canonical numbers and verdicts: [`RESULTS.md`](RESULTS.md)
+- Oracle Credit completed pilot: [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md)
 - Pipeline and invariants: [`ARCHITECTURE.md`](ARCHITECTURE.md)
 - Selection provenance: `runs/selection_v01/selection_manifest.json`
 - Binding provenance: `runs/selection_v01/task_bindings_manifest.json`

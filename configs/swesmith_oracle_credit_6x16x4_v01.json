@@ -1,0 +1,18 @@
+{
+  "protocol": "swesmith_oracle_credit_v01",
+  "seed": 20260924,
+  "pilot_tasks": 6,
+  "candidates_per_task": 16,
+  "continuations_per_candidate": 4,
+  "terminal_step": 8,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+  "context_tokens": 8192,
+  "max_new_tokens": 1024,
+  "generation_batch_size": 8,
+  "sandbox_workers": 4,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 20,
+  "repetition_penalty": 1.1
+}

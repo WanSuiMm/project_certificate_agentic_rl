@@ -68,6 +68,9 @@ pre/post endpoint tests + replay receipt
 | `scripts/swesmith_agent_edit.py` | restricted replacement-edit action parser and confinement |
 | `scripts/swesmith_agent_worker.py` | official-image rollout with public-test feedback |
 | `scripts/swesmith_modal_executor.py` | remote sandbox scoring interface |
+| `scripts/run_swesmith_oracle_credit.py` | frozen-policy P1-to-P8 closed-loop continuation, public-feedback ready queue, durable action/state/outcome journals |
+| `scripts/summarize_swesmith_oracle_credit.py` | candidate Monte Carlo Q, Wilson intervals, task-macro p/q comparisons |
+| `scripts/export_swesmith_oracle_public.py` | source-free evidence export with raw artifact hashes and row-count checks |
 | `scripts/train_swesmith_agent_grpo.py` | pinned-model restricted-agent GRPO trainer; first smoke failed before update |
 | `tests/` | unit checks for selection, integrity audit, replay, and prior manifests |
 

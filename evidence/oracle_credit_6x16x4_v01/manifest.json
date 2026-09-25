@@ -1,0 +1,44 @@
+{
+  "protocol": "swesmith_oracle_credit_v01",
+  "status": "complete",
+  "run_started_utc": "2026-09-25T05:49:32.821089+00:00",
+  "run_finished_utc": "2026-09-25T06:36:22.392124+00:00",
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+  "config": {
+    "protocol": "swesmith_oracle_credit_v01",
+    "seed": 20260924,
+    "pilot_tasks": 6,
+    "candidates_per_task": 16,
+    "continuations_per_candidate": 4,
+    "terminal_step": 8,
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "model_revision": "d18ecad881a290f0c792f1c2b5dbee1820d4a424",
+    "context_tokens": 8192,
+    "max_new_tokens": 1024,
+    "generation_batch_size": 8,
+    "sandbox_workers": 4,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 20,
+    "repetition_penalty": 1.1
+  },
+  "source_input_sha256": {
+    "selection_sha256": "7b8c94a6f81d48be6ac2c710d2edd992712a80318a8ce523e868e3bdf1846080",
+    "census_sha256": "e6969d4fda0808e77e7bfb7f84ca447de9be66b4e407f76c36dbbb628af9214c",
+    "tasks_sha256": "fdd388575b8c844f2192555befc1ec7f202f9c5d99f99c473abec23c33ef2d87",
+    "q_results_sha256": "d536bd992b1a18441db561acef9e2f7d70f21d08f4c8941618758f22a0f14efc"
+  },
+  "raw_artifact_sha256": {
+    "run.json": "e3a6a3ed7a6dd0000eef28cef3b7bc8b59c2377b5760864335ad77a634705b10",
+    "candidates.jsonl": "06535d520b2903206a44defcd069deffc16c5f150f1d894f23185a24b96dd76b",
+    "states.jsonl": "7a054a106febce98bb83a430abf37fa656f6fabed96c5926047905dff3f1bc63",
+    "outcomes.jsonl": "8b348abfbff332bfcae9691c925761f7204f8ecbd17c24cb9b2608f3627772f6",
+    "summary.json": "ad14c98bf80abd71b165baa3700f26b408d75666966cbd74fe75c246ee48e2d6"
+  },
+  "published_rows": {
+    "states": 2688,
+    "outcomes": 384
+  },
+  "omitted_fields": "Source text, model completions, issue text, test feedback text, logs, launch receipts, and machine identifiers remain in the private raw archive."
+}

@@ -31,6 +31,7 @@
 | One-edit reward census, later fixed partial snapshot | [`BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md`](BODY_CENSUS_REWARD_SNAPSHOT_26_TASKS_20260924.md) | 26/28 tasks complete; 328/416 executable, 43 solved; semantic reward varies on 25/26 tasks versus test reward on 11/26; 14/26 have test tied but semantic varying | Extra reward resolution only; no trained-policy result |
 | Offline fixed-data LoRA, Test vs Semantic | [`STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md`](STOPPED_OFFLINE_RL_AND_P1_P8_SNAPSHOT_20260924.md) | 20 updates/arm; nonzero gradients; held-out fixed-candidate ranking unchanged between arms | One-step side experiment; cannot answer long-horizon RL question or solve-rate change |
 | Interrupted open-loop eight-step source capture | same | 438 state rows; 54 trajectories reached P8 across 4 tasks | No public feedback or q at P2–P8; not the agreed coding-agent trajectory |
+| Frozen-policy Oracle Credit pilot | [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md) | 6 tasks; 96 P1 candidates; 384/384 P8 outcomes; 14 successes; zero confidently distinguishable Q pairs | Complete data, but K=4 future-value comparison is inconclusive; no RL result |
 
 ## First replay conclusion
 

@@ -1,0 +1,2553 @@
+{
+  "completeness": {
+    "candidate_count_expected_per_task": 16,
+    "candidate_file_present": true,
+    "candidate_rows": 96,
+    "complete": true,
+    "continuations_expected_per_candidate": 4,
+    "data_complete": true,
+    "outcome_file_present": true,
+    "outcome_rows": 384,
+    "run_status_complete": true,
+    "task_count_expected": 6,
+    "task_count_with_all_candidate_outcomes": 6,
+    "task_count_with_full_candidate_panels": 6
+  },
+  "distinguishable_Q_pair_count": 0,
+  "interpretation_rule": "INCONCLUSIVE when a complete run has no within-task non-tied Q pair with disjoint two-sided 95% Wilson intervals; all reported associations are descriptive and no KEEP/KILL threshold is applied.",
+  "interpretation_status": "INCONCLUSIVE",
+  "monte_carlo_target_note": "Each empirical Q is successes/K from repeated frozen-policy continuations and is a noisy estimate, not ground truth. Wilson-filtered pairs are a conservative descriptive subset, without a multiple-testing claim.",
+  "run_status": "complete",
+  "schema_version": 1,
+  "task_macro": {
+    "fully_complete_tasks_only": {
+      "main_subset_q_confident_pair_accuracy": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "main_subset_q_confident_pair_coverage": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "main_subset_q_empirical_all_pair_accuracy": {
+        "mean": 0.4083694083694083,
+        "tasks_with_metric": 3
+      },
+      "main_subset_q_empirical_pair_coverage": {
+        "mean": 0.9777777777777779,
+        "tasks_with_metric": 3
+      },
+      "matched_proxy_support": {
+        "confident_pair_accuracy": {
+          "p_task_macro_mean": null,
+          "q_minus_p_task_macro_difference": null,
+          "q_task_macro_mean": null,
+          "tasks_with_both_metrics": 0
+        },
+        "empirical_pair_accuracy": {
+          "p_task_macro_mean": 0.4948717948717949,
+          "q_minus_p_task_macro_difference": -0.12923742923742926,
+          "q_task_macro_mean": 0.36563436563436563,
+          "tasks_with_both_metrics": 3
+        },
+        "spearman_rho": {
+          "p_task_macro_mean": -0.027874733666903025,
+          "q_minus_p_task_macro_difference": 0.09497341552892904,
+          "q_task_macro_mean": 0.06709868186202603,
+          "tasks_with_both_metrics": 1
+        }
+      },
+      "p_confident_pair_accuracy": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "p_empirical_all_pair_accuracy": {
+        "mean": 0.4948717948717949,
+        "tasks_with_metric": 3
+      },
+      "q_candidate_coverage": {
+        "mean": 0.9583333333333334,
+        "tasks_with_metric": 6
+      },
+      "q_confident_pair_accuracy": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "q_confident_pair_coverage": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "q_empirical_all_pair_accuracy": {
+        "mean": 0.36563436563436563,
+        "tasks_with_metric": 3
+      },
+      "q_empirical_pair_coverage": {
+        "mean": 0.9777777777777779,
+        "tasks_with_metric": 3
+      },
+      "spearman_p_vs_Q": {
+        "mean": -0.027874733666903025,
+        "tasks_with_metric": 1
+      },
+      "spearman_q_vs_Q": {
+        "mean": -0.19893524000769483,
+        "tasks_with_metric": 3
+      },
+      "task_count": 6
+    },
+    "observed_tasks_with_at_least_two_complete_candidates": {
+      "main_subset_q_confident_pair_accuracy": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "main_subset_q_confident_pair_coverage": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "main_subset_q_empirical_all_pair_accuracy": {
+        "mean": 0.4083694083694083,
+        "tasks_with_metric": 3
+      },
+      "main_subset_q_empirical_pair_coverage": {
+        "mean": 0.9777777777777779,
+        "tasks_with_metric": 3
+      },
+      "matched_proxy_support": {
+        "confident_pair_accuracy": {
+          "p_task_macro_mean": null,
+          "q_minus_p_task_macro_difference": null,
+          "q_task_macro_mean": null,
+          "tasks_with_both_metrics": 0
+        },
+        "empirical_pair_accuracy": {
+          "p_task_macro_mean": 0.4948717948717949,
+          "q_minus_p_task_macro_difference": -0.12923742923742926,
+          "q_task_macro_mean": 0.36563436563436563,
+          "tasks_with_both_metrics": 3
+        },
+        "spearman_rho": {
+          "p_task_macro_mean": -0.027874733666903025,
+          "q_minus_p_task_macro_difference": 0.09497341552892904,
+          "q_task_macro_mean": 0.06709868186202603,
+          "tasks_with_both_metrics": 1
+        }
+      },
+      "p_confident_pair_accuracy": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "p_empirical_all_pair_accuracy": {
+        "mean": 0.4948717948717949,
+        "tasks_with_metric": 3
+      },
+      "q_candidate_coverage": {
+        "mean": 0.9583333333333334,
+        "tasks_with_metric": 6
+      },
+      "q_confident_pair_accuracy": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "q_confident_pair_coverage": {
+        "mean": null,
+        "tasks_with_metric": 0
+      },
+      "q_empirical_all_pair_accuracy": {
+        "mean": 0.36563436563436563,
+        "tasks_with_metric": 3
+      },
+      "q_empirical_pair_coverage": {
+        "mean": 0.9777777777777779,
+        "tasks_with_metric": 3
+      },
+      "spearman_p_vs_Q": {
+        "mean": -0.027874733666903025,
+        "tasks_with_metric": 1
+      },
+      "spearman_q_vs_Q": {
+        "mean": -0.19893524000769483,
+        "tasks_with_metric": 3
+      },
+      "task_count": 6
+    },
+    "weighting": "Equal weight per task; pairwise observations are not treated as independent significance tests."
+  },
+  "tasks": {
+    "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr": {
+      "candidate_count": 16,
+      "candidate_count_complete": true,
+      "candidates": [
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.90234375,
+          "sample": 0,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.01953125,
+          "sample": 1,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 2,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 3,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 4,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 5,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 6,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 7,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 8,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.90234375,
+          "sample": 9,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": false,
+          "q": null,
+          "sample": 10,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 11,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.90234375,
+          "sample": 12,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 13,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 14,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "luozhouyang__python-string-similarity.115acaac.func_pm_remove_cond__gch4emzr",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9444444444444444,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 15,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        }
+      ],
+      "complete_outcome_candidates": 16,
+      "expected_candidate_count": 16,
+      "incomplete_outcome_candidates": 0,
+      "invalid_body_candidates": 2,
+      "invalid_body_complete_outcome_candidates": 2,
+      "main_subset": {
+        "q_pairwise": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        },
+        "rule": "both P1 candidates are unsolved and have exactly equal p",
+        "same_p_candidate_pairs": 120,
+        "unsolved_complete_candidate_count": 16
+      },
+      "matched_proxy_support": {
+        "candidate_count": 15,
+        "pairwise": {
+          "candidate_count": 15,
+          "confident_pair_direction": {
+            "eligible_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "non_tied_Q_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "same_candidate_pair_support": true
+        },
+        "spearman": {
+          "p_vs_Q": {
+            "n": 15,
+            "null_reason": "constant_Q",
+            "rho": null
+          },
+          "q_minus_p_rho_difference": null,
+          "q_vs_Q": {
+            "n": 15,
+            "null_reason": "constant_Q",
+            "rho": null
+          }
+        },
+        "support_rule": "Both p and q use only candidates with valid q and all K terminal outcomes."
+      },
+      "outcome_rows_for_complete_candidates": 64,
+      "pairwise": {
+        "p": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        },
+        "q": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        }
+      },
+      "proxy_coverage": {
+        "candidate_count": 16,
+        "complete_outcome_candidates": 16,
+        "q_missing_candidates": 1,
+        "q_valid_candidates": 15,
+        "q_valid_complete_outcome_candidates": 15,
+        "q_valid_fraction": 0.9375,
+        "q_valid_fraction_among_complete_outcomes": 0.9375
+      },
+      "spearman": {
+        "p_vs_Q": {
+          "n": 16,
+          "null_reason": "constant_Q",
+          "rho": null
+        },
+        "q_vs_Q": {
+          "n": 15,
+          "null_reason": "constant_Q",
+          "rho": null
+        }
+      },
+      "task_complete": true
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq": {
+      "candidate_count": 16,
+      "candidate_count_complete": true,
+      "candidates": [
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.44921875,
+          "sample": 0,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.66796875,
+          "sample": 1,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.44921875,
+          "sample": 2,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 3,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 4,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.44921875,
+          "sample": 5,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 6,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": true,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.44921875,
+          "sample": 7,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.46875,
+          "sample": 8,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 1.0,
+          "proxy_valid": true,
+          "q": 1.0,
+          "sample": 9,
+          "solved": true,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 1.0,
+          "proxy_valid": true,
+          "q": 1.0,
+          "sample": 10,
+          "solved": true,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.5,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 2,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 11,
+          "solved": false,
+          "wilson95": [
+            0.15003898915214947,
+            0.8499610108478506
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.78125,
+          "sample": 12,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 13,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 14,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change__jkircbwq",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 1.0,
+          "proxy_valid": true,
+          "q": 1.0,
+          "sample": 15,
+          "solved": true,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        }
+      ],
+      "complete_outcome_candidates": 16,
+      "expected_candidate_count": 16,
+      "incomplete_outcome_candidates": 0,
+      "invalid_body_candidates": 3,
+      "invalid_body_complete_outcome_candidates": 3,
+      "main_subset": {
+        "q_pairwise": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.6666666666666666,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 21,
+            "scored_pairs": 21
+          },
+          "proxy_ties_score_half": true
+        },
+        "rule": "both P1 candidates are unsolved and have exactly equal p",
+        "same_p_candidate_pairs": 36,
+        "unsolved_complete_candidate_count": 13
+      },
+      "matched_proxy_support": {
+        "candidate_count": 16,
+        "pairwise": {
+          "candidate_count": 16,
+          "confident_pair_direction": {
+            "eligible_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "non_tied_Q_pairs": 65,
+            "p_accuracy": 0.4846153846153846,
+            "q_accuracy": 0.5384615384615384,
+            "q_minus_p_accuracy_difference": 0.05384615384615382,
+            "scored_pairs": 65
+          },
+          "same_candidate_pair_support": true
+        },
+        "spearman": {
+          "p_vs_Q": {
+            "n": 16,
+            "null_reason": null,
+            "rho": -0.027874733666903025
+          },
+          "q_minus_p_rho_difference": 0.09497341552892904,
+          "q_vs_Q": {
+            "n": 16,
+            "null_reason": null,
+            "rho": 0.06709868186202603
+          }
+        },
+        "support_rule": "Both p and q use only candidates with valid q and all K terminal outcomes."
+      },
+      "outcome_rows_for_complete_candidates": 64,
+      "pairwise": {
+        "p": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.4846153846153846,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 65,
+            "scored_pairs": 65
+          },
+          "proxy_ties_score_half": true
+        },
+        "q": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.5384615384615384,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 65,
+            "scored_pairs": 65
+          },
+          "proxy_ties_score_half": true
+        }
+      },
+      "proxy_coverage": {
+        "candidate_count": 16,
+        "complete_outcome_candidates": 16,
+        "q_missing_candidates": 0,
+        "q_valid_candidates": 16,
+        "q_valid_complete_outcome_candidates": 16,
+        "q_valid_fraction": 1.0,
+        "q_valid_fraction_among_complete_outcomes": 1.0
+      },
+      "spearman": {
+        "p_vs_Q": {
+          "n": 16,
+          "null_reason": null,
+          "rho": -0.027874733666903025
+        },
+        "q_vs_Q": {
+          "n": 16,
+          "null_reason": null,
+          "rho": 0.06709868186202603
+        }
+      },
+      "task_complete": true
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k": {
+      "candidate_count": 16,
+      "candidate_count_complete": true,
+      "candidates": [
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 0,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 1,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 2,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 3,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 4,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 5,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 6,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 7,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 8,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 9,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 10,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 11,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0625,
+          "sample": 12,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 13,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0234375,
+          "sample": 14,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__fhdnra9k",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.58203125,
+          "sample": 15,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        }
+      ],
+      "complete_outcome_candidates": 16,
+      "expected_candidate_count": 16,
+      "incomplete_outcome_candidates": 0,
+      "invalid_body_candidates": 5,
+      "invalid_body_complete_outcome_candidates": 5,
+      "main_subset": {
+        "q_pairwise": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        },
+        "rule": "both P1 candidates are unsolved and have exactly equal p",
+        "same_p_candidate_pairs": 56,
+        "unsolved_complete_candidate_count": 16
+      },
+      "matched_proxy_support": {
+        "candidate_count": 16,
+        "pairwise": {
+          "candidate_count": 16,
+          "confident_pair_direction": {
+            "eligible_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "non_tied_Q_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "same_candidate_pair_support": true
+        },
+        "spearman": {
+          "p_vs_Q": {
+            "n": 16,
+            "null_reason": "constant_Q",
+            "rho": null
+          },
+          "q_minus_p_rho_difference": null,
+          "q_vs_Q": {
+            "n": 16,
+            "null_reason": "constant_Q",
+            "rho": null
+          }
+        },
+        "support_rule": "Both p and q use only candidates with valid q and all K terminal outcomes."
+      },
+      "outcome_rows_for_complete_candidates": 64,
+      "pairwise": {
+        "p": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        },
+        "q": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        }
+      },
+      "proxy_coverage": {
+        "candidate_count": 16,
+        "complete_outcome_candidates": 16,
+        "q_missing_candidates": 0,
+        "q_valid_candidates": 16,
+        "q_valid_complete_outcome_candidates": 16,
+        "q_valid_fraction": 1.0,
+        "q_valid_fraction_among_complete_outcomes": 1.0
+      },
+      "spearman": {
+        "p_vs_Q": {
+          "n": 16,
+          "null_reason": "constant_Q",
+          "rho": null
+        },
+        "q_vs_Q": {
+          "n": 16,
+          "null_reason": "constant_Q",
+          "rho": null
+        }
+      },
+      "task_complete": true
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75": {
+      "candidate_count": 16,
+      "candidate_count_complete": true,
+      "candidates": [
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 0,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 1,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 2,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 3,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 4,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.21875,
+          "sample": 5,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 6,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 7,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.21875,
+          "sample": 8,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 9,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 10,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.21875,
+          "sample": 11,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.21875,
+          "sample": 12,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.21875,
+          "sample": 13,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 14,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.25,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_change_const__js80kw75",
+          "invalid_body": false,
+          "oracle_successes": 1,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.9333333333333333,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 15,
+          "solved": false,
+          "wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ]
+        }
+      ],
+      "complete_outcome_candidates": 16,
+      "expected_candidate_count": 16,
+      "incomplete_outcome_candidates": 0,
+      "invalid_body_candidates": 2,
+      "invalid_body_complete_outcome_candidates": 2,
+      "main_subset": {
+        "q_pairwise": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.2727272727272727,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 55,
+            "scored_pairs": 55
+          },
+          "proxy_ties_score_half": true
+        },
+        "rule": "both P1 candidates are unsolved and have exactly equal p",
+        "same_p_candidate_pairs": 120,
+        "unsolved_complete_candidate_count": 16
+      },
+      "matched_proxy_support": {
+        "candidate_count": 16,
+        "pairwise": {
+          "candidate_count": 16,
+          "confident_pair_direction": {
+            "eligible_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "non_tied_Q_pairs": 55,
+            "p_accuracy": 0.5,
+            "q_accuracy": 0.2727272727272727,
+            "q_minus_p_accuracy_difference": -0.2272727272727273,
+            "scored_pairs": 55
+          },
+          "same_candidate_pair_support": true
+        },
+        "spearman": {
+          "p_vs_Q": {
+            "n": 16,
+            "null_reason": "constant_proxy",
+            "rho": null
+          },
+          "q_minus_p_rho_difference": null,
+          "q_vs_Q": {
+            "n": 16,
+            "null_reason": null,
+            "rho": -0.45454545454545453
+          }
+        },
+        "support_rule": "Both p and q use only candidates with valid q and all K terminal outcomes."
+      },
+      "outcome_rows_for_complete_candidates": 64,
+      "pairwise": {
+        "p": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.5,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 55,
+            "scored_pairs": 55
+          },
+          "proxy_ties_score_half": true
+        },
+        "q": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.2727272727272727,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 55,
+            "scored_pairs": 55
+          },
+          "proxy_ties_score_half": true
+        }
+      },
+      "proxy_coverage": {
+        "candidate_count": 16,
+        "complete_outcome_candidates": 16,
+        "q_missing_candidates": 0,
+        "q_valid_candidates": 16,
+        "q_valid_complete_outcome_candidates": 16,
+        "q_valid_fraction": 1.0,
+        "q_valid_fraction_among_complete_outcomes": 1.0
+      },
+      "spearman": {
+        "p_vs_Q": {
+          "n": 16,
+          "null_reason": "constant_proxy",
+          "rho": null
+        },
+        "q_vs_Q": {
+          "n": 16,
+          "null_reason": null,
+          "rho": -0.45454545454545453
+        }
+      },
+      "task_complete": true
+    },
+    "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe": {
+      "candidate_count": 16,
+      "candidate_count_complete": true,
+      "candidates": [
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 0,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": false,
+          "q": null,
+          "sample": 1,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 2,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 3,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.43359375,
+          "sample": 4,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.44140625,
+          "sample": 5,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.35546875,
+          "sample": 6,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.4296875,
+          "sample": 7,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 8,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.75390625,
+          "sample": 9,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 10,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 11,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 12,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.00390625,
+          "sample": 13,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 14,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.5,
+          "instance_id": "stanfordnlp__string2string.c4a72f59.func_pm_op_swap__h58dkipe",
+          "invalid_body": false,
+          "oracle_successes": 2,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.8666666666666667,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 15,
+          "solved": false,
+          "wilson95": [
+            0.15003898915214947,
+            0.8499610108478506
+          ]
+        }
+      ],
+      "complete_outcome_candidates": 16,
+      "expected_candidate_count": 16,
+      "incomplete_outcome_candidates": 0,
+      "invalid_body_candidates": 1,
+      "invalid_body_complete_outcome_candidates": 1,
+      "main_subset": {
+        "q_pairwise": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.2857142857142857,
+            "coverage": 0.9333333333333333,
+            "non_tied_Q_pairs": 15,
+            "scored_pairs": 14
+          },
+          "proxy_ties_score_half": true
+        },
+        "rule": "both P1 candidates are unsolved and have exactly equal p",
+        "same_p_candidate_pairs": 120,
+        "unsolved_complete_candidate_count": 16
+      },
+      "matched_proxy_support": {
+        "candidate_count": 15,
+        "pairwise": {
+          "candidate_count": 15,
+          "confident_pair_direction": {
+            "eligible_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "non_tied_Q_pairs": 14,
+            "p_accuracy": 0.5,
+            "q_accuracy": 0.2857142857142857,
+            "q_minus_p_accuracy_difference": -0.2142857142857143,
+            "scored_pairs": 14
+          },
+          "same_candidate_pair_support": true
+        },
+        "spearman": {
+          "p_vs_Q": {
+            "n": 15,
+            "null_reason": "constant_proxy",
+            "rho": null
+          },
+          "q_minus_p_rho_difference": null,
+          "q_vs_Q": {
+            "n": 15,
+            "null_reason": null,
+            "rho": -0.20935894733965596
+          }
+        },
+        "support_rule": "Both p and q use only candidates with valid q and all K terminal outcomes."
+      },
+      "outcome_rows_for_complete_candidates": 64,
+      "pairwise": {
+        "p": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.5,
+            "coverage": 1.0,
+            "non_tied_Q_pairs": 15,
+            "scored_pairs": 15
+          },
+          "proxy_ties_score_half": true
+        },
+        "q": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": 0.0,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": 0.2857142857142857,
+            "coverage": 0.9333333333333333,
+            "non_tied_Q_pairs": 15,
+            "scored_pairs": 14
+          },
+          "proxy_ties_score_half": true
+        }
+      },
+      "proxy_coverage": {
+        "candidate_count": 16,
+        "complete_outcome_candidates": 16,
+        "q_missing_candidates": 1,
+        "q_valid_candidates": 15,
+        "q_valid_complete_outcome_candidates": 15,
+        "q_valid_fraction": 0.9375,
+        "q_valid_fraction_among_complete_outcomes": 0.9375
+      },
+      "spearman": {
+        "p_vs_Q": {
+          "n": 16,
+          "null_reason": "constant_proxy",
+          "rho": null
+        },
+        "q_vs_Q": {
+          "n": 15,
+          "null_reason": null,
+          "rho": -0.20935894733965596
+        }
+      },
+      "task_complete": true
+    },
+    "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu": {
+      "candidate_count": 16,
+      "candidate_count_complete": true,
+      "candidates": [
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.34375,
+          "sample": 0,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.98828125,
+          "sample": 1,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.3828125,
+          "sample": 2,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.01171875,
+          "sample": 3,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.01171875,
+          "sample": 4,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.3828125,
+          "sample": 5,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.16015625,
+          "sample": 6,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 1.0,
+          "sample": 7,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.3828125,
+          "sample": 8,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.01171875,
+          "sample": 9,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.01171875,
+          "sample": 10,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.98828125,
+          "sample": 11,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": true,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.3828125,
+          "sample": 12,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.5,
+          "proxy_valid": true,
+          "q": 0.0,
+          "sample": 13,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.0,
+          "proxy_valid": false,
+          "q": null,
+          "sample": 14,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        },
+        {
+          "Q": 0.0,
+          "instance_id": "tobymao__sqlglot.036601ba.func_pm_op_change__atmgadcu",
+          "invalid_body": false,
+          "oracle_successes": 0,
+          "outcome_replicates": 4,
+          "outcomes_complete": true,
+          "p": 0.0,
+          "proxy_valid": false,
+          "q": null,
+          "sample": 15,
+          "solved": false,
+          "wilson95": [
+            0.0,
+            0.4898908364545973
+          ]
+        }
+      ],
+      "complete_outcome_candidates": 16,
+      "expected_candidate_count": 16,
+      "incomplete_outcome_candidates": 0,
+      "invalid_body_candidates": 2,
+      "invalid_body_complete_outcome_candidates": 2,
+      "main_subset": {
+        "q_pairwise": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        },
+        "rule": "both P1 candidates are unsolved and have exactly equal p",
+        "same_p_candidate_pairs": 92,
+        "unsolved_complete_candidate_count": 16
+      },
+      "matched_proxy_support": {
+        "candidate_count": 14,
+        "pairwise": {
+          "candidate_count": 14,
+          "confident_pair_direction": {
+            "eligible_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "non_tied_Q_pairs": 0,
+            "p_accuracy": null,
+            "q_accuracy": null,
+            "q_minus_p_accuracy_difference": null,
+            "scored_pairs": 0
+          },
+          "same_candidate_pair_support": true
+        },
+        "spearman": {
+          "p_vs_Q": {
+            "n": 14,
+            "null_reason": "constant_Q",
+            "rho": null
+          },
+          "q_minus_p_rho_difference": null,
+          "q_vs_Q": {
+            "n": 14,
+            "null_reason": "constant_Q",
+            "rho": null
+          }
+        },
+        "support_rule": "Both p and q use only candidates with valid q and all K terminal outcomes."
+      },
+      "outcome_rows_for_complete_candidates": 64,
+      "pairwise": {
+        "p": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        },
+        "q": {
+          "confident_pair_direction": {
+            "accuracy": null,
+            "coverage_among_confident_pairs": null,
+            "coverage_of_empirical_non_tied_pairs": null,
+            "eligible_pairs": 0,
+            "scored_pairs": 0
+          },
+          "empirical_all_pair": {
+            "accuracy": null,
+            "coverage": null,
+            "non_tied_Q_pairs": 0,
+            "scored_pairs": 0
+          },
+          "proxy_ties_score_half": true
+        }
+      },
+      "proxy_coverage": {
+        "candidate_count": 16,
+        "complete_outcome_candidates": 16,
+        "q_missing_candidates": 2,
+        "q_valid_candidates": 14,
+        "q_valid_complete_outcome_candidates": 14,
+        "q_valid_fraction": 0.875,
+        "q_valid_fraction_among_complete_outcomes": 0.875
+      },
+      "spearman": {
+        "p_vs_Q": {
+          "n": 16,
+          "null_reason": "constant_Q",
+          "rho": null
+        },
+        "q_vs_Q": {
+          "n": 14,
+          "null_reason": "constant_Q",
+          "rho": null
+        }
+      },
+      "task_complete": true
+    }
+  }
+}
