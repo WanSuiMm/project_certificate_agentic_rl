@@ -1,26 +1,56 @@
-# GPT handoff: eight-step semantic GRPO code, no new run
+# GPT handoff: completed Oracle Credit pilot
 
-- Review base: `885275c3f7fabead88a20fc523b6cfa7259e5ecb`
-- Evidence head: `a3b5a52` (experiment code, protocol, and tests)
-- This handoff is metadata-only. Review the evidence-head delta first.
+- Review base: `375e25a` (previous GitHub handoff)
+- Evidence head: `544f5f76d2b6a08648895cd32f8991ecf1e2996c`
+- This handoff is metadata-only; review the evidence-head delta first.
 
 ## Read first
 
-1. [`LONG_HORIZON_GRPO_PROTOCOL_20260924.md`](LONG_HORIZON_GRPO_PROTOCOL_20260924.md): three experiments, reward definitions, and claim limits.
-2. [`CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md`](CLOSED_LOOP_TRAJECTORY_PROTOCOL_20260924.md): public-feedback rollout and offline q ordering.
-3. [`RESULTS.md`](RESULTS.md): canonical results, including the unchanged negative/offline evidence.
-4. [`scripts/train_swesmith_long_horizon_grpo.py`](scripts/train_swesmith_long_horizon_grpo.py): on-policy Test and Semantic arms; [`scripts/summarize_swesmith_trajectory_grpo_signal.py`](scripts/summarize_swesmith_trajectory_grpo_signal.py): frozen-policy census summary.
+1. [`ORACLE_CREDIT_RESULTS_20260925.md`](ORACLE_CREDIT_RESULTS_20260925.md):
+   canonical completed result and claim limits.
+2. [`evidence/oracle_credit_6x16x4_v01/summary.json`](evidence/oracle_credit_6x16x4_v01/summary.json):
+   all candidate p, q, Monte Carlo Q, uncertainty and per-task comparisons.
+3. [`ORACLE_CREDIT_BENCHMARK_v01.md`](ORACLE_CREDIT_BENCHMARK_v01.md):
+   frozen question, protocol, outcome definition and recovery semantics.
+4. [`scripts/run_swesmith_oracle_credit.py`](scripts/run_swesmith_oracle_credit.py)
+   and [`scripts/summarize_swesmith_oracle_credit.py`](scripts/summarize_swesmith_oracle_credit.py):
+   generation/feedback loop and analysis implementation.
 
 ## Decision-relevant delta
 
-The earlier open-loop/no-feedback capture was not silently reused. A new eight-edit closed-loop pipeline records public-test feedback after each edit, keeps q hidden from the policy, then computes q for all P0–P8 states offline. It uses a persistent sandbox per task, transfers the 256-case q bank once, and deduplicates identical source states.
+The frozen-policy 6-task × 16-candidate × 4-continuation pilot is now complete:
+384/384 P8 outcomes, 2,688/2,688 scored edits, 14 selected-public-test
+successes. The initial interrupted journal was preserved and imported into a
+new buffered run, which completed without discarding its frozen actions. The
+public evidence includes source-free per-state and terminal rows plus raw-file
+hashes; private source text, issue text, completions, test feedback, and launch
+receipts were not uploaded.
 
-The primary intervention now has two matched on-policy whole-trajectory GRPO arms: `Y8 + 0.5 p8` and `Y8 + 0.5 q8`. Each task group has 16 fresh trajectories, eight edits each, with one group-relative advantage per trajectory. An opt-in step-wise credit extension exists but is not the primary experiment. `Y8` denotes selected public-test resolution, not an independent hidden grader.
+The outcome is **INCONCLUSIVE**, not a q win: there are no within-task Q pairs
+with disjoint 95% Wilson intervals at K=4. Descriptively, on the three tasks
+with nonconstant empirical Q (all one repository), matched-support q pair
+accuracy is 36.6% versus p 49.5%. Two task directions are unfavorable to q,
+but the noisy Q and dependent candidate pairs do not support a decisive
+negative claim. Three candidates already solved at P1, yet only 1/12 forced
+P8 continuations remained solved; the benchmark measures value under this
+specific seven-more-edit frozen policy, not intrinsic patch quality.
 
-The server was off: **none of these three new experiments has run**. No new scientific result or timing claim follows from this commit. The previous 54 open-loop trajectories and fixed-P1 LoRA comparison remain separate, unchanged diagnostics. Local verification: `python -m pytest -q tests` passed 61 tests; staged diff and secret scans passed.
+Unchanged: the one-edit census shows extra q resolution, not future-value
+alignment; the earlier fixed-data LoRA result is not an on-policy long-horizon
+RL comparison; the proposed matched Test/Semantic GRPO intervention remains
+unrun. No PRM benchmark or critic comparison was run.
+
+Local verification: 75 tests passed; the staged files and public export passed
+row-count, link, whitespace, and sensitive-pattern checks. The downloaded raw
+summary/state/outcome SHA-256 values match the server run; deployed runner and
+scorer hashes match the committed source.
 
 ## Reviewer questions
 
-1. Does the frozen-policy eight-step census show Semantic rescue of groups tied under Test reward?
-2. On matched fresh policy rollouts, does Semantic improve held-out public-test solve@8 versus Test at equal environment steps?
-3. Only if the primary comparison is informative, does step-wise credit add benefit beyond whole-trajectory GRPO?
+1. Is the K=4 Wilson non-overlap rule too conservative to serve as a useful
+   pilot screen, while still correctly preventing a positive claim here?
+2. Do the low or negative descriptive q/Q associations on the three informative
+   tasks suggest a protocol-specific mismatch between P1 agreement and forced
+   P8 continuation value, beyond Monte Carlo noise?
+3. What is the smallest future-value test that would distinguish these
+   explanations without claiming an RL result from the current pilot?
